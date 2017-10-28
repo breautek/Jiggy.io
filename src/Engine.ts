@@ -66,3 +66,5 @@ export default class Engine {
 		return this._renderingEngine;
 	}
 }
+
+export {Engine};

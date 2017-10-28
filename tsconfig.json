@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
-        "outDir": "./intermediate/Engine.js",
+        "outDir": "./dist/",
+        "rootDir": "./src/",
         "sourceMap": true,
         "noImplicitAny": true,
         "moduleResolution": "node",
@@ -13,6 +14,6 @@
         "allowUnreachableCode": false
     },
     "files": [
-        "./src/Engine.ts"
+        "./src/index.ts"
     ]
 }
