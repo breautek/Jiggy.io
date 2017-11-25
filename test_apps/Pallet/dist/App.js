@@ -142,7 +142,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 21);
+/******/ 	return __webpack_require__(__webpack_require__.s = 20);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -154,19 +154,19 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const SeverityEnum_1 = __webpack_require__(8);
 exports.SeverityEnum = SeverityEnum_1.SeverityEnum;
-const Camera_1 = __webpack_require__(23);
+const Camera_1 = __webpack_require__(22);
 exports.Camera = Camera_1.Camera;
-const IDGenerator_1 = __webpack_require__(24);
+const IDGenerator_1 = __webpack_require__(23);
 exports.IDGenerator = IDGenerator_1.IDGenerator;
 const Iterator_1 = __webpack_require__(10);
 exports.Iterator = Iterator_1.Iterator;
-const LogManager_1 = __webpack_require__(25);
+const LogManager_1 = __webpack_require__(24);
 exports.LogManager = LogManager_1.LogManager;
-const ViewPort_1 = __webpack_require__(26);
+const ViewPort_1 = __webpack_require__(25);
 exports.ViewPort = ViewPort_1.ViewPort;
-const CollisionEmitter_1 = __webpack_require__(27);
+const CollisionEmitter_1 = __webpack_require__(26);
 exports.CollisionEmitter = CollisionEmitter_1.CollisionEmitter;
-const Color_1 = __webpack_require__(28);
+const Color_1 = __webpack_require__(27);
 exports.Color = Color_1.Color;
 const ColorCode_1 = __webpack_require__(11);
 exports.ColorCode = ColorCode_1.ColorCode;
@@ -181,31 +181,31 @@ exports.Coordinate = Coordinate_1.Coordinate;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Asset_1 = __webpack_require__(30);
+const Asset_1 = __webpack_require__(29);
 exports.Asset = Asset_1.Asset;
 const AssetType_1 = __webpack_require__(6);
 exports.AssetType = AssetType_1.AssetType;
 const AssetState_1 = __webpack_require__(13);
 exports.AssetState = AssetState_1.AssetState;
-const AssetFactory_1 = __webpack_require__(31);
+const AssetFactory_1 = __webpack_require__(30);
 exports.AssetFactory = AssetFactory_1.AssetFactory;
 const AssetGroup_1 = __webpack_require__(14);
 exports.AssetGroup = AssetGroup_1.AssetGroup;
-const AssetGroupLoader_1 = __webpack_require__(32);
+const AssetGroupLoader_1 = __webpack_require__(31);
 exports.AssetGroupLoader = AssetGroupLoader_1.AssetGroupLoader;
-const AssetLoader_1 = __webpack_require__(33);
+const AssetLoader_1 = __webpack_require__(32);
 exports.AssetLoader = AssetLoader_1.AssetLoader;
-const AudioLoader_1 = __webpack_require__(35);
+const AudioLoader_1 = __webpack_require__(34);
 exports.AudioLoader = AudioLoader_1.AudioLoader;
-const ImageLoader_1 = __webpack_require__(36);
+const ImageLoader_1 = __webpack_require__(35);
 exports.ImageLoader = ImageLoader_1.ImageLoader;
-const JSONLoader_1 = __webpack_require__(37);
+const JSONLoader_1 = __webpack_require__(36);
 exports.JSONLoader = JSONLoader_1.JSONLoader;
-const TextAssetBuilder_1 = __webpack_require__(38);
+const TextAssetBuilder_1 = __webpack_require__(37);
 exports.TextAssetBuilder = TextAssetBuilder_1.TextAssetBuilder;
-const Spritesheet_1 = __webpack_require__(39);
+const Spritesheet_1 = __webpack_require__(38);
 exports.Spritesheet = Spritesheet_1.Spritesheet;
-const Animation_1 = __webpack_require__(40);
+const Animation_1 = __webpack_require__(39);
 exports.Animation = Animation_1.Animation;
 
 
@@ -524,6 +524,29 @@ function isUndefined(arg) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+const Entity_1 = __webpack_require__(15);
+exports.Entity = Entity_1.Entity;
+const EntityModel_1 = __webpack_require__(45);
+exports.EntityModel = EntityModel_1.EntityModel;
+const EntityView_1 = __webpack_require__(16);
+exports.EntityView = EntityView_1.EntityView;
+const EntityView2D_1 = __webpack_require__(46);
+exports.EntityView2D = EntityView2D_1.EntityView2D;
+const GridMap_1 = __webpack_require__(47);
+exports.GridMap = GridMap_1.GridMap;
+const IsometricGridMap_1 = __webpack_require__(48);
+exports.IsometricGridMap = IsometricGridMap_1.IsometricGridMap;
+const IsometricTile_1 = __webpack_require__(49);
+exports.IsometricTile = IsometricTile_1.IsometricTile;
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = __webpack_require__(0);
 var instance = null;
 var setInstance = (game) => {
@@ -540,39 +563,22 @@ exports.getInstance = getInstance;
 
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const LogicEngine_1 = __webpack_require__(42);
-exports.LogicEngine = LogicEngine_1.LogicEngine;
-const GroupLogicEngine_1 = __webpack_require__(43);
-exports.GroupLogicEngine = GroupLogicEngine_1.GroupLogicEngine;
-const RenderingEngine_1 = __webpack_require__(44);
-exports.RenderingEngine = RenderingEngine_1.RenderingEngine;
-const TwoDimensionalRenderingEngine_1 = __webpack_require__(45);
-exports.TwoDimensionalRenderingEngine = TwoDimensionalRenderingEngine_1.TwoDimensionalRenderingEngine;
-
-
-/***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Entity_1 = __webpack_require__(16);
-exports.Entity = Entity_1.Entity;
-const EntityModel_1 = __webpack_require__(46);
-exports.EntityModel = EntityModel_1.EntityModel;
-const EntityView_1 = __webpack_require__(17);
-exports.EntityView = EntityView_1.EntityView;
-const EntityView2D_1 = __webpack_require__(47);
-exports.EntityView2D = EntityView2D_1.EntityView2D;
-const GridMap_1 = __webpack_require__(48);
-exports.GridMap = GridMap_1.GridMap;
+const LogicEngine_1 = __webpack_require__(41);
+exports.LogicEngine = LogicEngine_1.LogicEngine;
+const GroupLogicEngine_1 = __webpack_require__(42);
+exports.GroupLogicEngine = GroupLogicEngine_1.GroupLogicEngine;
+const RenderingEngine_1 = __webpack_require__(43);
+exports.RenderingEngine = RenderingEngine_1.RenderingEngine;
+const TwoDimensionalRenderingEngine_1 = __webpack_require__(44);
+exports.TwoDimensionalRenderingEngine = TwoDimensionalRenderingEngine_1.TwoDimensionalRenderingEngine;
+const IsometricRenderingEngine_1 = __webpack_require__(50);
+exports.IsometricRenderingEngine = IsometricRenderingEngine_1.IsometricRenderingEngine;
 
 
 /***/ }),
@@ -598,9 +604,9 @@ var AssetType;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Engine_1 = __webpack_require__(22);
+const Engine_1 = __webpack_require__(21);
 exports.Engine = Engine_1.Engine;
-const Instance_1 = __webpack_require__(3);
+const Instance_1 = __webpack_require__(4);
 exports.getInstance = Instance_1.getInstance;
 
 
@@ -713,7 +719,7 @@ class Iterator {
         this._index = -1;
     }
     setToEnd() {
-        this._index = this._array.length - 1;
+        this._index = this._array.length;
     }
     getFirst() {
         return this._array[0];
@@ -1042,11 +1048,9 @@ exports.ColorMap = {
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = __webpack_require__(0);
 const assets_1 = __webpack_require__(1);
-const events_1 = __webpack_require__(2);
 var assetFactory = assets_1.AssetFactory.getSingleton();
-class AudioEngine extends events_1.EventEmitter {
+class AudioEngine {
     constructor() {
-        super();
         this._audioMap = {};
         this._logManager = utils_1.LogManager.getSingleton();
     }
@@ -1169,7 +1173,7 @@ class AudioEngine extends events_1.EventEmitter {
                 }
             }
             this._audioMap[name] = channelArr;
-            this._registerEvents(channelArr, name, audio);
+            this._registerEvents(channelArr);
         }
     }
     _warnMissingAudio(name) {
@@ -1201,24 +1205,24 @@ class AudioEngine extends events_1.EventEmitter {
     _getData(audio) {
         return audio.getData();
     }
-    _attachStartEvent(asset, name, audio) {
+    _attachStartEvent(asset) {
         if (!asset.getAttribute('startEvent')) {
-            this._registerStartEvent(asset, name, audio);
+            this._registerStartEvent(asset);
             asset.setAttribute('startEvent', true);
         }
     }
-    _attachEndEvent(asset, name, audio) {
+    _attachEndEvent(asset) {
         if (!asset.getAttribute('endEvent')) {
-            this._registerEndEvent(asset, name, audio);
+            this._registerEndEvent(asset);
             asset.setAttribute('endEvent', true);
         }
     }
-    _registerEvents(channelArray, name, audio) {
+    _registerEvents(channelArray) {
         var channel;
         for (var i = 0, len = channelArray.length; i < len; i++) {
             channel = channelArray[i];
-            this._attachStartEvent(channel, name, audio);
-            this._attachEndEvent(channel, name, audio);
+            this._attachStartEvent(channel);
+            this._attachEndEvent(channel);
         }
     }
 }
@@ -1249,7 +1253,7 @@ var AssetState;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const AssetState_1 = __webpack_require__(13);
-const Instance_1 = __webpack_require__(3);
+const Instance_1 = __webpack_require__(4);
 class AssetGroup {
     constructor(assetMap = {}) {
         this._assets = assetMap;
@@ -1319,24 +1323,10 @@ exports.AssetGroup = AssetGroup;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var AudioEvents;
-(function (AudioEvents) {
-    AudioEvents["STARTED"] = "started";
-    AudioEvents["ENDED"] = "ended";
-})(AudioEvents = exports.AudioEvents || (exports.AudioEvents = {}));
-
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
 const Events = __webpack_require__(2);
 const assets_1 = __webpack_require__(1);
 const utils_1 = __webpack_require__(0);
-const _1 = __webpack_require__(5);
+const _1 = __webpack_require__(3);
 const utils_2 = __webpack_require__(0);
 class Entity extends Events.EventEmitter {
     constructor(model) {
@@ -1422,41 +1412,12 @@ class Entity extends Events.EventEmitter {
         this._model.setAttribute('width', width);
         this._generateRegions();
     }
-    setOrigin(coord) {
-        this._model.setAttribute('origin', coord);
-    }
-    setOriginX(x) {
-        this._model.getAttribute('origin').setX(x);
-    }
-    setOriginY(y) {
-        this._model.getAttribute('origin').setY(y);
-    }
-    setOriginZ(z) {
-        this._model.getAttribute('origin').setZ(z);
-    }
-    getOrigin() {
-        var origin = this._model.getAttribute('origin');
-        if (!origin) {
-            origin = new utils_1.Coordinate(0, 0, 0);
-            this.setOrigin(origin);
-        }
-        return origin;
-    }
-    getOriginX() {
-        return this._model.getAttribute('origin').getX();
-    }
-    getOriginY() {
-        return this._model.getAttribute('origin').getY();
-    }
-    getOriginZ() {
-        return this._model.getAttribute('origin').getZ();
-    }
     getX() {
-        return this._model.getX() + this.getOriginX();
+        return this._model.getX();
     }
     setX(x) {
         let oldCoordinates = this.getPosition();
-        this._model.setX(x - this.getOriginX());
+        this._model.setX(x);
         let newCoordinates = this.getPosition();
         if (this._parent) {
             this._parent._updateChildsRegion(this);
@@ -1474,20 +1435,10 @@ class Entity extends Events.EventEmitter {
         }
     }
     getPosition() {
-        var position = this._model.getPosition();
-        var origin = this.getOrigin();
-        var x = position.getX() + origin.getX();
-        var y = position.getY() + origin.getY();
-        var z = position.getZ() + origin.getZ();
-        return new utils_1.Coordinate(x, y, z);
+        return this._model.getPosition();
     }
     setPosition(position) {
         let oldCoordinates = this.getPosition();
-        var origin = this.getOrigin();
-        var x = position.getX() - origin.getX();
-        var y = position.getY() - origin.getY();
-        var z = position.getZ() - origin.getZ();
-        position = new utils_1.Coordinate(x, y, z);
         this._model.setPosition(position);
         if (this._parent) {
             this._parent._updateChildsRegion(this);
@@ -1501,14 +1452,14 @@ class Entity extends Events.EventEmitter {
         this.emit(0..toString(), eventData);
     }
     getX2() {
-        return this.getX() + this.getWidth() - this.getOriginX();
+        return this.getX() + this.getWidth();
     }
     getY() {
-        return this._model.getY() + this.getOriginY();
+        return this._model.getY();
     }
     setY(y) {
         let oldCoordinates = this.getPosition();
-        this._model.setY(y - this.getOriginY());
+        this._model.setY(y);
         let newCoordinates = this.getPosition();
         if (this._parent) {
             this._parent._updateChildsRegion(this);
@@ -1526,13 +1477,13 @@ class Entity extends Events.EventEmitter {
         }
     }
     getY2() {
-        return this.getY() + this.getHeight() - this.getOriginY();
+        return this.getY() + this.getHeight();
     }
     getZ() {
-        return this._model.getZ() + this.getOriginZ();
+        return this._model.getZ();
     }
     setZ(z) {
-        this._model.setZ(z - this.getOriginZ());
+        this._model.setZ(z);
     }
     getVisible() {
         return this._model.getAttribute('visible');
@@ -1755,7 +1706,6 @@ class Entity extends Events.EventEmitter {
         this.setPosition(new utils_1.Coordinate(0, 0));
         this.setSize({ width: 0, height: 0 });
         this.setVisible(true);
-        this.setOrigin(new utils_1.Coordinate(0, 0, 0));
     }
     _generateRegions() {
         this._regions = [];
@@ -1835,7 +1785,7 @@ exports.Entity = Entity;
 
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1876,7 +1826,7 @@ exports.EntityView = EntityView;
 
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1956,7 +1906,7 @@ exports.GamePad = GamePad;
 
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2023,20 +1973,20 @@ exports.Touch = Touch;
 
 
 /***/ }),
-/* 20 */,
-/* 21 */
+/* 19 */,
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = __webpack_require__(7);
-const engines_1 = __webpack_require__(4);
-const entities_1 = __webpack_require__(5);
+const engines_1 = __webpack_require__(5);
+const entities_1 = __webpack_require__(3);
 const utils_1 = __webpack_require__(0);
 const assets_1 = __webpack_require__(1);
-const Character_1 = __webpack_require__(49);
-const inputs_1 = __webpack_require__(50);
+const Character_1 = __webpack_require__(51);
+const inputs_1 = __webpack_require__(52);
 class PalletDemo extends core_1.Engine {
     constructor() {
         super();
@@ -2114,7 +2064,7 @@ class PalletDemo extends core_1.Engine {
     _loadResources() {
         var assetGroupLoader = new assets_1.AssetGroupLoader();
         __webpack_require__.e/* require.ensure */(0).then(((require) => {
-            var resources = __webpack_require__(20);
+            var resources = __webpack_require__(19);
             console.log(resources);
             this._assetGroup = assetGroupLoader.loadFromMemory(resources);
             this._assetGroup.load().then(() => {
@@ -2434,16 +2384,16 @@ window._PalletDemo = new PalletDemo();
 
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = __webpack_require__(0);
-const audio_1 = __webpack_require__(29);
+const audio_1 = __webpack_require__(28);
 const assets_1 = __webpack_require__(1);
-const Instance_1 = __webpack_require__(3);
+const Instance_1 = __webpack_require__(4);
 class Engine {
     constructor() {
         Instance_1.setInstance(this);
@@ -2500,7 +2450,7 @@ exports.Engine = Engine;
 
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2554,7 +2504,7 @@ exports.Camera = Camera;
 
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2584,7 +2534,7 @@ exports.IDGenerator = IDGenerator;
 
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2650,7 +2600,7 @@ exports.LogManager = LogManager;
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2755,7 +2705,7 @@ exports.ViewPort = ViewPort;
 
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2829,7 +2779,7 @@ exports.CollisionEmitter = CollisionEmitter;
 
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2844,13 +2794,13 @@ class Color {
         this.setAlpha(a);
     }
     setRed(r) {
-        this._r = parseInt(r.toString());
+        this._r = r;
     }
     setGreen(g) {
-        this._g = parseInt(g.toString());
+        this._g = g;
     }
     setBlue(b) {
-        this._b = parseInt(b.toString());
+        this._b = b;
     }
     setAlpha(a) {
         this._a = a * 255;
@@ -2999,7 +2949,7 @@ exports.Color = Color;
 
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3007,14 +2957,12 @@ exports.Color = Color;
 Object.defineProperty(exports, "__esModule", { value: true });
 const AudioEngine_1 = __webpack_require__(12);
 exports.AudioEngine = AudioEngine_1.AudioEngine;
-const HTML5AudioEngine_1 = __webpack_require__(41);
+const HTML5AudioEngine_1 = __webpack_require__(40);
 exports.HTML5AudioEngine = HTML5AudioEngine_1.HTML5AudioEngine;
-const AudioEvents_1 = __webpack_require__(15);
-exports.AudioEvents = AudioEvents_1.AudioEvents;
 
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3100,7 +3048,7 @@ exports.Asset = Asset;
 
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3206,7 +3154,7 @@ exports.AssetFactory = AssetFactory;
 
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3214,7 +3162,7 @@ exports.AssetFactory = AssetFactory;
 Object.defineProperty(exports, "__esModule", { value: true });
 const AssetType_1 = __webpack_require__(6);
 const AssetGroup_1 = __webpack_require__(14);
-const Instance_1 = __webpack_require__(3);
+const Instance_1 = __webpack_require__(4);
 const Iterator_1 = __webpack_require__(10);
 class AssetGroupLoader {
     constructor() {
@@ -3253,7 +3201,7 @@ exports.AssetGroupLoader = AssetGroupLoader;
 
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3330,10 +3278,10 @@ class AssetLoader {
 }
 exports.AssetLoader = AssetLoader;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -3523,7 +3471,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3578,7 +3526,7 @@ exports.AudioLoader = AudioLoader;
 
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3619,7 +3567,7 @@ exports.ImageLoader = ImageLoader;
 
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3640,7 +3588,7 @@ exports.JSONLoader = JSONLoader;
 
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3672,7 +3620,7 @@ exports.TextAssetBuilder = TextAssetBuilder;
 
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3710,7 +3658,7 @@ exports.Spritesheet = Spritesheet;
 
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3804,14 +3752,13 @@ exports.Animation = Animation;
 
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const AudioEngine_1 = __webpack_require__(12);
-const AudioEvents_1 = __webpack_require__(15);
 class HTML5AudioEngine extends AudioEngine_1.AudioEngine {
     constructor() {
         super();
@@ -3904,18 +3851,16 @@ class HTML5AudioEngine extends AudioEngine_1.AudioEngine {
         var data = this._getData(audio);
         return data.volume;
     }
-    _registerStartEvent(asset, name, audio) {
-        var data = asset.getData();
-        data.addEventListener('playing', (e) => {
-            asset.setAttribute('playing', true);
-            this.emit(AudioEvents_1.AudioEvents.STARTED, name, audio);
+    _registerStartEvent(audio) {
+        var data = audio.getData();
+        data.addEventListener('playing', function (e) {
+            audio.setAttribute('playing', true);
         });
     }
-    _registerEndEvent(asset, name, audio) {
-        var data = asset.getData();
-        data.addEventListener('ended', (e) => {
-            asset.setAttribute('playing', false);
-            this.emit(AudioEvents_1.AudioEvents.ENDED, name, audio);
+    _registerEndEvent(audio) {
+        var data = audio.getData();
+        data.addEventListener('ended', function (e) {
+            audio.setAttribute('playing', false);
         });
     }
 }
@@ -3923,7 +3868,7 @@ exports.HTML5AudioEngine = HTML5AudioEngine;
 
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3935,13 +3880,13 @@ exports.LogicEngine = LogicEngine;
 
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _1 = __webpack_require__(4);
+const _1 = __webpack_require__(5);
 class GroupLogicEngine extends _1.LogicEngine {
     constructor() {
         super();
@@ -4008,7 +3953,7 @@ exports.GroupLogicEngine = GroupLogicEngine;
 
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4149,14 +4094,15 @@ exports.RenderingEngine = RenderingEngine;
 
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _1 = __webpack_require__(4);
+const _1 = __webpack_require__(5);
 const utils_1 = __webpack_require__(0);
+const entities_1 = __webpack_require__(3);
 class TwoDimensionalRenderingEngine extends _1.RenderingEngine {
     constructor() {
         super(...arguments);
@@ -4167,14 +4113,23 @@ class TwoDimensionalRenderingEngine extends _1.RenderingEngine {
         var renderOrigin = camera.getRenderOrigin();
         var renderDimension = camera.getRenderDimension();
         var cameraFOV = camera.getFOV();
-        var entityPosition = this._getEntityCoordinates(entity);
-        var entityAbsolutePosition = entityPosition.inner;
-        var entityAbsoluteOuterPosition = entityPosition.outer;
+        var entityAbsolutePosition = new utils_1.Coordinate(entity.getAbsoluteX(), entity.getAbsoluteY(), entity.getZ());
+        if (this._isometricRendering && entity.getParent()) {
+            entityAbsolutePosition.incrementY(0 - (entity.getParent().getHeight() / 2));
+            entityAbsolutePosition.incrementX((entity.getParent().getWidth() / 2));
+        }
+        var entityAbsoluteOuterPosition = new utils_1.Coordinate(entityAbsolutePosition.getX() + entity.getWidth(), entityAbsolutePosition.getY() + entity.getHeight());
         var cameraPosition = camera.getViewPoint();
         if (this._isometricRendering) {
             cameraPosition = cameraPosition.toIsometric();
         }
         var cameraOuterPosition = new utils_1.Coordinate(cameraPosition.getX() + camera.getFOV().width, cameraPosition.getY() + camera.getFOV().height);
+        if (this._isometricRendering) {
+            entityAbsoluteOuterPosition.incrementX(entity.getWidth());
+            entityAbsoluteOuterPosition.incrementY(0 - entity.getHeight());
+            entityAbsolutePosition = entityAbsolutePosition.toIsometric();
+            entityAbsoluteOuterPosition = entityAbsoluteOuterPosition.toIsometric();
+        }
         if (!this._isEntityInCamera(entityAbsolutePosition, entityAbsoluteOuterPosition, cameraPosition, cameraOuterPosition)) {
             return false;
         }
@@ -4225,50 +4180,69 @@ class TwoDimensionalRenderingEngine extends _1.RenderingEngine {
             var clippedImageWidth = clippedEntityWidth * entityToImageXModifier;
             this.getViewPort().getContext().drawImage(imageData, entityClippings.leftClip * entityToImageXModifier, entityClippings.topClip * entityToImageYModifier, clippedImageWidth, clippedImageHeight, x, y, w, h);
         }
-        var index = [];
+        if (this._isometricRendering) {
+            if (entity instanceof entities_1.IsometricTile) {
+                var tileX = x - (w / 2);
+                var y2 = y + h;
+                var x2 = tileX + (w * 2);
+                this.getViewPort().getContext().beginPath();
+                this.getViewPort().getContext().moveTo(tileX + (w / 2), y + ((y2 - y) / 2));
+                this.getViewPort().getContext().lineTo(tileX + ((x2 - tileX) / 2), y);
+                this.getViewPort().getContext().lineTo(x2 - (w / 2), y + ((y2 - y) / 2));
+                this.getViewPort().getContext().lineTo(tileX + ((x2 - tileX) / 2), y2);
+                this.getViewPort().getContext().closePath();
+                this.getViewPort().getContext().stroke();
+            }
+        }
+        var index = {};
         var children = entity.getChildren();
         while (children.hasNext()) {
             var child = children.next();
-            var childCoords = this._getEntityCoordinates(child);
+            var childCoords = this.getEntityCoordinates(child);
             var inner = childCoords.inner;
             var outer = childCoords.outer;
-            var added = false;
-            for (var i in index) {
-                var otherChild = index[i];
-                var otherChildCoords = this._getEntityCoordinates(otherChild);
-                if (!added) {
-                    var myTotal = (inner.getZ() + (inner.getX() / 2) + inner.getY());
-                    var theirTotal = (otherChildCoords.inner.getZ() + (otherChildCoords.inner.getX() / 2) + otherChildCoords.inner.getY());
-                    var myOuterTotal = (inner.getZ() + (outer.getX() / 2) + outer.getY());
-                    var theirOuterTotal = (otherChildCoords.inner.getZ() + (otherChildCoords.outer.getX() / 2) + otherChildCoords.outer.getY());
-                    if (myTotal < theirTotal) {
-                        if (myOuterTotal < theirOuterTotal) {
-                            index.splice(i, 0, child);
+            if (!index[inner.getZ()]) {
+                index[inner.getZ()] = [child];
+            }
+            else {
+                var added = false;
+                for (var i in index[inner.getZ()]) {
+                    if (!added) {
+                        var otherChild = index[inner.getZ()][i];
+                        var otherChildCoords = this.getEntityCoordinates(otherChild);
+                        if (inner.getY() < otherChildCoords.inner.getY() ||
+                            (inner.getY() > otherChildCoords.inner.getY() &&
+                                outer.getY() <= otherChildCoords.outer.getY() &&
+                                inner.getX() <= otherChildCoords.inner.getX() + ((otherChildCoords.outer.getX() - otherChildCoords.inner.getX()) / 2))
+                            || (inner.getY() >= otherChildCoords.inner.getY() &&
+                                outer.getY() <= otherChildCoords.outer.getY() &&
+                                inner.getX() >= otherChildCoords.inner.getX() + ((otherChildCoords.outer.getX() - otherChildCoords.inner.getX()) / 2)
+                                && inner.getY() <= (otherChildCoords.inner.getY() + (otherChildCoords.outer.getY() - otherChildCoords.inner.getY()) / 2))) {
+                            index[inner.getZ()].splice(i, 0, child);
                             added = true;
                         }
                     }
-                    else if (myTotal === theirTotal && inner.getY() < otherChildCoords.inner.getY()) {
-                        index.splice(i, 0, child);
-                        added = true;
-                    }
                 }
-            }
-            if (!added) {
-                added = true;
-                index.push(child);
+                if (!added) {
+                    index[inner.getZ()].push(child);
+                }
             }
         }
         for (var i in index) {
-            this._renderEntity(index[i], camera);
+            for (var i2 in index[i]) {
+                this._renderEntity(index[i][i2], camera);
+            }
         }
         return true;
     }
     setIsometricRendering(state) {
         this._isometricRendering = state;
     }
-    _getEntityCoordinates(entity) {
+    getEntityCoordinates(entity) {
         var entityAbsolutePosition = new utils_1.Coordinate(entity.getAbsoluteX(), entity.getAbsoluteY(), entity.getZ());
         if (this._isometricRendering && entity.getParent()) {
+            entityAbsolutePosition.incrementY(0 - (entity.getParent().getHeight() / 2));
+            entityAbsolutePosition.incrementX((entity.getParent().getWidth() / 2));
         }
         var entityAbsoluteOuterPosition = new utils_1.Coordinate(entityAbsolutePosition.getX() + entity.getWidth(), entityAbsolutePosition.getY() + entity.getHeight());
         if (this._isometricRendering) {
@@ -4326,7 +4300,7 @@ exports.TwoDimensionalRenderingEngine = TwoDimensionalRenderingEngine;
 
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4425,26 +4399,26 @@ exports.EntityModel = EntityModel;
 
 
 /***/ }),
-/* 47 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const EntityView_1 = __webpack_require__(17);
+const EntityView_1 = __webpack_require__(16);
 class EntityView2D extends EntityView_1.EntityView {
 }
 exports.EntityView2D = EntityView2D;
 
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Entity_1 = __webpack_require__(16);
+const Entity_1 = __webpack_require__(15);
 class GridMap extends Entity_1.Entity {
     constructor(tileSize, tileCount) {
         super();
@@ -4483,13 +4457,241 @@ exports.GridMap = GridMap;
 
 
 /***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const _1 = __webpack_require__(3);
+class IsometricGridMap extends _1.GridMap {
+    _buildTile(x, y) {
+        var tile = new _1.IsometricTile();
+        tile.setWidth(this.tileSize.width);
+        tile.setHeight(this.tileSize.height);
+        tile.setX((x) * this.tileSize.width);
+        tile.setY((y) * this.tileSize.height);
+        return tile;
+    }
+}
+exports.IsometricGridMap = IsometricGridMap;
+
+
+/***/ }),
 /* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const entities_1 = __webpack_require__(5);
+const _1 = __webpack_require__(3);
+class IsometricTile extends _1.Entity {
+    constructor() {
+        super();
+    }
+}
+exports.IsometricTile = IsometricTile;
+
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const _1 = __webpack_require__(5);
+const utils_1 = __webpack_require__(0);
+const entities_1 = __webpack_require__(3);
+class IsometricRenderingEngine extends _1.TwoDimensionalRenderingEngine {
+    _renderCamera(camera) {
+        var scene = camera.getScene();
+        var context = this.getViewPort().getContext();
+        if (this.debugCamera || 1 == 1) {
+            var viewPoint = camera.getViewPoint();
+            var fov = camera.getFOV();
+            var renderOrigin = camera.getRenderOrigin();
+            var renderDimension = camera.getRenderDimension();
+            context.beginPath();
+            context.rect(viewPoint.getX(), viewPoint.getY(), fov.width, fov.height);
+            context.lineWidth = 7;
+            context.strokeStyle = 'red';
+            context.stroke();
+            context.beginPath();
+            context.rect(renderOrigin.getX(), renderOrigin.getY(), renderDimension.width, renderDimension.height);
+            context.lineWidth = 7;
+            context.fillStyle = 'black';
+            context.fill();
+            context.strokeStyle = 'green';
+            context.stroke();
+        }
+        this._renderEntity(scene, camera);
+    }
+    _renderEntity(entity, camera) {
+        if (camera) {
+            var viewPoint = camera.getViewPoint();
+            var fov = camera.getFOV();
+            var renderOrigin = camera.getRenderOrigin();
+            var renderDimension = camera.getRenderDimension();
+            var collidesYAxis = false;
+            var collidesXAxis = false;
+            var cameraBounds = {
+                x: viewPoint.getX(),
+                y: viewPoint.getY(),
+                x2: viewPoint.getX() + fov.width,
+                y2: viewPoint.getY() + fov.height
+            };
+            var cartEntityBounds = {
+                x: entity.getAbsoluteX(),
+                y: entity.getAbsoluteY(),
+                x2: entity.getAbsoluteX(),
+                y2: entity.getAbsoluteY2()
+            };
+            var topLeftCoord = new utils_1.Coordinate(cartEntityBounds.x, cartEntityBounds.y);
+            var topLeftCoordIso = topLeftCoord.toIsometric();
+            var bottomRightCoord = new utils_1.Coordinate(cartEntityBounds.x2, cartEntityBounds.y2);
+            var bottomRightCoordIso = bottomRightCoord.toIsometric();
+            var entityBounds = {
+                x: topLeftCoordIso.getX() - (entity.getWidth()),
+                y: topLeftCoordIso.getY() - (entity.getHeight()),
+                x2: bottomRightCoordIso.getX() + (entity.getWidth() * 2),
+                y2: bottomRightCoordIso.getY() + entity.getHeight()
+            };
+            if ((entityBounds.x < cameraBounds.x2 && entityBounds.x2 > cameraBounds.x)
+                || (entityBounds.x2 > cameraBounds.x && entityBounds.x < cameraBounds.x2)) {
+                collidesXAxis = true;
+            }
+            if ((entityBounds.y < cameraBounds.y2 && entityBounds.y2 > cameraBounds.y)
+                || (entityBounds.y2 > cameraBounds.y && entityBounds.y < cameraBounds.y2)) {
+                collidesYAxis = true;
+            }
+            if (!collidesYAxis || !collidesXAxis) {
+                return false;
+            }
+            var leftClip = 0;
+            if (entityBounds.x < viewPoint.getX()) {
+                leftClip = (viewPoint.getX() - entityBounds.x) / 2;
+            }
+            var rightClip = 0;
+            if (entityBounds.x2 > (viewPoint.getX() + fov.width)) {
+                rightClip = (entityBounds.x2 - (viewPoint.getX() + fov.width)) / 2;
+            }
+            var topClip = 0;
+            if (entityBounds.y < viewPoint.getY()) {
+                topClip = viewPoint.getY() - entityBounds.y;
+            }
+            var bottomClip = 0;
+            if (entityBounds.y2 > (viewPoint.getY() + fov.height)) {
+                bottomClip = entityBounds.y2 - (viewPoint.getY() + fov.height);
+            }
+            var xModifier = fov.width / renderDimension.width;
+            var yModifier = fov.height / renderDimension.height;
+            var zModifier = (xModifier + yModifier) / 2;
+            var cameraRelativeY = (entityBounds.y - cameraBounds.y) / yModifier;
+            if (cameraRelativeY < 0) {
+                cameraRelativeY = 0;
+            }
+            var cameraRelativeX = (entityBounds.x - cameraBounds.x) / xModifier;
+            if (cameraRelativeX < 0) {
+                cameraRelativeX = 0;
+            }
+            var clippedEntityHeight = (entity.getHeight() - topClip - bottomClip);
+            var clippedEntityWidth = (entity.getWidth() - rightClip - leftClip);
+            var x = renderOrigin.getX() + cameraRelativeX;
+            var y = renderOrigin.getY() + cameraRelativeY;
+            var z = entity.getZ() / zModifier;
+            var w = clippedEntityWidth / xModifier;
+            var h = clippedEntityHeight / yModifier;
+            var x2 = x + (w * 2);
+            var y2 = y + h;
+            var cartCoords = utils_1.Coordinate.fromIsometric(x, y);
+            if (entity.getColor()) {
+                var color = entity.getColor();
+                this.getViewPort().getContext().fillStyle = color.toString();
+                this.getViewPort().getContext().fillRect(entity.getAbsoluteX(), entity.getAbsoluteY(), entity.getWidth(), entity.getHeight());
+                this.getViewPort().getContext().fillRect(x, y + z, w * 2, h);
+            }
+            if (this.debugRegions) {
+                var regions = entity.getRegions();
+                for (var x_i in regions) {
+                    for (var y_i in regions[x]) {
+                        if (regions[x_i][y_i].length > 0) {
+                            this.getViewPort().getContext().strokeStyle = "red";
+                            this.getViewPort().getContext().strokeRect(entity.getAbsoluteX() + entity.getRegionDimension().width * parseInt(x_i), entity.getAbsoluteY() + entity.getRegionDimension().height * parseInt(y_i), entity.getRegionDimension().width, entity.getRegionDimension().height);
+                        }
+                    }
+                }
+            }
+            if (entity.getTexture()) {
+                var imageData = entity.getTexture().getData();
+                var entityToImageYModifier = imageData.height / entity.getHeight();
+                var entityToImageXModifier = imageData.width / entity.getWidth();
+                var clippedImageHeight = clippedEntityHeight * entityToImageYModifier;
+                var clippedImageWidth = clippedEntityWidth * entityToImageXModifier;
+                this.getViewPort().getContext().drawImage(imageData, leftClip * entityToImageXModifier, topClip * entityToImageYModifier, clippedImageWidth, clippedImageHeight, entity.getAbsoluteX(), entity.getAbsoluteY(), entity.getWidth(), entity.getHeight());
+                this.getViewPort().getContext().drawImage(imageData, leftClip * entityToImageXModifier, topClip * entityToImageYModifier, clippedImageWidth, clippedImageHeight, x, y - z, w * 2, h);
+            }
+            if (entity instanceof entities_1.IsometricTile) {
+                this.getViewPort().getContext().beginPath();
+                this.getViewPort().getContext().moveTo(x, y + ((y2 - y) / 2));
+                this.getViewPort().getContext().lineTo(x + ((x2 - x) / 2), y);
+                this.getViewPort().getContext().lineTo(x2, y + ((y2 - y) / 2));
+                this.getViewPort().getContext().lineTo(x + ((x2 - x) / 2), y2);
+                this.getViewPort().getContext().closePath();
+                this.getViewPort().getContext().stroke();
+            }
+        }
+        else {
+            var x = entity.getX();
+            var y = entity.getY();
+            var w = entity.getWidth();
+            var h = entity.getHeight();
+            if (entity.getColor()) {
+                var color = entity.getColor();
+                this.getViewPort().getContext().fillStyle = color.toString();
+                this.getViewPort().getContext().fillRect(x, y, w, h);
+            }
+            if (entity.getTexture()) {
+                var imageData = entity.getTexture().getData();
+                var entityToImageYModifier = imageData.height / entity.getHeight();
+                var entityToImageXModifier = imageData.width / entity.getWidth();
+                var clippedImageHeight = clippedEntityHeight * entityToImageYModifier;
+                var clippedImageWidth = clippedEntityWidth * entityToImageXModifier;
+            }
+        }
+        var index = {};
+        var children = entity.getChildren();
+        while (children.hasNext()) {
+            var child = children.next();
+            if (!index[child.getZ()]) {
+                index[child.getZ()] = {};
+            }
+            if (!index[child.getZ()][child.getY()]) {
+                index[child.getZ()][child.getY()] = [];
+            }
+            index[child.getZ()][child.getY()].push(child);
+        }
+        for (var i in index) {
+            for (var i2 in index[i]) {
+                for (var i3 in index[i][i2]) {
+                    this._renderEntity(index[i][i2][i3], camera);
+                }
+            }
+        }
+        return true;
+    }
+}
+exports.IsometricRenderingEngine = IsometricRenderingEngine;
+
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const entities_1 = __webpack_require__(3);
 const assets_1 = __webpack_require__(1);
 const utils_1 = __webpack_require__(0);
 const core_1 = __webpack_require__(7);
@@ -4645,35 +4847,35 @@ exports.default = Character;
 
 
 /***/ }),
-/* 50 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const GamePadListener_1 = __webpack_require__(51);
+const GamePadListener_1 = __webpack_require__(53);
 exports.GamePadListener = GamePadListener_1.GamePadListener;
-const GamePad_1 = __webpack_require__(18);
+const GamePad_1 = __webpack_require__(17);
 exports.GamePad = GamePad_1.GamePad;
-const Keyboard_1 = __webpack_require__(52);
+const Keyboard_1 = __webpack_require__(54);
 exports.Keyboard = Keyboard_1.Keyboard;
 exports.KeyboardKeys = Keyboard_1.KeyboardKeys;
-const Mouse_1 = __webpack_require__(53);
+const Mouse_1 = __webpack_require__(55);
 exports.Mouse = Mouse_1.Mouse;
-const Touch_1 = __webpack_require__(19);
+const Touch_1 = __webpack_require__(18);
 exports.Touch = Touch_1.Touch;
-const TouchListener_1 = __webpack_require__(54);
+const TouchListener_1 = __webpack_require__(56);
 exports.TouchListener = TouchListener_1.TouchListener;
 
 
 /***/ }),
-/* 51 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const GamePad_1 = __webpack_require__(18);
+const GamePad_1 = __webpack_require__(17);
 const Events = __webpack_require__(2);
 class GamePadListener extends Events.EventEmitter {
     constructor() {
@@ -4728,7 +4930,7 @@ exports.GamePadListener = GamePadListener;
 
 
 /***/ }),
-/* 52 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4902,7 +5104,7 @@ exports.Keyboard = Keyboard;
 
 
 /***/ }),
-/* 53 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5040,13 +5242,13 @@ exports.Mouse = Mouse;
 
 
 /***/ }),
-/* 54 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Touch_1 = __webpack_require__(19);
+const Touch_1 = __webpack_require__(18);
 const Events = __webpack_require__(2);
 class TouchListener extends Events.EventEmitter {
     constructor() {

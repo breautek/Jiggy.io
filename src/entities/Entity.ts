@@ -138,50 +138,13 @@ export class Entity extends Events.EventEmitter {
 		this._generateRegions();
 	}
 
-	public setOrigin(coord: Coordinate): void {
-		this._model.setAttribute('origin', coord);
-	}
-
-	public setOriginX(x: number): void {
-		this._model.getAttribute('origin').setX(x);
-	}
-
-	public setOriginY(y: number): void {
-		this._model.getAttribute('origin').setY(y);
-	}
-
-	public setOriginZ(z: number): void {
-		this._model.getAttribute('origin').setZ(z);
-	}
-
-	public getOrigin(): Coordinate {
-		var origin = this._model.getAttribute('origin');
-		if (!origin) {
-			origin = new Coordinate(0,0,0);
-			this.setOrigin(origin);
-		}
-		return origin;
-	}
-
-	public getOriginX(): number {
-		return this._model.getAttribute('origin').getX();
-	}
-
-	public getOriginY(): number {
-		return this._model.getAttribute('origin').getY();
-	}
-
-	public getOriginZ(): number {
-		return this._model.getAttribute('origin').getZ();
-	}
-
 	public getX (): number {
-        return this._model.getX() + this.getOriginX();
+        return this._model.getX();
 	}
 
 	public setX (x : number): void {
         let oldCoordinates = this.getPosition();
-        this._model.setX(x - this.getOriginX());
+        this._model.setX(x);
         let newCoordinates = this.getPosition();
 
 		if (this._parent) {
@@ -203,23 +166,11 @@ export class Entity extends Events.EventEmitter {
     }
 
     public getPosition(): Coordinate {
-		var position: Coordinate = this._model.getPosition();
-		var origin: Coordinate = this.getOrigin();
-		var x: number = position.getX() + origin.getX();
-		var y: number = position.getY() + origin.getY();
-		var z: number = position.getZ() + origin.getZ();
-        return new Coordinate(x, y, z);
+        return this._model.getPosition();
     }
 
 	public setPosition (position: Coordinate): void {
-		let oldCoordinates = this.getPosition();
-		
-		var origin: Coordinate = this.getOrigin();
-		var x: number = position.getX() - origin.getX();
-		var y: number = position.getY() - origin.getY();
-		var z: number = position.getZ() - origin.getZ();
-        position = new Coordinate(x, y, z);
-		
+        let oldCoordinates = this.getPosition();
 		this._model.setPosition(position)
 
 		if (this._parent) {
@@ -237,16 +188,16 @@ export class Entity extends Events.EventEmitter {
 	}
 
 	public getX2 () : number {
-		return this.getX() + this.getWidth() - this.getOriginX();
+		return this.getX() + this.getWidth();
 	}
 
 	public getY (): number {
-        return this._model.getY() + this.getOriginY();
+        return this._model.getY();
 	}
 
 	public setY (y: number): void {
         let oldCoordinates = this.getPosition();
-        this._model.setY(y - this.getOriginY());
+        this._model.setY(y);
         let newCoordinates = this.getPosition();
 
 		if (this._parent) {
@@ -268,15 +219,15 @@ export class Entity extends Events.EventEmitter {
 	}
 
 	public getY2 () : number {
-		return this.getY() + this.getHeight() - this.getOriginY();
+		return this.getY() + this.getHeight();
 	}
 
 	public getZ (): number {
-        return this._model.getZ() + this.getOriginZ();
+        return this._model.getZ();
 	}
 
 	public setZ (z: number): void {
-        this._model.setZ(z - this.getOriginZ());
+        this._model.setZ(z);
 	}
 
 	public getVisible () : boolean {
@@ -684,7 +635,6 @@ export class Entity extends Events.EventEmitter {
 		this.setPosition(new Coordinate(0, 0));
 		this.setSize({width: 0, height: 0});
 		this.setVisible(true);
-		this.setOrigin(new Coordinate(0, 0, 0));
 		// this.setColor(0,0,0,0);
 	 }
 
