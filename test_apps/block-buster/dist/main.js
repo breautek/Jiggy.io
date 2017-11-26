@@ -1568,6 +1568,12 @@ class Entity extends Events.EventEmitter {
         }
         return parent;
     }
+    setName(name) {
+        this._model.setAttribute('name', name);
+    }
+    getName() {
+        return this._model.getAttribute('name');
+    }
     getParent() {
         return this._parent;
     }
@@ -2081,10 +2087,9 @@ class SimpleCollisionStrategy extends CollisionStrategy_1.CollisionStrategy {
         var e2x2 = e2.getAbsoluteX2();
         var e2y = e2.getAbsoluteY();
         var e2y2 = e2.getAbsoluteY2();
-        return !(e1x >= e2x2 &&
-            e2x >= e1x2 &&
-            e1y >= e2y2 &&
-            e2y >= e1y2);
+        var isXWithinRange = !(e1x > e2x2 && e1x2 > e2x);
+        var isYWithinRange = !(e1y > e2y2 && e1y2 > e2y);
+        return isXWithinRange && isYWithinRange;
     }
 }
 exports.SimpleCollisionStrategy = SimpleCollisionStrategy;
@@ -4415,7 +4420,6 @@ exports.TwoDimensionalRenderingEngine = TwoDimensionalRenderingEngine;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const utils_1 = __webpack_require__(0);
 const physics_1 = __webpack_require__(20);
 class CollisionEmitter {
     constructor() {
@@ -4465,19 +4469,16 @@ class CollisionEmitter {
         }
     }
     _onEntityLocationUpdate(event) {
-        let entity = event.source;
-        if (entity.getParent()) {
-            this._collisionStrategy.compare;
-        }
-        var root = entity.getRoot();
-        if (root != entity) {
-            var potCollisions = root.findChildren(new utils_1.Coordinate(entity.getX(), entity.getY()), new utils_1.Coordinate(entity.getX2(), entity.getY2()));
-            var collisions = [];
-            for (let i in potCollisions) {
-                let potEntity = potCollisions[i];
-                if (potEntity != entity && this.hasEntity(potEntity) && this._collisionStrategy.compare(entity, potEntity)) {
-                    collisions.push(potEntity);
-                }
+        let sourceEntity = event.source;
+        var collisions = [];
+        for (var i = 0; i < this._entities.length; i++) {
+            var entity = this._entities[i];
+            if (entity === sourceEntity) {
+                continue;
+            }
+            var collisionData = this._collisionStrategy.compare(entity, sourceEntity);
+            if (collisionData) {
+                collisions.push(entity);
             }
         }
         if (collisions.length > 0) {

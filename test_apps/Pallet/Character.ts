@@ -49,27 +49,25 @@ export default class Character extends Entity {
 	}
 
     private _move(coordinates: Coordinate): void {
-        console.log("Setting player pos to", coordinates);
+        // console.log("Setting player pos to", coordinates);
 		var game: Engine = getInstance();
-		// var Engine: Core.Engine = (<any>window)._PalletDemo;
+		
 		game.getLogicEngine().removeLogic(this.getID() + "_endmove");
-		// var collision =  mapl2.findChildren(new zen.data.Coordinate(player.getX2() + 3, player.getY2() - 5),  new zen.data.Coordinate(player.getX2() + 3, player.getY2()));
-		var collision = false;
+		// var collision = false;
 		var updatedCoordinates = false;
 		var x = coordinates.getX();
 		var y = coordinates.getY();
 
 		//TODO: Fix Magic Numbers... 16 is so only the bottom balf of the sprite is collision but the +1 is fixing it to check rpoper tile...
-		var potCollisions = this.getParent().findChildren(new Coordinate(x + 1, y + 16));
-		for (var i in potCollisions) {
-			if (potCollisions[i] != this && potCollisions[i].isCollisionable()) {
-				collision = true;
-			}
-		}
+		// var potCollisions = this.getParent().findChildren(new Coordinate(x + 1, y + 16));
+		// for (var i in potCollisions) {
+		// 	if (potCollisions[i] != this && potCollisions[i].isCollisionable()) {
+		// 		collision = true;
+		// 	}
+		// }
 
-		if (!collision) {
+		// if (!collision) {
 			game.getLogicEngine().addLogic(this.getID() + "_move", () => {
-
 				if (this.getX() != x) {
 					if (this.getX() > x) {
 						this.setX(this.getX() - 2);
@@ -106,11 +104,9 @@ export default class Character extends Entity {
 							updatedCoordinates = true;
 						}
 					}
-				};
+				}
 
-				// tilePosition.setTexture(zen.assets.TextAssetBuilder.build("15px Georgia", "X: " + character.tileX + " Y: " + character.tileY, 75, 50, "black"));
-
-				if (this.getX() == x && this.getY() == y || collision) {
+				if (this.getX() == x && this.getY() == y/* || collision*/) {
 					game.getLogicEngine().removeLogic(this.getID() + "_move");
 					this.moving = false;
 
@@ -120,15 +116,28 @@ export default class Character extends Entity {
 						this.setTexture(this._endTexture);
 						game.getLogicEngine().removeLogic(this.getID() + "_endmove");
 					}, 50);
-
 				}
 			}, 50);	
-		} else {
-			this.moving = false;
+		// } else {
+		// 	this.moving = false;
+		// 	this._activeAnim.stop();
+		// 	delete this._activeAnim;
+		// 	this.setTexture(this._endTexture);
+		// }
+	}
+
+	public cancelMove(): void {
+		console.log('cancel movement');
+		var game: Engine = getInstance();
+		game.getLogicEngine().removeLogic(this.getID() + "_move");
+		this.moving = false;
+
+		game.getLogicEngine().addLogic(this.getID() + "_endmove", () => {
 			this._activeAnim.stop();
 			delete this._activeAnim;
 			this.setTexture(this._endTexture);
-		}
+			game.getLogicEngine().removeLogic(this.getID() + "_endmove");
+		}, 50);
 	}
 
 	public moveLeft () : void {

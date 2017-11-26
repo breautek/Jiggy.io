@@ -1,6 +1,7 @@
 import {Engine} from "../../src/core";
 import {TwoDimensionalRenderingEngine, GroupLogicEngine} from "../../src/engines";
 import {HTML5AudioEngine} from "../../src/audio";
+import {CollisionEmitter} from '../../src/physics';
 import {Entity, GridMap, EntityEventTypes, LocationUpdateEvent} from "../../src/entities";
 import {Camera, ViewPortEventTypes, DimensionUpdateEvent, Color, Iterator, Coordinate} from "../../src/utils";
 import { Asset, AssetState, AssetFactory, AssetType, Animation, TextAssetBuilder, Spritesheet, AssetGroup, AssetGroupLoader, AssetGroupDefinition } from "../../src/assets";
@@ -13,15 +14,16 @@ import {
 
 class PalletDemo extends Engine {
 	private _mapSpritesheet : Spritesheet;
-	// private _bgMusic : Asset;
 	private _characterSpritesheet : Spritesheet;
     public player: Character;
     private _mainCamera: Camera;
 	private _direction : String = "";
 	private _assetGroup: AssetGroup;
+	private _collisionEmitter: CollisionEmitter;
 
 	constructor () {
 		super();
+		this._collisionEmitter = new CollisionEmitter();
 		this._assetGroup = new AssetGroup();
         this.getViewPort().setSize({ width: 500, height: 500 });
 		this.setRenderingEngine(new TwoDimensionalRenderingEngine());
@@ -29,6 +31,28 @@ class PalletDemo extends Engine {
 
 		this.getRenderingEngine().setHUD(this._createLoadingScreen());
 		this._loadResources();
+
+		this._onCollide = this._onCollide.bind(this);
+		this._collisionEmitter.addCollisionListener(this._onCollide);
+	}
+
+	private _onCollide(e1: Entity, e2: Entity, event: LocationUpdateEvent): void {
+		var player: Character;
+
+		if (e1 === this.player) {
+			player = <Character>e1;
+		}
+		else if (e2 === this.player) {
+			player = <Character>e2;
+		}
+
+		if (!player) {
+			return;
+		}
+
+		player.cancelMove();
+
+		// console.log(event);
 	}
 
 	private _createLoadingScreen () : Entity {
@@ -66,10 +90,15 @@ class PalletDemo extends Engine {
 
 	private _createMainMap () : Entity {
 		var mapContainer : Entity = new Entity();
+		mapContainer.setName('map');
 
 		var layer1 : GridMap = new GridMap({width: 16, height: 16}, {x: 15, y: 15});
 		var layer2 : GridMap = new GridMap({width: 16, height: 16}, {x: 15, y: 15});
 		var layer3 : GridMap = new GridMap({width: 16, height: 16}, {x: 15, y: 15});
+
+		layer1.setName('layer1');
+		layer2.setName('layer2');
+		layer3.setName('layer3');
 
 		mapContainer.setWidth(layer1.getWidth());
 		mapContainer.setHeight(layer1.getHeight());
@@ -87,35 +116,61 @@ class PalletDemo extends Engine {
 		while(layer1Iterator.hasNext()) {
 			var tile : Entity = layer1Iterator.next();
 			tile.setTexture((this._mapSpritesheet.getSprite('grass')));
+			tile.setName('grass');
 		}
 
 		layer3.getTile({x:10, y: 10}).setTexture(this._mapSpritesheet.getSprite('house_1_roof_11'));
 		layer3.getTile({x:11, y: 10}).setTexture(this._mapSpritesheet.getSprite('house_1_roof_12'));
 		layer3.getTile({x:12, y: 10}).setTexture(this._mapSpritesheet.getSprite('house_1_roof_13'));
 
+		layer3.getTile({x:10, y: 10}).setName('house_1_roof_11');
+		layer3.getTile({x:11, y: 10}).setName('house_1_roof_12');
+		layer3.getTile({x:12, y: 10}).setName('house_1_roof_13');
+
 		layer2.getTile({x:10, y: 11}).setTexture(this._mapSpritesheet.getSprite('house_1_roof_21'));
 		layer2.getTile({x:11, y: 11}).setTexture(this._mapSpritesheet.getSprite('house_1_roof_22'));
 		layer2.getTile({x:12, y: 11}).setTexture(this._mapSpritesheet.getSprite('house_1_roof_23'));
 
-		layer2.getTile({x:10, y: 11}).setCollisionable(true);
-		layer2.getTile({x:11, y: 11}).setCollisionable(true);
-		layer2.getTile({x:12, y: 11}).setCollisionable(true);
+		layer2.getTile({x:10, y: 11}).setName('house_1_roof_21');
+		layer2.getTile({x:11, y: 11}).setName('house_1_roof_22');
+		layer2.getTile({x:12, y: 11}).setName('house_1_roof_23');
+
+		this._collisionEmitter.addEntity(layer2.getTile({x:10, y:11}));
+		this._collisionEmitter.addEntity(layer2.getTile({x:11, y:11}));
+		this._collisionEmitter.addEntity(layer2.getTile({x:12, y:11}));
+		// layer2.getTile({x:10, y: 11}).setCollisionable(true);
+		// layer2.getTile({x:11, y: 11}).setCollisionable(true);
+		// layer2.getTile({x:12, y: 11}).setCollisionable(true);
 
 		layer2.getTile({x:10, y: 12}).setTexture(this._mapSpritesheet.getSprite('house_1_roof_31'));
 		layer2.getTile({x:11, y: 12}).setTexture(this._mapSpritesheet.getSprite('house_1_roof_32'));
 		layer2.getTile({x:12, y: 12}).setTexture(this._mapSpritesheet.getSprite('house_1_roof_33'));
 
-		layer2.getTile({x:10, y: 12}).setCollisionable(true);
-		layer2.getTile({x:11, y: 12}).setCollisionable(true);
-		layer2.getTile({x:12, y: 12}).setCollisionable(true);
+		layer2.getTile({x:10, y: 12}).setName('house_1_roof_31');
+		layer2.getTile({x:11, y: 12}).setName('house_1_roof_32');
+		layer2.getTile({x:12, y: 12}).setName('house_1_roof_33');
+
+		this._collisionEmitter.addEntity(layer2.getTile({x:10, y:12}));
+		this._collisionEmitter.addEntity(layer2.getTile({x:11, y:12}));
+		this._collisionEmitter.addEntity(layer2.getTile({x:12, y:12}));
+		// layer2.getTile({x:10, y: 12}).setCollisionable(true);
+		// layer2.getTile({x:11, y: 12}).setCollisionable(true);
+		// layer2.getTile({x:12, y: 12}).setCollisionable(true);
 
 		layer2.getTile({x:10, y: 13}).setTexture(this._mapSpritesheet.getSprite('house_1_roof_41'));
 		layer2.getTile({x:11, y: 13}).setTexture(this._mapSpritesheet.getSprite('house_1_roof_42'));
 		layer2.getTile({x:12, y: 13}).setTexture(this._mapSpritesheet.getSprite('house_1_roof_43'));
 
-		layer2.getTile({x:10, y: 13}).setCollisionable(true);
-		layer2.getTile({x:11, y: 13}).setCollisionable(true);
-		layer2.getTile({x:12, y: 13}).setCollisionable(true);
+		layer2.getTile({x:10, y: 13}).setName('house_1_roof_41');
+		layer2.getTile({x:11, y: 13}).setName('house_1_roof_42');
+		layer2.getTile({x:12, y: 13}).setName('house_1_roof_43');
+
+		this._collisionEmitter.addEntity(layer2.getTile({x:10, y:13}));
+		this._collisionEmitter.addEntity(layer2.getTile({x:11, y:13}));
+		this._collisionEmitter.addEntity(layer2.getTile({x:12, y:13}));
+		// layer2.getTile({x:10, y: 13}).setCollisionable(true);
+		// layer2.getTile({x:11, y: 13}).setCollisionable(true);
+		// layer2.getTile({x:12, y: 13}).setCollisionable(true);
 
 		return mapContainer;
 	}
@@ -167,11 +222,9 @@ class PalletDemo extends Engine {
 		// Or from code-splitted bundle
 		require.ensure(['./resources.ts'], (require) => {
 			var resources: AssetGroupDefinition = require('./resources.ts');
-			console.log(resources);
 			this._assetGroup = assetGroupLoader.loadFromMemory(resources);
 			this._assetGroup.load().then(() => {
 				this._loadMapSpritesheet();
-				this._loadBackgroundMusic();
 				this._loadCharacterSpritesheet();
 				this._resourceLoaded();
 			});
@@ -210,8 +263,9 @@ class PalletDemo extends Engine {
 
 				//Load Character
 				this.player = new Character(this._characterSpritesheet);
+				this._collisionEmitter.addEntity(this.player);
 				this.player.setTexture(this._characterSpritesheet.getSprite("player_down"));
-				let layer = <GridMap> map.getChildAt(1);	
+				let layer = <GridMap>map.getChildAt(1);	
 				let tile = layer.getTile({x: 5, y: 5})
 				layer.addChild(this.player);
 				this.player.tileX = 5;
@@ -222,18 +276,10 @@ class PalletDemo extends Engine {
 				var pokeball = new Entity();
 				pokeball.setWidth(25);
 				pokeball.setHeight(25);
-				// layer.addChild(pokeball);
+
 				var pokeball_asset: Asset = this._assetGroup.getAsset('pokeball');
-				// var pokeball_asset : Asset = AssetFactory.getSingleton().build(AssetType.IMAGE,  'Resources/pokeball.png');
-
-				// pokeball_asset.onStateChange = (state : AssetState) => {
-				// 	if (state === AssetState.LOADED) {
-				// 		pokeball.setTexture(pokeball_asset);
-				// 		this.getRenderingEngine().setHUD(pokeball);
-				// 	}
-				// };
-
-				// pokeball_asset.load();
+				pokeball.setTexture(pokeball_asset);
+				this.getRenderingEngine().setHUD(pokeball);
 
 				mouse.on(MouseEvents.MouseMove, (e: MouseMoveEvent) => {
 					pokeball.setX(e.x - this.getRenderingEngine().getViewPort().getCanvas().offsetLeft - 14);
@@ -371,7 +417,6 @@ class PalletDemo extends Engine {
 
     private attachGamepad(gamePad: GamePad): void {
         gamePad.on(GamePadEvents.AxisValueChange, (e: ValueChangeEvent) => {
-            //console.log("Updating controller movement", gamePad.getAxis(0), gamePad.getAxis(1), axisId, newValue);
             if (gamePad.getAxis(0) < -.1 || gamePad.getAxis(0) > .1) {
                 this.player.setX(this.player.getX() + Math.floor(gamePad.getAxis(0) * 10));
             }
@@ -515,96 +560,6 @@ class PalletDemo extends Engine {
 				height: 16
 			}
 		});
-
-		// var map_asset : Asset = AssetFactory.getSingleton().build(AssetType.IMAGE,  'Resources/61816.png');
-
-		// map_asset.onStateChange = (state : AssetState) => {
-		// 	if (state === AssetState.LOADED) {
-		// 		this._mapSpritesheet =  new Spritesheet(map_asset, 
-		// 		{
-		// 		"grass": {
-		// 			x: 16,
-		// 			y: 0,
-		// 			width: 16,
-		// 			height: 16
-		// 		},
-		// 		"house_1_roof_11": {
-		// 			x: 0,
-		// 			y: 16,
-		// 			width: 16,
-		// 			height: 16
-		// 		},
-		// 		"house_1_roof_12": {
-		// 			x: 16,
-		// 			y: 16,
-		// 			width: 16,
-		// 			height: 16
-		// 		},
-		// 		"house_1_roof_13": {
-		// 			x: 32,
-		// 			y: 16,
-		// 			width: 16,
-		// 			height: 16
-		// 		},
-		// 		"house_1_roof_21": {
-		// 			x: 0,
-		// 			y: 32,
-		// 			width: 16,
-		// 			height: 16
-		// 		},
-		// 		"house_1_roof_22": {
-		// 			x: 16,
-		// 			y: 32,
-		// 			width: 16,
-		// 			height: 16
-		// 		},
-		// 		"house_1_roof_23": {
-		// 			x: 32,
-		// 			y: 32,
-		// 			width: 16,
-		// 			height: 16
-		// 		},
-		// 		"house_1_roof_31": {
-		// 			x: 0,
-		// 			y: 48,
-		// 			width: 16,
-		// 			height: 16
-		// 		},
-		// 		"house_1_roof_32": {
-		// 			x: 16,
-		// 			y: 48,
-		// 			width: 16,
-		// 			height: 16
-		// 		},
-		// 		"house_1_roof_33": {
-		// 			x: 32,
-		// 			y: 48,
-		// 			width: 16,
-		// 			height: 16
-		// 		},
-		// 		"house_1_roof_41": {
-		// 			x: 0,
-		// 			y: 64,
-		// 			width: 16,
-		// 			height: 16
-		// 		},
-		// 		"house_1_roof_42": {
-		// 			x: 16,
-		// 			y: 64,
-		// 			width: 16,
-		// 			height: 16
-		// 		},
-		// 		"house_1_roof_43": {
-		// 			x: 32,
-		// 			y: 64,
-		// 			width: 16,
-		// 			height: 16
-		// 		}});
-		// 		this._resourceLoaded();
-		// 	}
-		// }
-
-		// map_asset.load();
 	}
 
 	private _loadCharacterSpritesheet () : void {
@@ -624,48 +579,6 @@ class PalletDemo extends Engine {
 			"player_down_step1": {x: 51, y: 10, width: 14, height: 20},
 			"player_down_step2": {x: 51, y: 10, width: 14, height: 20, "flipX": true}
 		});
-
-		// var character_spritesheet : Asset = AssetFactory.getSingleton().build(AssetType.IMAGE, 'Resources/3698.png');
-
-		// character_spritesheet.onStateChange = (state : AssetState) => {
-		// 	if (state === AssetState.LOADED) {
-		// 		this._characterSpritesheet = new Spritesheet(character_spritesheet, {
-		// 		"player_up": {x: 21, y: 10, width: 14, height: 20},
-		// 		"player_up_step1": {x: 66, y: 10, width: 14, height: 20},
-		// 		"player_up_step2": {x: 66, y: 10, width: 14, height: 20, "flipX": true},
-		// 		"player_left": {x: 36, y: 10, width: 14, height: 20},
-		// 		"player_left_step1": {x: 81, y: 10, width: 14, height: 20},
-		// 		"player_left_step2": {x: 95, y: 10, width: 14, height: 20},
-		// 		"player_right": {x: 36, y: 10, width: 14, height: 20, "flipX": true},
-		// 		"player_right_step1": {x: 81, y: 10, width: 14, height: 20, "flipX": true},
-		// 		"player_right_step2": {x: 95, y: 10, width: 14, height: 20, "flipX": true},
-		// 		"player_down": {x: 6, y: 10, width: 14, height: 20},
-		// 		"player_down_step1": {x: 51, y: 10, width: 14, height: 20},
-		// 		"player_down_step2": {x: 51, y: 10, width: 14, height: 20, "flipX": true}
-		// 		});
-
-		// 		this._resourceLoaded();
-		// 	}
-		// }
-
-		// character_spritesheet.load();
-	}
-
-	private _loadBackgroundMusic () : void {
-		// var music: Asset = this._assetGroup.getAsset('bgMusic');
-
-		// music.
-
-		// var bg_music : Asset = AssetFactory.getSingleton().build(AssetType.AUDIO,  'Resources/music.mp3');
-
-		// bg_music.onStateChange = (state: AssetState) => {
-		// 	if (state === AssetState.LOADED) {
-		// 		this._bgMusic  = bg_music;
-		// 		this._resourceLoaded();
-		// 	}
-		// }
-
-		// bg_music.load();
 	}
 }
 

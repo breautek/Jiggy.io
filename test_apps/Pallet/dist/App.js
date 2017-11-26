@@ -142,7 +142,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 22);
+/******/ 	return __webpack_require__(__webpack_require__.s = 25);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -154,15 +154,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const SeverityEnum_1 = __webpack_require__(9);
 exports.SeverityEnum = SeverityEnum_1.SeverityEnum;
-const Camera_1 = __webpack_require__(24);
+const Camera_1 = __webpack_require__(27);
 exports.Camera = Camera_1.Camera;
-const IDGenerator_1 = __webpack_require__(25);
+const IDGenerator_1 = __webpack_require__(28);
 exports.IDGenerator = IDGenerator_1.IDGenerator;
 const Iterator_1 = __webpack_require__(10);
 exports.Iterator = Iterator_1.Iterator;
-const LogManager_1 = __webpack_require__(26);
+const LogManager_1 = __webpack_require__(29);
 exports.LogManager = LogManager_1.LogManager;
-const ViewPort_1 = __webpack_require__(27);
+const ViewPort_1 = __webpack_require__(30);
 exports.ViewPort = ViewPort_1.ViewPort;
 const Color_1 = __webpack_require__(11);
 exports.Color = Color_1.Color;
@@ -179,35 +179,35 @@ exports.Coordinate = Coordinate_1.Coordinate;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Asset_1 = __webpack_require__(29);
+const Asset_1 = __webpack_require__(32);
 exports.Asset = Asset_1.Asset;
 const AssetType_1 = __webpack_require__(7);
 exports.AssetType = AssetType_1.AssetType;
 const AssetState_1 = __webpack_require__(14);
 exports.AssetState = AssetState_1.AssetState;
-const AssetFactory_1 = __webpack_require__(30);
+const AssetFactory_1 = __webpack_require__(33);
 exports.AssetFactory = AssetFactory_1.AssetFactory;
 const AssetGroup_1 = __webpack_require__(15);
 exports.AssetGroup = AssetGroup_1.AssetGroup;
-const AssetGroupLoader_1 = __webpack_require__(31);
+const AssetGroupLoader_1 = __webpack_require__(34);
 exports.AssetGroupLoader = AssetGroupLoader_1.AssetGroupLoader;
-const AssetLoader_1 = __webpack_require__(32);
+const AssetLoader_1 = __webpack_require__(35);
 exports.AssetLoader = AssetLoader_1.AssetLoader;
-const AudioLoader_1 = __webpack_require__(34);
+const AudioLoader_1 = __webpack_require__(37);
 exports.AudioLoader = AudioLoader_1.AudioLoader;
-const ImageLoader_1 = __webpack_require__(35);
+const ImageLoader_1 = __webpack_require__(38);
 exports.ImageLoader = ImageLoader_1.ImageLoader;
-const JSONLoader_1 = __webpack_require__(36);
+const JSONLoader_1 = __webpack_require__(39);
 exports.JSONLoader = JSONLoader_1.JSONLoader;
-const CollisionMapLoader_1 = __webpack_require__(37);
+const CollisionMapLoader_1 = __webpack_require__(40);
 exports.CollisionMapLoader = CollisionMapLoader_1.CollisionMapLoader;
-const TextAssetBuilder_1 = __webpack_require__(38);
+const TextAssetBuilder_1 = __webpack_require__(41);
 exports.TextAssetBuilder = TextAssetBuilder_1.TextAssetBuilder;
-const Spritesheet_1 = __webpack_require__(39);
+const Spritesheet_1 = __webpack_require__(42);
 exports.Spritesheet = Spritesheet_1.Spritesheet;
-const Animation_1 = __webpack_require__(40);
+const Animation_1 = __webpack_require__(43);
 exports.Animation = Animation_1.Animation;
-const CollisionMapData_1 = __webpack_require__(41);
+const CollisionMapData_1 = __webpack_require__(44);
 exports.CollisionMapData = CollisionMapData_1.CollisionMapData;
 
 
@@ -601,13 +601,13 @@ exports.Coordinate = Coordinate;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const LogicEngine_1 = __webpack_require__(43);
+const LogicEngine_1 = __webpack_require__(46);
 exports.LogicEngine = LogicEngine_1.LogicEngine;
-const GroupLogicEngine_1 = __webpack_require__(44);
+const GroupLogicEngine_1 = __webpack_require__(47);
 exports.GroupLogicEngine = GroupLogicEngine_1.GroupLogicEngine;
-const RenderingEngine_1 = __webpack_require__(45);
+const RenderingEngine_1 = __webpack_require__(48);
 exports.RenderingEngine = RenderingEngine_1.RenderingEngine;
-const TwoDimensionalRenderingEngine_1 = __webpack_require__(46);
+const TwoDimensionalRenderingEngine_1 = __webpack_require__(49);
 exports.TwoDimensionalRenderingEngine = TwoDimensionalRenderingEngine_1.TwoDimensionalRenderingEngine;
 
 
@@ -618,15 +618,15 @@ exports.TwoDimensionalRenderingEngine = TwoDimensionalRenderingEngine_1.TwoDimen
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Entity_1 = __webpack_require__(17);
+const Entity_1 = __webpack_require__(20);
 exports.Entity = Entity_1.Entity;
-const EntityModel_1 = __webpack_require__(47);
+const EntityModel_1 = __webpack_require__(52);
 exports.EntityModel = EntityModel_1.EntityModel;
-const EntityView_1 = __webpack_require__(18);
+const EntityView_1 = __webpack_require__(21);
 exports.EntityView = EntityView_1.EntityView;
-const EntityView2D_1 = __webpack_require__(48);
+const EntityView2D_1 = __webpack_require__(53);
 exports.EntityView2D = EntityView2D_1.EntityView2D;
-const GridMap_1 = __webpack_require__(49);
+const GridMap_1 = __webpack_require__(54);
 exports.GridMap = GridMap_1.GridMap;
 
 
@@ -654,7 +654,7 @@ var AssetType;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Engine_1 = __webpack_require__(23);
+const Engine_1 = __webpack_require__(26);
 exports.Engine = Engine_1.Engine;
 const Instance_1 = __webpack_require__(3);
 exports.getInstance = Instance_1.getInstance;
@@ -1505,6 +1505,60 @@ var AudioEvents;
 
 "use strict";
 
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(50));
+__export(__webpack_require__(18));
+__export(__webpack_require__(51));
+__export(__webpack_require__(19));
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+class CollisionStrategy {
+}
+exports.CollisionStrategy = CollisionStrategy;
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const CollisionStrategy_1 = __webpack_require__(18);
+class SimpleCollisionStrategy extends CollisionStrategy_1.CollisionStrategy {
+    compare(e1, e2) {
+        var e1x = e1.getAbsoluteX();
+        var e1x2 = e1.getAbsoluteX2();
+        var e1y = e1.getAbsoluteY();
+        var e1y2 = e1.getAbsoluteY2();
+        var e2x = e2.getAbsoluteX();
+        var e2x2 = e2.getAbsoluteX2();
+        var e2y = e2.getAbsoluteY();
+        var e2y2 = e2.getAbsoluteY2();
+        var isXWithinRange = !(e1x > e2x2 && e1x2 > e2x);
+        var isYWithinRange = !(e1y > e2y2 && e1y2 > e2y);
+        return isXWithinRange && isYWithinRange;
+    }
+}
+exports.SimpleCollisionStrategy = SimpleCollisionStrategy;
+
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 Object.defineProperty(exports, "__esModule", { value: true });
 const Events = __webpack_require__(2);
 const assets_1 = __webpack_require__(1);
@@ -1552,6 +1606,12 @@ class Entity extends Events.EventEmitter {
             parent = parent.getParent();
         }
         return parent;
+    }
+    setName(name) {
+        this._model.setAttribute('name', name);
+    }
+    getName() {
+        return this._model.getAttribute('name');
     }
     getParent() {
         return this._parent;
@@ -1980,7 +2040,7 @@ exports.Entity = Entity;
 
 
 /***/ }),
-/* 18 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2021,7 +2081,7 @@ exports.EntityView = EntityView;
 
 
 /***/ }),
-/* 19 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2101,7 +2161,7 @@ exports.GamePad = GamePad;
 
 
 /***/ }),
-/* 20 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2168,8 +2228,8 @@ exports.Touch = Touch;
 
 
 /***/ }),
-/* 21 */,
-/* 22 */
+/* 24 */,
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2177,21 +2237,38 @@ exports.Touch = Touch;
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = __webpack_require__(8);
 const engines_1 = __webpack_require__(5);
+const physics_1 = __webpack_require__(17);
 const entities_1 = __webpack_require__(6);
 const utils_1 = __webpack_require__(0);
 const assets_1 = __webpack_require__(1);
-const Character_1 = __webpack_require__(50);
-const inputs_1 = __webpack_require__(51);
+const Character_1 = __webpack_require__(55);
+const inputs_1 = __webpack_require__(56);
 class PalletDemo extends core_1.Engine {
     constructor() {
         super();
         this._direction = "";
+        this._collisionEmitter = new physics_1.CollisionEmitter();
         this._assetGroup = new assets_1.AssetGroup();
         this.getViewPort().setSize({ width: 500, height: 500 });
         this.setRenderingEngine(new engines_1.TwoDimensionalRenderingEngine());
         this.setLogicEngine(new engines_1.GroupLogicEngine());
         this.getRenderingEngine().setHUD(this._createLoadingScreen());
         this._loadResources();
+        this._onCollide = this._onCollide.bind(this);
+        this._collisionEmitter.addCollisionListener(this._onCollide);
+    }
+    _onCollide(e1, e2, event) {
+        var player;
+        if (e1 === this.player) {
+            player = e1;
+        }
+        else if (e2 === this.player) {
+            player = e2;
+        }
+        if (!player) {
+            return;
+        }
+        player.cancelMove();
     }
     _createLoadingScreen() {
         var textAssetBuilder = new assets_1.TextAssetBuilder();
@@ -2220,9 +2297,13 @@ class PalletDemo extends core_1.Engine {
     }
     _createMainMap() {
         var mapContainer = new entities_1.Entity();
+        mapContainer.setName('map');
         var layer1 = new entities_1.GridMap({ width: 16, height: 16 }, { x: 15, y: 15 });
         var layer2 = new entities_1.GridMap({ width: 16, height: 16 }, { x: 15, y: 15 });
         var layer3 = new entities_1.GridMap({ width: 16, height: 16 }, { x: 15, y: 15 });
+        layer1.setName('layer1');
+        layer2.setName('layer2');
+        layer3.setName('layer3');
         mapContainer.setWidth(layer1.getWidth());
         mapContainer.setHeight(layer1.getHeight());
         mapContainer.addChild(layer1);
@@ -2232,39 +2313,50 @@ class PalletDemo extends core_1.Engine {
         while (layer1Iterator.hasNext()) {
             var tile = layer1Iterator.next();
             tile.setTexture((this._mapSpritesheet.getSprite('grass')));
+            tile.setName('grass');
         }
         layer3.getTile({ x: 10, y: 10 }).setTexture(this._mapSpritesheet.getSprite('house_1_roof_11'));
         layer3.getTile({ x: 11, y: 10 }).setTexture(this._mapSpritesheet.getSprite('house_1_roof_12'));
         layer3.getTile({ x: 12, y: 10 }).setTexture(this._mapSpritesheet.getSprite('house_1_roof_13'));
+        layer3.getTile({ x: 10, y: 10 }).setName('house_1_roof_11');
+        layer3.getTile({ x: 11, y: 10 }).setName('house_1_roof_12');
+        layer3.getTile({ x: 12, y: 10 }).setName('house_1_roof_13');
         layer2.getTile({ x: 10, y: 11 }).setTexture(this._mapSpritesheet.getSprite('house_1_roof_21'));
         layer2.getTile({ x: 11, y: 11 }).setTexture(this._mapSpritesheet.getSprite('house_1_roof_22'));
         layer2.getTile({ x: 12, y: 11 }).setTexture(this._mapSpritesheet.getSprite('house_1_roof_23'));
-        layer2.getTile({ x: 10, y: 11 }).setCollisionable(true);
-        layer2.getTile({ x: 11, y: 11 }).setCollisionable(true);
-        layer2.getTile({ x: 12, y: 11 }).setCollisionable(true);
+        layer2.getTile({ x: 10, y: 11 }).setName('house_1_roof_21');
+        layer2.getTile({ x: 11, y: 11 }).setName('house_1_roof_22');
+        layer2.getTile({ x: 12, y: 11 }).setName('house_1_roof_23');
+        this._collisionEmitter.addEntity(layer2.getTile({ x: 10, y: 11 }));
+        this._collisionEmitter.addEntity(layer2.getTile({ x: 11, y: 11 }));
+        this._collisionEmitter.addEntity(layer2.getTile({ x: 12, y: 11 }));
         layer2.getTile({ x: 10, y: 12 }).setTexture(this._mapSpritesheet.getSprite('house_1_roof_31'));
         layer2.getTile({ x: 11, y: 12 }).setTexture(this._mapSpritesheet.getSprite('house_1_roof_32'));
         layer2.getTile({ x: 12, y: 12 }).setTexture(this._mapSpritesheet.getSprite('house_1_roof_33'));
-        layer2.getTile({ x: 10, y: 12 }).setCollisionable(true);
-        layer2.getTile({ x: 11, y: 12 }).setCollisionable(true);
-        layer2.getTile({ x: 12, y: 12 }).setCollisionable(true);
+        layer2.getTile({ x: 10, y: 12 }).setName('house_1_roof_31');
+        layer2.getTile({ x: 11, y: 12 }).setName('house_1_roof_32');
+        layer2.getTile({ x: 12, y: 12 }).setName('house_1_roof_33');
+        this._collisionEmitter.addEntity(layer2.getTile({ x: 10, y: 12 }));
+        this._collisionEmitter.addEntity(layer2.getTile({ x: 11, y: 12 }));
+        this._collisionEmitter.addEntity(layer2.getTile({ x: 12, y: 12 }));
         layer2.getTile({ x: 10, y: 13 }).setTexture(this._mapSpritesheet.getSprite('house_1_roof_41'));
         layer2.getTile({ x: 11, y: 13 }).setTexture(this._mapSpritesheet.getSprite('house_1_roof_42'));
         layer2.getTile({ x: 12, y: 13 }).setTexture(this._mapSpritesheet.getSprite('house_1_roof_43'));
-        layer2.getTile({ x: 10, y: 13 }).setCollisionable(true);
-        layer2.getTile({ x: 11, y: 13 }).setCollisionable(true);
-        layer2.getTile({ x: 12, y: 13 }).setCollisionable(true);
+        layer2.getTile({ x: 10, y: 13 }).setName('house_1_roof_41');
+        layer2.getTile({ x: 11, y: 13 }).setName('house_1_roof_42');
+        layer2.getTile({ x: 12, y: 13 }).setName('house_1_roof_43');
+        this._collisionEmitter.addEntity(layer2.getTile({ x: 10, y: 13 }));
+        this._collisionEmitter.addEntity(layer2.getTile({ x: 11, y: 13 }));
+        this._collisionEmitter.addEntity(layer2.getTile({ x: 12, y: 13 }));
         return mapContainer;
     }
     _loadResources() {
         var assetGroupLoader = new assets_1.AssetGroupLoader();
         __webpack_require__.e/* require.ensure */(0).then(((require) => {
-            var resources = __webpack_require__(21);
-            console.log(resources);
+            var resources = __webpack_require__(24);
             this._assetGroup = assetGroupLoader.loadFromMemory(resources);
             this._assetGroup.load().then(() => {
                 this._loadMapSpritesheet();
-                this._loadBackgroundMusic();
                 this._loadCharacterSpritesheet();
                 this._resourceLoaded();
             });
@@ -2292,6 +2384,7 @@ class PalletDemo extends core_1.Engine {
                 }
             });
             this.player = new Character_1.default(this._characterSpritesheet);
+            this._collisionEmitter.addEntity(this.player);
             this.player.setTexture(this._characterSpritesheet.getSprite("player_down"));
             let layer = map.getChildAt(1);
             let tile = layer.getTile({ x: 5, y: 5 });
@@ -2304,6 +2397,8 @@ class PalletDemo extends core_1.Engine {
             pokeball.setWidth(25);
             pokeball.setHeight(25);
             var pokeball_asset = this._assetGroup.getAsset('pokeball');
+            pokeball.setTexture(pokeball_asset);
+            this.getRenderingEngine().setHUD(pokeball);
             mouse.on("MOUSEMOVE", (e) => {
                 pokeball.setX(e.x - this.getRenderingEngine().getViewPort().getCanvas().offsetLeft - 14);
                 pokeball.setY(e.y - this.getRenderingEngine().getViewPort().getCanvas().offsetTop - 14);
@@ -2567,21 +2662,19 @@ class PalletDemo extends core_1.Engine {
             "player_down_step2": { x: 51, y: 10, width: 14, height: 20, "flipX": true }
         });
     }
-    _loadBackgroundMusic() {
-    }
 }
 window._PalletDemo = new PalletDemo();
 
 
 /***/ }),
-/* 23 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = __webpack_require__(0);
-const audio_1 = __webpack_require__(28);
+const audio_1 = __webpack_require__(31);
 const assets_1 = __webpack_require__(1);
 const Instance_1 = __webpack_require__(3);
 class Engine {
@@ -2640,7 +2733,7 @@ exports.Engine = Engine;
 
 
 /***/ }),
-/* 24 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2694,7 +2787,7 @@ exports.Camera = Camera;
 
 
 /***/ }),
-/* 25 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2724,7 +2817,7 @@ exports.IDGenerator = IDGenerator;
 
 
 /***/ }),
-/* 26 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2790,7 +2883,7 @@ exports.LogManager = LogManager;
 
 
 /***/ }),
-/* 27 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2895,7 +2988,7 @@ exports.ViewPort = ViewPort;
 
 
 /***/ }),
-/* 28 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2903,14 +2996,14 @@ exports.ViewPort = ViewPort;
 Object.defineProperty(exports, "__esModule", { value: true });
 const AudioEngine_1 = __webpack_require__(13);
 exports.AudioEngine = AudioEngine_1.AudioEngine;
-const HTML5AudioEngine_1 = __webpack_require__(42);
+const HTML5AudioEngine_1 = __webpack_require__(45);
 exports.HTML5AudioEngine = HTML5AudioEngine_1.HTML5AudioEngine;
 const AudioEvents_1 = __webpack_require__(16);
 exports.AudioEvents = AudioEvents_1.AudioEvents;
 
 
 /***/ }),
-/* 29 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2996,7 +3089,7 @@ exports.Asset = Asset;
 
 
 /***/ }),
-/* 30 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3085,7 +3178,7 @@ exports.AssetFactory = AssetFactory;
 
 
 /***/ }),
-/* 31 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3132,7 +3225,7 @@ exports.AssetGroupLoader = AssetGroupLoader;
 
 
 /***/ }),
-/* 32 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3209,10 +3302,10 @@ class AssetLoader {
 }
 exports.AssetLoader = AssetLoader;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(36)))
 
 /***/ }),
-/* 33 */
+/* 36 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -3402,7 +3495,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 34 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3458,7 +3551,7 @@ exports.AudioLoader = AudioLoader;
 
 
 /***/ }),
-/* 35 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3500,7 +3593,7 @@ exports.ImageLoader = ImageLoader;
 
 
 /***/ }),
-/* 36 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3521,7 +3614,7 @@ exports.JSONLoader = JSONLoader;
 
 
 /***/ }),
-/* 37 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3566,7 +3659,7 @@ exports.CollisionMapLoader = CollisionMapLoader;
 
 
 /***/ }),
-/* 38 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3598,7 +3691,7 @@ exports.TextAssetBuilder = TextAssetBuilder;
 
 
 /***/ }),
-/* 39 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3636,7 +3729,7 @@ exports.Spritesheet = Spritesheet;
 
 
 /***/ }),
-/* 40 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3730,7 +3823,7 @@ exports.Animation = Animation;
 
 
 /***/ }),
-/* 41 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3750,7 +3843,7 @@ exports.CollisionMapData = CollisionMapData;
 
 
 /***/ }),
-/* 42 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3869,7 +3962,7 @@ exports.HTML5AudioEngine = HTML5AudioEngine;
 
 
 /***/ }),
-/* 43 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3881,7 +3974,7 @@ exports.LogicEngine = LogicEngine;
 
 
 /***/ }),
-/* 44 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3954,7 +4047,7 @@ exports.GroupLogicEngine = GroupLogicEngine;
 
 
 /***/ }),
-/* 45 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4095,7 +4188,7 @@ exports.RenderingEngine = RenderingEngine;
 
 
 /***/ }),
-/* 46 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4272,7 +4365,97 @@ exports.TwoDimensionalRenderingEngine = TwoDimensionalRenderingEngine;
 
 
 /***/ }),
-/* 47 */
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const physics_1 = __webpack_require__(17);
+class CollisionEmitter {
+    constructor() {
+        this._cbs = {};
+        this._entities = [];
+        this._entitiesListeners = {};
+        this._listeners = [];
+        this._cbs[0] = this._onEntityLocationUpdate.bind(this);
+        this.setCollisionStrategy(new physics_1.DefaultCollisionStrategy());
+    }
+    setCollisionStrategy(strategy) {
+        this._collisionStrategy = strategy;
+    }
+    addEntity(entity) {
+        if (!this.hasEntity(entity)) {
+            this._entities.push(entity);
+            this._entitiesListeners[entity.getID()] = [];
+            entity.on(0..toString(), this._cbs[0]);
+        }
+    }
+    removeEntity(entity) {
+        if (this.hasEntity(entity)) {
+            this._entities.splice(this._entities.indexOf(entity), 1);
+            delete this._entitiesListeners[entity.getID()];
+        }
+    }
+    hasEntity(entity) {
+        return this._entitiesListeners.hasOwnProperty(entity.getID());
+    }
+    addEntityCollisionListener(entity, callback) {
+        if (!this.hasEntity(entity)) {
+            this.addEntity(entity);
+        }
+        this._entitiesListeners[entity.getID()].push(callback);
+    }
+    removeEntityCollisionListener(entity, callback) {
+        if (this._entitiesListeners[entity.getID()].indexOf(callback) > -1) {
+            this._entitiesListeners[entity.getID()].splice(this._entitiesListeners[entity.getID()].indexOf(callback), 1);
+        }
+    }
+    addCollisionListener(callback) {
+        this._listeners.push(callback);
+    }
+    removeCollisionListener(callback) {
+        if (this._listeners.indexOf(callback) > -1) {
+            this._listeners.splice(this._listeners.indexOf(callback), 1);
+        }
+    }
+    _onEntityLocationUpdate(event) {
+        let sourceEntity = event.source;
+        var collisions = [];
+        for (var i = 0; i < this._entities.length; i++) {
+            var entity = this._entities[i];
+            if (entity === sourceEntity) {
+                continue;
+            }
+            var collisionData = this._collisionStrategy.compare(entity, sourceEntity);
+            if (collisionData) {
+                collisions.push(entity);
+            }
+        }
+        if (collisions.length > 0) {
+            for (let i in this._listeners) {
+                let listener = this._listeners[i];
+                listener(entity, collisions[0], event);
+            }
+        }
+    }
+}
+exports.CollisionEmitter = CollisionEmitter;
+
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const SimpleCollisionStrategy_1 = __webpack_require__(19);
+exports.DefaultCollisionStrategy = SimpleCollisionStrategy_1.SimpleCollisionStrategy;
+
+
+/***/ }),
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4371,26 +4554,26 @@ exports.EntityModel = EntityModel;
 
 
 /***/ }),
-/* 48 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const EntityView_1 = __webpack_require__(18);
+const EntityView_1 = __webpack_require__(21);
 class EntityView2D extends EntityView_1.EntityView {
 }
 exports.EntityView2D = EntityView2D;
 
 
 /***/ }),
-/* 49 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Entity_1 = __webpack_require__(17);
+const Entity_1 = __webpack_require__(20);
 class GridMap extends Entity_1.Entity {
     constructor(tileSize, tileCount) {
         super();
@@ -4429,7 +4612,7 @@ exports.GridMap = GridMap;
 
 
 /***/ }),
-/* 50 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4471,72 +4654,67 @@ class Character extends entities_1.Entity {
         ]);
     }
     _move(coordinates) {
-        console.log("Setting player pos to", coordinates);
         var game = core_1.getInstance();
         game.getLogicEngine().removeLogic(this.getID() + "_endmove");
-        var collision = false;
         var updatedCoordinates = false;
         var x = coordinates.getX();
         var y = coordinates.getY();
-        var potCollisions = this.getParent().findChildren(new utils_1.Coordinate(x + 1, y + 16));
-        for (var i in potCollisions) {
-            if (potCollisions[i] != this && potCollisions[i].isCollisionable()) {
-                collision = true;
+        game.getLogicEngine().addLogic(this.getID() + "_move", () => {
+            if (this.getX() != x) {
+                if (this.getX() > x) {
+                    this.setX(this.getX() - 2);
+                    if (!updatedCoordinates) {
+                        this.tileX -= 1;
+                        updatedCoordinates = true;
+                    }
+                }
+                else {
+                    this.setX(this.getX() + 2);
+                    if (!updatedCoordinates) {
+                        this.tileX += 1;
+                        updatedCoordinates = true;
+                    }
+                }
             }
-        }
-        if (!collision) {
-            game.getLogicEngine().addLogic(this.getID() + "_move", () => {
-                if (this.getX() != x) {
-                    if (this.getX() > x) {
-                        this.setX(this.getX() - 2);
-                        if (!updatedCoordinates) {
-                            this.tileX -= 1;
-                            updatedCoordinates = true;
-                        }
-                    }
-                    else {
-                        this.setX(this.getX() + 2);
-                        if (!updatedCoordinates) {
-                            this.tileX += 1;
-                            updatedCoordinates = true;
-                        }
+            if (this.getY() != y) {
+                if (this.getY() > y) {
+                    this.setY(this.getY() - 2);
+                    if (!updatedCoordinates) {
+                        this.tileY -= 1;
+                        updatedCoordinates = true;
                     }
                 }
-                if (this.getY() != y) {
-                    if (this.getY() > y) {
-                        this.setY(this.getY() - 2);
-                        if (!updatedCoordinates) {
-                            this.tileY -= 1;
-                            updatedCoordinates = true;
-                        }
-                    }
-                    else {
-                        this.setY((this.getY()) + 2);
-                        if (!updatedCoordinates) {
-                            this.tileY += 1;
-                            updatedCoordinates = true;
-                        }
+                else {
+                    this.setY((this.getY()) + 2);
+                    if (!updatedCoordinates) {
+                        this.tileY += 1;
+                        updatedCoordinates = true;
                     }
                 }
-                ;
-                if (this.getX() == x && this.getY() == y || collision) {
-                    game.getLogicEngine().removeLogic(this.getID() + "_move");
-                    this.moving = false;
-                    game.getLogicEngine().addLogic(this.getID() + "_endmove", () => {
-                        this._activeAnim.stop();
-                        delete this._activeAnim;
-                        this.setTexture(this._endTexture);
-                        game.getLogicEngine().removeLogic(this.getID() + "_endmove");
-                    }, 50);
-                }
-            }, 50);
-        }
-        else {
-            this.moving = false;
+            }
+            if (this.getX() == x && this.getY() == y) {
+                game.getLogicEngine().removeLogic(this.getID() + "_move");
+                this.moving = false;
+                game.getLogicEngine().addLogic(this.getID() + "_endmove", () => {
+                    this._activeAnim.stop();
+                    delete this._activeAnim;
+                    this.setTexture(this._endTexture);
+                    game.getLogicEngine().removeLogic(this.getID() + "_endmove");
+                }, 50);
+            }
+        }, 50);
+    }
+    cancelMove() {
+        console.log('cancel movement');
+        var game = core_1.getInstance();
+        game.getLogicEngine().removeLogic(this.getID() + "_move");
+        this.moving = false;
+        game.getLogicEngine().addLogic(this.getID() + "_endmove", () => {
             this._activeAnim.stop();
             delete this._activeAnim;
             this.setTexture(this._endTexture);
-        }
+            game.getLogicEngine().removeLogic(this.getID() + "_endmove");
+        }, 50);
     }
     moveLeft() {
         if (!this.moving) {
@@ -4591,35 +4769,35 @@ exports.default = Character;
 
 
 /***/ }),
-/* 51 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const GamePadListener_1 = __webpack_require__(52);
+const GamePadListener_1 = __webpack_require__(57);
 exports.GamePadListener = GamePadListener_1.GamePadListener;
-const GamePad_1 = __webpack_require__(19);
+const GamePad_1 = __webpack_require__(22);
 exports.GamePad = GamePad_1.GamePad;
-const Keyboard_1 = __webpack_require__(53);
+const Keyboard_1 = __webpack_require__(58);
 exports.Keyboard = Keyboard_1.Keyboard;
 exports.KeyboardKeys = Keyboard_1.KeyboardKeys;
-const Mouse_1 = __webpack_require__(54);
+const Mouse_1 = __webpack_require__(59);
 exports.Mouse = Mouse_1.Mouse;
-const Touch_1 = __webpack_require__(20);
+const Touch_1 = __webpack_require__(23);
 exports.Touch = Touch_1.Touch;
-const TouchListener_1 = __webpack_require__(55);
+const TouchListener_1 = __webpack_require__(60);
 exports.TouchListener = TouchListener_1.TouchListener;
 
 
 /***/ }),
-/* 52 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const GamePad_1 = __webpack_require__(19);
+const GamePad_1 = __webpack_require__(22);
 const Events = __webpack_require__(2);
 class GamePadListener extends Events.EventEmitter {
     constructor() {
@@ -4674,7 +4852,7 @@ exports.GamePadListener = GamePadListener;
 
 
 /***/ }),
-/* 53 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4848,7 +5026,7 @@ exports.Keyboard = Keyboard;
 
 
 /***/ }),
-/* 54 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4987,13 +5165,13 @@ exports.Mouse = Mouse;
 
 
 /***/ }),
-/* 55 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Touch_1 = __webpack_require__(20);
+const Touch_1 = __webpack_require__(23);
 const Events = __webpack_require__(2);
 class TouchListener extends Events.EventEmitter {
     constructor() {

@@ -82,6 +82,14 @@ export class Entity extends Events.EventEmitter {
 		return parent;
 	}
 
+	public setName(name: string): void {
+		this._model.setAttribute('name', name);
+	}
+
+	public getName(): string {
+		return this._model.getAttribute('name');
+	}
+
 	public getParent (): Entity {
 		return this._parent;
 	}

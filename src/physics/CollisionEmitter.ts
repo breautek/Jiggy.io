@@ -1,6 +1,6 @@
 import {Entity, EntityEventTypes, LocationUpdateEvent} from "../entities";
 import { Event } from "../interfaces";
-import { Coordinate } from "../utils";
+import { Coordinate, Color } from "../utils";
 import {
     CollisionStrategy,
     DefaultCollisionStrategy
@@ -73,27 +73,44 @@ export class CollisionEmitter {
 
 	private _onEntityLocationUpdate (event: LocationUpdateEvent) : void {
 		//Check for possible collisions
-        let entity : Entity = event.source;
+        let sourceEntity : Entity = event.source;
+        var collisions: Array<Entity> = [];
+
+        for (var i: number = 0; i < this._entities.length; i++) {
+            var entity: Entity = this._entities[i];
+
+            if (entity === sourceEntity) {
+                //Skip if this entity is the source entity
+                continue;
+            }
+
+            //TODO: Create collision event data
+            var collisionData: any = this._collisionStrategy.compare(entity, sourceEntity);
+
+            if (collisionData) {
+                collisions.push(entity);
+            }
+        }
         
-        if (entity.getParent()) {
-            this._collisionStrategy.compare
-        }
+        // if (entity.getParent()) {
+        //     this._collisionStrategy.compare
+        // }
 
-        var root: Entity = entity.getRoot();
+        // var root: Entity = entity.getRoot();
 
-        if (root != entity) {
-            var potCollisions : Entity[] = root.findChildren(new Coordinate(entity.getX(), entity.getY()), new Coordinate(entity.getX2(), entity.getY2()));
+        // if (root != entity) {
+            // var potCollisions : Entity[] = root.findChildren(new Coordinate(entity.getX(), entity.getY()), new Coordinate(entity.getX2(), entity.getY2()));
             // var potCollisions: Entity[] = this._collisionStrategy.compare(root, entity);
-            var collisions : Entity[] = [];
+            // var collisions : Entity[] = [];
 
-			for (let i in potCollisions) {
-				let potEntity = potCollisions[i];
+			// for (let i in potCollisions) {
+			// 	let potEntity = potCollisions[i];
 
-				if (potEntity != entity && this.hasEntity(potEntity) && this._collisionStrategy.compare(entity, potEntity)) {
-					collisions.push(potEntity);
-				}
-			}
-        }
+			// 	if (potEntity != entity && this.hasEntity(potEntity) && this._collisionStrategy.compare(entity, potEntity)) {
+			// 		collisions.push(potEntity);
+			// 	}
+			// }
+        // }
 
 		// if (entity.getParent()) {
 		// 	var potCollisions : Entity[] = entity.getParent().findChildren(new Coordinate(entity.getX(), entity.getY()), new Coordinate(entity.getX2(), entity.getY2()));
