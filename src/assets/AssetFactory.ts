@@ -5,7 +5,8 @@ import {
 	Asset,
 	AudioLoader,
 	JSONLoader,
-	ImageLoader
+	ImageLoader,
+	CollisionMapLoader
 } from '../assets';
 
 interface AssetCache {
@@ -17,6 +18,7 @@ export class AssetFactory {
 	private _audioLoader: AudioLoader;
 	private _imageLoader: ImageLoader;
 	private _jsonLoader: JSONLoader;
+	private _collisionMapLoader: CollisionMapLoader
 	private _cache: AssetCache;
 	private static _instance: AssetFactory;
 
@@ -25,6 +27,7 @@ export class AssetFactory {
 		this._audioLoader = new AudioLoader();
 		this._imageLoader = new ImageLoader();
 		this._jsonLoader = new JSONLoader();
+		this._collisionMapLoader = new CollisionMapLoader();
 		this._cache = {};
 	}
 
@@ -61,19 +64,23 @@ export class AssetFactory {
 					break;
 				case AssetType.RAW:
 					asset.setLoadStrategy(this._assetLoader);
-					this._configureRawAsset(asset, url);
+					// this._configureRawAsset(asset, url);
 					break;
 				case AssetType.IMAGE:
 					asset.setLoadStrategy(this._imageLoader);
-					this._configureImageAsset(asset, url);
+					// this._configureImageAsset(asset, url);
 					break;
 				case AssetType.AUDIO:
 					asset.setLoadStrategy(this._audioLoader);
-					this._configureAudioAsset(asset, url);
+					// this._configureAudioAsset(asset, url);
 					break;
 				case AssetType.JSON:
 					asset.setLoadStrategy(this._jsonLoader);
-					this._configureJSONAsset(asset, url);
+					// this._configureJSONAsset(asset, url);
+					break;
+				case AssetType.COLLISION_MAP:
+					// asset.setLoadStrategy();
+					// this._configureCollisionMapAsset(asset, url);
 					break;
 			}
 			this._cache[url] = asset;
@@ -91,7 +98,7 @@ export class AssetFactory {
 	 * @param  {String} url   
 	 * @return {void}       
 	 */
-	protected _configureRawAsset(asset: Asset, url: string): void {}
+	// protected _configureRawAsset(asset: Asset, url: string): void {}
 
 	/**
 	 * protected _configureImageAsset
@@ -102,13 +109,13 @@ export class AssetFactory {
 	 * @param  {String} url   
 	 * @return {void}       
 	 */
-	protected _configureImageAsset(asset: Asset, url: string): void {
-		var img: HTMLImageElement = document.createElement('img');
-		img.addEventListener('load', function() {
-			asset.setState(AssetState.LOADED);
-		});
-		asset.setData(img);
-	}
+	// protected _configureImageAsset(asset: Asset, url: string): void {
+	// 	var img: HTMLImageElement = document.createElement('img');
+	// 	img.addEventListener('load', function() {
+	// 		asset.setState(AssetState.LOADED);
+	// 	});
+	// 	asset.setData(img);
+	// }
 
 	/**
 	 * protected _configureJSONAsset
@@ -119,7 +126,7 @@ export class AssetFactory {
 	 * @param  {String} url   
 	 * @return {void}       
 	 */
-	protected _configureJSONAsset(asset: Asset, url: string): void {}
+	// protected _configureJSONAsset(asset: Asset, url: string): void {}
 
 	/**
 	 * protected _configureAudioAsset
@@ -130,13 +137,21 @@ export class AssetFactory {
 	 * @param  {String} url
 	 * @return {void}       
 	 */
-	protected _configureAudioAsset(asset: Asset, url: string): void {
-		var audio: HTMLAudioElement = document.createElement('audio');
-		audio.addEventListener('canplaythrough', function() {
-			asset.setState(AssetState.LOADED);
-		});
-		asset.setData(audio);
-	}
+	// protected _configureAudioAsset(asset: Asset, url: string): void {
+	// 	var audio: HTMLAudioElement = document.createElement('audio');
+	// 	audio.addEventListener('canplaythrough', function() {
+	// 		asset.setState(AssetState.LOADED);
+	// 	});
+	// 	asset.setData(audio);
+	// }
+
+	// protected _configureCollisionMapAsset(asset: Asset, url: string): void {
+	// 	var img: HTMLImageElement = document.createElement('img');
+	// 	img.addEventListener('load', function() {
+	// 		asset.setState(AssetState.LOADED);
+	// 	});
+	// 	asset.setData(img);
+	// }
 
 	/**
 	 * protected _clone

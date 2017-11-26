@@ -21,7 +21,9 @@ export class ImageLoader extends AssetLoader {
 		asset.setState(AssetState.LOADING);
 
 		return new Promise<Asset>((resolve, reject) => {	
-			var image: HTMLImageElement = <HTMLImageElement>asset.getData();
+			// var image: HTMLImageElement = <HTMLImageElement>asset.getData();
+			var image: HTMLImageElement = document.createElement('img');
+			asset.setData(image);
 			image.onload = (e: Event) => {
 				this._onSuccess(asset, image, resolve);
 			};

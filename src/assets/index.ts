@@ -14,11 +14,13 @@ import {AssetLoader} from './AssetLoader';
 import {AudioLoader} from './AudioLoader';
 import {ImageLoader} from './ImageLoader';
 import {JSONLoader} from './JSONLoader';
+import {CollisionMapLoader} from './CollisionMapLoader';
 import {TextAssetBuilder} from "./TextAssetBuilder";
 
 import {Spritesheet} from './Spritesheet';
 import {SpritesheetDefinition} from './SpritesheetDefinition';
 import {Animation, AnimationFrame} from './Animation';
+import {CollisionMapData} from './CollisionMapData';
 
 export {
     Asset, AssetEvents,
@@ -29,10 +31,12 @@ export {
     AudioLoader,
     ImageLoader,
     JSONLoader,
+    CollisionMapLoader,
     TextAssetBuilder,
     Spritesheet,
     SpritesheetDefinition,
     Animation, AnimationFrame,
     AssetGroup, AssetMap,
-    AssetGroupLoader, AssetDefinition, AssetGroupDefinition
+    AssetGroupLoader, AssetDefinition, AssetGroupDefinition,
+    CollisionMapData
 };

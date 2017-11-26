@@ -12,7 +12,6 @@ export const enum AssetEvents {
 	ERROR 			= "error"
 }
 
-
 export class Asset extends EventEmitter {
 	private _id: string;
 	private _type: AssetType;

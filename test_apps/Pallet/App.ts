@@ -187,8 +187,6 @@ class PalletDemo extends Engine {
 				//Remove Loading Screen
 				this.getRenderingEngine().setHUD(null);
 
-				//TODO: Stop Loading Animation
-
 				//Load Map
 				var map = this._createMainMap();
                 var camera = new Camera(map, null, { width: 250, height: 250 }, null, { width: 500, height: 500 });

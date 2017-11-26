@@ -23,7 +23,9 @@ export class AudioLoader extends AssetLoader {
 		asset.setState(AssetState.LOADING);
 
 		return new Promise<Asset>((resolve, reject) => {
-			var audio: HTMLAudioElement = <HTMLAudioElement>asset.getData();
+			// var audio: HTMLAudioElement = <HTMLAudioElement>asset.getData();
+			var audio: HTMLAudioElement = document.createElement('audio');
+			asset.setData(audio);
 			audio.setAttribute('preload', 'auto');
 			this._assignEvents(asset, audio, resolve, reject);
 			audio.src = asset.getSource();

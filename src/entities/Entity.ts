@@ -4,7 +4,7 @@ import { Asset, AssetType } from '../assets';
 import { Coordinate } from "../utils";
 import {EntityModel, ModelEventTypes, EntityView, EntityEventTypes, LocationUpdateEvent} from './';
 
-import {Iterator, Color} from "../utils";
+import {Iterator, Color, LogManager} from "../utils";
 
 export class Entity extends Events.EventEmitter {
 	protected _view : EntityView;
@@ -18,6 +18,7 @@ export class Entity extends Events.EventEmitter {
 	private _notifierKeys : string[];
 	private _parentNotifierKeys : string[];
 	private _modelCB : {(attribute: string, value: any, oldValue: any) : void}
+	private _collisionMap: Asset;
 	private _collisionable : boolean;
     private _eventEmitted: boolean;
 
@@ -51,6 +52,7 @@ export class Entity extends Events.EventEmitter {
 		this._regionDimension; //The dimensions of the regions for this Entity
 		this._regionList = {}; //Mapping of Children to Region(s) so we don't have to search
 
+		this._collisionMap = null;
 		this._collisionable = false;
 		//Layer Management
 		// this.layers = [[]]; //Layers for rendering so children can be rendering in proper order
@@ -68,6 +70,16 @@ export class Entity extends Events.EventEmitter {
 
 	public getID (): string {
 		return this._model.getID();
+	}
+
+	public getRoot(): Entity {
+		var parent: Entity = this;
+
+		while (parent && parent.getParent()) {
+			parent = parent.getParent();
+		}
+
+		return parent;
 	}
 
 	public getParent (): Entity {
@@ -94,12 +106,17 @@ export class Entity extends Events.EventEmitter {
 		this._model.setType(type);
 	}
 
+	public setCollisionMap(map: Asset): void {
+		this._collisionMap = map;
+	}
+
 	public setCollisionable(collisionable: boolean): void {
+		LogManager.getSingleton().deprecate('Entity.setCollisionable is deprecated.');
 		this._collisionable = collisionable;
 	}
 
 	public isCollisionable(): boolean {
-		return this._collisionable;
+		return !!this._collisionMap;
 	}
 
 	public getModel () : EntityModel {

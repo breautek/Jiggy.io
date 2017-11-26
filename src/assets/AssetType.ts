@@ -2,5 +2,6 @@ export enum AssetType {
 	RAW = "raw",
 	IMAGE = "image",
 	AUDIO = "audio",
-	JSON = "json"
+	JSON = "json",
+	COLLISION_MAP = "collisionMap"
 }
