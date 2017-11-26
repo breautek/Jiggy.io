@@ -2,7 +2,7 @@ import {Engine} from "../../src/core";
 import {TwoDimensionalRenderingEngine, GroupLogicEngine} from "../../src/engines";
 import {HTML5AudioEngine} from "../../src/audio";
 import {Entity, GridMap, EntityEventTypes, LocationUpdateEvent} from "../../src/entities";
-import {Camera, ViewPortEventTypes, DimensionUpdateEvent, CollisionEmitter, Color, Iterator, Coordinate} from "../../src/utils";
+import {Camera, ViewPortEventTypes, DimensionUpdateEvent, Color, Iterator, Coordinate} from "../../src/utils";
 import { Asset, AssetState, AssetFactory, AssetType, Animation, TextAssetBuilder, Spritesheet, AssetGroup, AssetGroupLoader, AssetGroupDefinition } from "../../src/assets";
 import Character from "./Character";
 import {
@@ -223,17 +223,17 @@ class PalletDemo extends Engine {
 				pokeball.setWidth(25);
 				pokeball.setHeight(25);
 				// layer.addChild(pokeball);
-				var pokeball_asset : Asset = AssetFactory.getSingleton().build(AssetType.IMAGE,  'Resources/pokeball.png');
+				var pokeball_asset: Asset = this._assetGroup.getAsset('pokeball');
+				// var pokeball_asset : Asset = AssetFactory.getSingleton().build(AssetType.IMAGE,  'Resources/pokeball.png');
 
-				pokeball_asset.onStateChange = (state : AssetState) => {
-					if (state === AssetState.LOADED) {
-						pokeball.setTexture(pokeball_asset);
-						this.getRenderingEngine().setHUD(pokeball);
-					}
-				};
+				// pokeball_asset.onStateChange = (state : AssetState) => {
+				// 	if (state === AssetState.LOADED) {
+				// 		pokeball.setTexture(pokeball_asset);
+				// 		this.getRenderingEngine().setHUD(pokeball);
+				// 	}
+				// };
 
-				pokeball_asset.load();
-
+				// pokeball_asset.load();
 
 				mouse.on(MouseEvents.MouseMove, (e: MouseMoveEvent) => {
 					pokeball.setX(e.x - this.getRenderingEngine().getViewPort().getCanvas().offsetLeft - 14);
@@ -263,6 +263,9 @@ class PalletDemo extends Engine {
 					var fov = camera.getFOV();
 					camera.setViewPoint(new Coordinate(this.player.getX() + ((this.player.getWidth() - fov.width) / 2), this.player.getY() + ((this.player.getHeight() - fov.height) / 2)));
 				});
+
+				var fov = camera.getFOV();
+				camera.setViewPoint(new Coordinate(this.player.getX() + ((this.player.getWidth() - fov.width) / 2), this.player.getY() + ((this.player.getHeight() - fov.height) / 2)));
 
 				//Load NPC's
 
@@ -301,8 +304,8 @@ class PalletDemo extends Engine {
                         newPokeball.setHeight(25 * y_fov);
                         var mouseCoordinates = mouse.getCurrentCoordinates();
                         //23 is a magic number, this demo seems to be rendering at an offset...
-                        newPokeball.setX(camera.getViewPoint().getX() + ((mouseCoordinates.x * x_fov) - (23 * x_fov)));
-                        newPokeball.setY(camera.getViewPoint().getY() + ((mouseCoordinates.y * y_fov) - (23 * y_fov)));
+                        newPokeball.setX(camera.getViewPoint().getX() + ((mouseCoordinates.getX() * x_fov) - (23 * x_fov)));
+                        newPokeball.setY(camera.getViewPoint().getY() + ((mouseCoordinates.getY() * y_fov) - (23 * y_fov)));
                         newPokeball.setTexture(pokeball_asset);
                         layer.addChild(newPokeball);
                     }

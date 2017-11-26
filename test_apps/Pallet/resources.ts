@@ -5,6 +5,7 @@ import {AssetGroupDefinition} from '../../src/assets/AssetGroupLoader';
 import * as map from './Resources/61816.png';
 import * as character from './Resources/3698.png';
 import * as music from './Resources/music.mp3';
+import * as pokeball from './Resources/pokeball.png';
 
 var resources: AssetGroupDefinition = {
     assets : [
@@ -22,6 +23,11 @@ var resources: AssetGroupDefinition = {
             name : "bgMusic",
             type : AssetType.AUDIO,
             source : music
+        },
+        {
+            name : 'pokeball',
+            type : AssetType.IMAGE,
+            source : pokeball
         }
     ]
 }
