@@ -152,13 +152,13 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const SeverityEnum_1 = __webpack_require__(9);
+const SeverityEnum_1 = __webpack_require__(8);
 exports.SeverityEnum = SeverityEnum_1.SeverityEnum;
 const Camera_1 = __webpack_require__(29);
 exports.Camera = Camera_1.Camera;
 const IDGenerator_1 = __webpack_require__(30);
 exports.IDGenerator = IDGenerator_1.IDGenerator;
-const Iterator_1 = __webpack_require__(5);
+const Iterator_1 = __webpack_require__(4);
 exports.Iterator = Iterator_1.Iterator;
 const LogManager_1 = __webpack_require__(31);
 exports.LogManager = LogManager_1.LogManager;
@@ -168,7 +168,7 @@ const Color_1 = __webpack_require__(10);
 exports.Color = Color_1.Color;
 const ColorCode_1 = __webpack_require__(11);
 exports.ColorCode = ColorCode_1.ColorCode;
-const Coordinate_1 = __webpack_require__(4);
+const Coordinate_1 = __webpack_require__(9);
 exports.Coordinate = Coordinate_1.Coordinate;
 
 
@@ -181,7 +181,7 @@ exports.Coordinate = Coordinate_1.Coordinate;
 Object.defineProperty(exports, "__esModule", { value: true });
 const Asset_1 = __webpack_require__(33);
 exports.Asset = Asset_1.Asset;
-const AssetType_1 = __webpack_require__(7);
+const AssetType_1 = __webpack_require__(6);
 exports.AssetType = AssetType_1.AssetType;
 const AssetState_1 = __webpack_require__(14);
 exports.AssetState = AssetState_1.AssetState;
@@ -548,59 +548,6 @@ exports.getInstance = getInstance;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-class Coordinate {
-    constructor(x, y, z) {
-        this._x = x;
-        this._y = y;
-        this._z = z || 0;
-    }
-    toCartesian() {
-        return new Coordinate((2 * this._y + this._x) / 2, (2 * this._y - this._x) / 2, this._z);
-    }
-    static fromIsometric(x, y) {
-        return new Coordinate((2 * y + x) / 2, (2 * y - x) / 2);
-    }
-    toIsometric() {
-        return new Coordinate(this._x - this._y, (this._x + this._y) / 2, this._z);
-    }
-    setX(x) {
-        this._x = x;
-    }
-    setY(y) {
-        this._y = y;
-    }
-    getX() {
-        return this._x;
-    }
-    getY() {
-        return this._y;
-    }
-    getZ() {
-        return this._z;
-    }
-    setZ(z) {
-        this._z = z;
-    }
-    incrementX(x) {
-        this._x += x;
-    }
-    incrementY(y) {
-        this._y += y;
-    }
-    incrementZ(z) {
-        this._z += z;
-    }
-}
-exports.Coordinate = Coordinate;
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
 class Iterator {
     constructor(array) {
         this._array = array;
@@ -646,7 +593,7 @@ exports.Iterator = Iterator;
 
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -663,7 +610,7 @@ exports.TwoDimensionalRenderingEngine = TwoDimensionalRenderingEngine_1.TwoDimen
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -680,7 +627,7 @@ var AssetType;
 
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -693,7 +640,7 @@ exports.getInstance = Instance_1.getInstance;
 
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -707,6 +654,59 @@ var SeverityEnum;
     SeverityEnum[SeverityEnum["ERROR"] = 3] = "ERROR";
     SeverityEnum[SeverityEnum["DEPRECATE"] = 4] = "DEPRECATE";
 })(SeverityEnum = exports.SeverityEnum || (exports.SeverityEnum = {}));
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+class Coordinate {
+    constructor(x, y, z) {
+        this._x = x;
+        this._y = y;
+        this._z = z || 0;
+    }
+    toCartesian() {
+        return new Coordinate((2 * this._y + this._x) / 2, (2 * this._y - this._x) / 2, this._z);
+    }
+    static fromIsometric(x, y) {
+        return new Coordinate((2 * y + x) / 2, (2 * y - x) / 2);
+    }
+    toIsometric() {
+        return new Coordinate(this._x - this._y, (this._x + this._y) / 2, this._z);
+    }
+    setX(x) {
+        this._x = x;
+    }
+    setY(y) {
+        this._y = y;
+    }
+    getX() {
+        return this._x;
+    }
+    getY() {
+        return this._y;
+    }
+    getZ() {
+        return this._z;
+    }
+    setZ(z) {
+        this._z = z;
+    }
+    incrementX(x) {
+        this._x += x;
+    }
+    incrementY(y) {
+        this._y += y;
+    }
+    incrementZ(z) {
+        this._z += z;
+    }
+}
+exports.Coordinate = Coordinate;
 
 
 /***/ }),
@@ -2256,9 +2256,9 @@ module.exports = "data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU3LjI
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = __webpack_require__(8);
+const core_1 = __webpack_require__(7);
 const entities_1 = __webpack_require__(17);
-const engines_1 = __webpack_require__(6);
+const engines_1 = __webpack_require__(5);
 const utils_1 = __webpack_require__(0);
 const physics_1 = __webpack_require__(20);
 const inputs_1 = __webpack_require__(56);
@@ -2646,7 +2646,7 @@ exports.Engine = Engine;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Coordinate_1 = __webpack_require__(4);
+const Coordinate_1 = __webpack_require__(9);
 const DEFAULT_VIEWPOINT = new Coordinate_1.Coordinate(0, 0);
 const DEFAULT_FOV = { width: 100, height: 100 };
 const DEFAULT_RENDER_ORIGIN = new Coordinate_1.Coordinate(0, 0);
@@ -2730,7 +2730,7 @@ exports.IDGenerator = IDGenerator;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const SeverityEnum_1 = __webpack_require__(9);
+const SeverityEnum_1 = __webpack_require__(8);
 class LogManager {
     constructor() {
         this._logLevel = SeverityEnum_1.SeverityEnum.WARNING | SeverityEnum_1.SeverityEnum.ERROR;
@@ -3076,10 +3076,10 @@ exports.AssetFactory = AssetFactory;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const AssetType_1 = __webpack_require__(7);
+const AssetType_1 = __webpack_require__(6);
 const AssetGroup_1 = __webpack_require__(15);
 const Instance_1 = __webpack_require__(3);
-const Iterator_1 = __webpack_require__(5);
+const Iterator_1 = __webpack_require__(4);
 class AssetGroupLoader {
     constructor() {
         this._assetFactory = Instance_1.getInstance().getAssetFactory();
@@ -4029,7 +4029,7 @@ exports.LogicEngine = LogicEngine;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _1 = __webpack_require__(6);
+const _1 = __webpack_require__(5);
 class GroupLogicEngine extends _1.LogicEngine {
     constructor() {
         super();
@@ -4243,7 +4243,7 @@ exports.RenderingEngine = RenderingEngine;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _1 = __webpack_require__(6);
+const _1 = __webpack_require__(5);
 const utils_1 = __webpack_require__(0);
 class TwoDimensionalRenderingEngine extends _1.RenderingEngine {
     constructor() {
@@ -4768,14 +4768,14 @@ exports.Keyboard = Keyboard;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const Events = __webpack_require__(2);
-const Coordinate_1 = __webpack_require__(4);
+const utils_1 = __webpack_require__(0);
 class Mouse extends Events.EventEmitter {
     constructor() {
         super();
         this._leftButtonDown = false;
         this._rightButtonDown = false;
         this._scrollWheelDown = false;
-        this._mouseCoords = new Coordinate_1.Coordinate(0, 0);
+        this._mouseCoords = new utils_1.Coordinate(0, 0, 0);
         window.addEventListener("contextmenu", (e) => {
             e.preventDefault();
         });
@@ -4844,7 +4844,7 @@ class Mouse extends Events.EventEmitter {
             }
         }, true);
         window.addEventListener("mousemove", (e) => {
-            this._mouseCoords = new Coordinate_1.Coordinate(e.clientX, e.clientY);
+            this._mouseCoords = new utils_1.Coordinate(e.clientX, e.clientY);
             let event = {
                 type: "MOUSEMOVE",
                 source: this,
@@ -5104,8 +5104,8 @@ exports.Vector2D = Vector2D;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Iterator_1 = __webpack_require__(5);
-const core_1 = __webpack_require__(8);
+const Iterator_1 = __webpack_require__(4);
+const core_1 = __webpack_require__(7);
 const audio_1 = __webpack_require__(12);
 const utils_1 = __webpack_require__(0);
 class PlayList {

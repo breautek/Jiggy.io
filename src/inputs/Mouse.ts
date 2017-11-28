@@ -1,6 +1,6 @@
 import {Event} from "../interfaces";
 import * as Events from 'events';
-import {Coordinate} from '../utils/Coordinate';
+import {Coordinate} from '../utils';
 
 export const enum MouseEvents {
     LeftButtonDown = "LEFTBUTTONDOWN",
@@ -35,7 +35,7 @@ export class Mouse extends Events.EventEmitter {
     private _leftButtonDown : boolean = false;
     private _rightButtonDown : boolean = false;
     private _scrollWheelDown : boolean = false;
-    private _mouseCoords : Coordinate = new Coordinate(0, 0);
+    private _mouseCoords : Coordinate = new Coordinate(0,0,0);
 
     private constructor () {
         super();
