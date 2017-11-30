@@ -53,6 +53,7 @@ class BlockBuster extends Engine {
         this.blocks = this._generateBlockMap(Map1);
         
         this.ball = new Entity();
+        this.ball.setName('ball');
         this.ball.setWidth(16);
         this.ball.setHeight(16);
         
@@ -62,6 +63,7 @@ class BlockBuster extends Engine {
         });
 
         this.player = new Entity();
+        this.player.setName('player');
         this.player.setColor(new Color(255,255,255));
         this.player.setWidth(64);
         this.player.setHeight(16);
@@ -417,6 +419,7 @@ class BlockBuster extends Engine {
             var block: MapItem = map.blocks[i];
 
             var entity: Entity = new Entity();
+            entity.setName('block' + i);
             entity.setColor(block.color);
             entity.setX(block.x);
             entity.setY(block.y);

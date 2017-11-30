@@ -49,7 +49,7 @@ class PalletDemo extends Engine {
 		if (!player) {
 			return;
 		}
-
+		
 		player.cancelMove();
 
 		// console.log(event);

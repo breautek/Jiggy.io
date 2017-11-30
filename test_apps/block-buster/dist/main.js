@@ -2078,6 +2078,22 @@ exports.CollisionStrategy = CollisionStrategy;
 Object.defineProperty(exports, "__esModule", { value: true });
 const CollisionStrategy_1 = __webpack_require__(21);
 class SimpleCollisionStrategy extends CollisionStrategy_1.CollisionStrategy {
+    _isOverlapping(a1, a2, b1, b2) {
+        var overlapping = false;
+        if (a1 > b1 && a1 < b2) {
+            return true;
+        }
+        if (a2 > b1 && a2 < b2) {
+            return true;
+        }
+        if (b1 > a1 && b1 < a2) {
+            return true;
+        }
+        if (b2 > a1 && b2 < a2) {
+            return true;
+        }
+        return overlapping;
+    }
     compare(e1, e2) {
         var e1x = e1.getAbsoluteX();
         var e1x2 = e1.getAbsoluteX2();
@@ -2087,8 +2103,8 @@ class SimpleCollisionStrategy extends CollisionStrategy_1.CollisionStrategy {
         var e2x2 = e2.getAbsoluteX2();
         var e2y = e2.getAbsoluteY();
         var e2y2 = e2.getAbsoluteY2();
-        var isXWithinRange = !(e1x > e2x2 && e1x2 > e2x);
-        var isYWithinRange = !(e1y > e2y2 && e1y2 > e2y);
+        var isXWithinRange = this._isOverlapping(e1x, e1x2, e2x, e2x2);
+        var isYWithinRange = this._isOverlapping(e1y, e1y2, e2y, e2y2);
         return isXWithinRange && isYWithinRange;
     }
 }
@@ -2286,6 +2302,7 @@ class BlockBuster extends core_1.Engine {
         this.collisionEmitter = new physics_1.CollisionEmitter();
         this.blocks = this._generateBlockMap(Map1_1.Map1);
         this.ball = new entities_1.Entity();
+        this.ball.setName('ball');
         this.ball.setWidth(16);
         this.ball.setHeight(16);
         var ballTexture = this.getAssetFactory().build(assets_1.AssetType.IMAGE, BallTexture);
@@ -2293,6 +2310,7 @@ class BlockBuster extends core_1.Engine {
             this.ball.setTexture(ballTexture);
         });
         this.player = new entities_1.Entity();
+        this.player.setName('player');
         this.player.setColor(new utils_1.Color(255, 255, 255));
         this.player.setWidth(64);
         this.player.setHeight(16);
@@ -2560,6 +2578,7 @@ class BlockBuster extends core_1.Engine {
         for (var i = 0; i < map.blocks.length; i++) {
             var block = map.blocks[i];
             var entity = new entities_1.Entity();
+            entity.setName('block' + i);
             entity.setColor(block.color);
             entity.setX(block.x);
             entity.setY(block.y);
@@ -4484,7 +4503,7 @@ class CollisionEmitter {
         if (collisions.length > 0) {
             for (let i in this._listeners) {
                 let listener = this._listeners[i];
-                listener(entity, collisions[0], event);
+                listener(sourceEntity, collisions[0], event);
             }
         }
     }

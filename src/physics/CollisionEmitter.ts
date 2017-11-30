@@ -91,11 +91,6 @@ export class CollisionEmitter {
                 collisions.push(entity);
             }
         }
-        
-        // if (entity.getParent()) {
-        //     this._collisionStrategy.compare
-        // }
-
         // var root: Entity = entity.getRoot();
 
         // if (root != entity) {
@@ -128,7 +123,7 @@ export class CollisionEmitter {
             //ALERT THE TROOPS!!
             for (let i in this._listeners) {
                 let listener = this._listeners[i];
-                listener(entity, collisions[0], event);
+                listener(sourceEntity, collisions[0], event);
             }
         }
 		// }
