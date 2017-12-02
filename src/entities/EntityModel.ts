@@ -126,7 +126,7 @@ export class EntityModel extends Events.EventEmitter {
         return this._position.getZ();
     }
     public getPosition(): Coordinate {
-        return this._position;
+        return this._position.clone();
     }
     public setPosition(position: Coordinate): void {
         this._position = position;

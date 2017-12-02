@@ -2,6 +2,7 @@ import {Entity} from "../../src/entities";
 import {Animation, Spritesheet, Asset} from "../../src/assets";
 import {Coordinate} from "../../src/utils";
 import {getInstance, Engine} from '../../src/core';
+import { CollisionEmitter } from "../../src/physics";
 
 export default class Character extends Entity {
 	public moving :  boolean;
@@ -14,14 +15,17 @@ export default class Character extends Entity {
 	public tileX : number;
 	public tileY : number;
 	private _characterSpritesheet : Spritesheet;
+	private _lastPosition: Coordinate;
+	private _collisionEmitter: CollisionEmitter;
 
-	constructor (character_spritesheet : Spritesheet) {
+	constructor (character_spritesheet : Spritesheet, collisionEmitter: CollisionEmitter) {
 		super();
-
+		(<any>window).character = this;
 		this.setWidth(14);
 		this.setHeight(21);
 
 		this._characterSpritesheet = character_spritesheet;
+		this._collisionEmitter = collisionEmitter;
 
 		this._upAnim = new Animation(this, [
 			{"asset": character_spritesheet.getSprite('player_up_step1'), "delay": 250}, 
@@ -53,12 +57,18 @@ export default class Character extends Entity {
 		var game: Engine = getInstance();
 		
 		game.getLogicEngine().removeLogic(this.getID() + "_endmove");
+		
+		this._lastPosition = this.getPosition();
+
 		// var collision = false;
 		var updatedCoordinates = false;
 		var x = coordinates.getX();
 		var y = coordinates.getY();
 
 		//TODO: Fix Magic Numbers... 16 is so only the bottom balf of the sprite is collision but the +1 is fixing it to check rpoper tile...
+		var testCoordinates: Coordinate = coordinates.clone();
+		testCoordinates.incrementY(16);
+		
 		// var potCollisions = this.getParent().findChildren(new Coordinate(x + 1, y + 16));
 		// for (var i in potCollisions) {
 		// 	if (potCollisions[i] != this && potCollisions[i].isCollisionable()) {
@@ -66,7 +76,20 @@ export default class Character extends Entity {
 		// 	}
 		// }
 
-		// if (!collision) {
+		var hitEntities: Array<Entity> = this._collisionEmitter.test(testCoordinates);
+		var collision: boolean = hitEntities.length > 0;
+
+		// if (hitEntities.length === 1) {
+		// 	// If only 1 entity, and that entity is not itself, then we are colliding
+		// 	collision = hitEntities.indexOf(this) === -1;
+		// }
+		// else {
+		// 	// Otherwise, it either has 0 entities (not colliding), or more than 1, then we must be colliding
+		// 	// with something.
+		// 	collision = hitEntities.length > 1;
+		// }
+
+		if (!collision) {
 			game.getLogicEngine().addLogic(this.getID() + "_move", () => {
 				if (this.getX() != x) {
 					if (this.getX() > x) {
@@ -118,26 +141,29 @@ export default class Character extends Entity {
 					}, 50);
 				}
 			}, 50);	
-		// } else {
-		// 	this.moving = false;
-		// 	this._activeAnim.stop();
-		// 	delete this._activeAnim;
-		// 	this.setTexture(this._endTexture);
-		// }
-	}
-
-	public cancelMove(): void {
-		console.log('cancel movement');
-		var game: Engine = getInstance();
-		game.getLogicEngine().removeLogic(this.getID() + "_move");
-		this.moving = false;
-
-		game.getLogicEngine().addLogic(this.getID() + "_endmove", () => {
+		} 
+		else {
+			this.moving = false;
 			this._activeAnim.stop();
 			delete this._activeAnim;
 			this.setTexture(this._endTexture);
-			game.getLogicEngine().removeLogic(this.getID() + "_endmove");
-		}, 50);
+		}
+	}
+
+	public cancelMove(): void {
+		// console.log('cancel movement');
+		// var game: Engine = getInstance();
+		// game.getLogicEngine().removeLogic(this.getID() + "_move");
+		// game.getLogicEngine().removeLogic(this.getID() + "_endmove");
+		// this.moving = false;
+
+		// game.getLogicEngine().addLogic(this.getID() + "_endmove", () => {
+		// 	this._activeAnim && this._activeAnim.stop();
+		// 	delete this._activeAnim;
+		// 	this.setTexture(this._endTexture);
+		// 	this.setPosition(this._lastPosition);
+		// 	game.getLogicEngine().removeLogic(this.getID() + "_endmove");
+		// }, 50);
 	}
 
 	public moveLeft () : void {

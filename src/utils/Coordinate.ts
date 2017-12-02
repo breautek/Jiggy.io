@@ -46,4 +46,8 @@ export class Coordinate {
     public incrementZ(z: number): void {
         this._z += z;
     }
+
+    public clone(): Coordinate {
+        return new Coordinate(this.getX(), this.getY(), this.getZ());
+    }
 }

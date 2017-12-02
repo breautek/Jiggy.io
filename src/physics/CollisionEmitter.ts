@@ -71,6 +71,10 @@ export class CollisionEmitter {
 		}
 	}
 
+	public test(coordinate: Coordinate): Array<Entity> {
+		return this._collisionStrategy.test(this._entities, coordinate);
+	}
+
 	private _onEntityLocationUpdate (event: LocationUpdateEvent) : void {
 		//Check for possible collisions
         let sourceEntity : Entity = event.source;

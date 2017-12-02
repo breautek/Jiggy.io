@@ -5,7 +5,7 @@ webpackJsonp([0],{
 
 "use strict";
 
-const AssetType_1 = __webpack_require__(7);
+const AssetType_1 = __webpack_require__(6);
 const map = __webpack_require__(61);
 const character = __webpack_require__(62);
 const music = __webpack_require__(63);

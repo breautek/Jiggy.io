@@ -152,7 +152,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const SeverityEnum_1 = __webpack_require__(9);
+const SeverityEnum_1 = __webpack_require__(8);
 exports.SeverityEnum = SeverityEnum_1.SeverityEnum;
 const Camera_1 = __webpack_require__(27);
 exports.Camera = Camera_1.Camera;
@@ -168,7 +168,7 @@ const Color_1 = __webpack_require__(11);
 exports.Color = Color_1.Color;
 const ColorCode_1 = __webpack_require__(12);
 exports.ColorCode = ColorCode_1.ColorCode;
-const Coordinate_1 = __webpack_require__(4);
+const Coordinate_1 = __webpack_require__(9);
 exports.Coordinate = Coordinate_1.Coordinate;
 
 
@@ -181,7 +181,7 @@ exports.Coordinate = Coordinate_1.Coordinate;
 Object.defineProperty(exports, "__esModule", { value: true });
 const Asset_1 = __webpack_require__(32);
 exports.Asset = Asset_1.Asset;
-const AssetType_1 = __webpack_require__(7);
+const AssetType_1 = __webpack_require__(6);
 exports.AssetType = AssetType_1.AssetType;
 const AssetState_1 = __webpack_require__(14);
 exports.AssetState = AssetState_1.AssetState;
@@ -548,6 +548,89 @@ exports.getInstance = getInstance;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+const LogicEngine_1 = __webpack_require__(46);
+exports.LogicEngine = LogicEngine_1.LogicEngine;
+const GroupLogicEngine_1 = __webpack_require__(47);
+exports.GroupLogicEngine = GroupLogicEngine_1.GroupLogicEngine;
+const RenderingEngine_1 = __webpack_require__(48);
+exports.RenderingEngine = RenderingEngine_1.RenderingEngine;
+const TwoDimensionalRenderingEngine_1 = __webpack_require__(49);
+exports.TwoDimensionalRenderingEngine = TwoDimensionalRenderingEngine_1.TwoDimensionalRenderingEngine;
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Entity_1 = __webpack_require__(20);
+exports.Entity = Entity_1.Entity;
+const EntityModel_1 = __webpack_require__(52);
+exports.EntityModel = EntityModel_1.EntityModel;
+const EntityView_1 = __webpack_require__(21);
+exports.EntityView = EntityView_1.EntityView;
+const EntityView2D_1 = __webpack_require__(53);
+exports.EntityView2D = EntityView2D_1.EntityView2D;
+const GridMap_1 = __webpack_require__(54);
+exports.GridMap = GridMap_1.GridMap;
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var AssetType;
+(function (AssetType) {
+    AssetType["RAW"] = "raw";
+    AssetType["IMAGE"] = "image";
+    AssetType["AUDIO"] = "audio";
+    AssetType["JSON"] = "json";
+    AssetType["COLLISION_MAP"] = "collisionMap";
+})(AssetType = exports.AssetType || (exports.AssetType = {}));
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const Engine_1 = __webpack_require__(26);
+exports.Engine = Engine_1.Engine;
+const Instance_1 = __webpack_require__(3);
+exports.getInstance = Instance_1.getInstance;
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var SeverityEnum;
+(function (SeverityEnum) {
+    SeverityEnum[SeverityEnum["DEBUG"] = 0] = "DEBUG";
+    SeverityEnum[SeverityEnum["INFO"] = 1] = "INFO";
+    SeverityEnum[SeverityEnum["WARNING"] = 2] = "WARNING";
+    SeverityEnum[SeverityEnum["ERROR"] = 3] = "ERROR";
+    SeverityEnum[SeverityEnum["DEPRECATE"] = 4] = "DEPRECATE";
+})(SeverityEnum = exports.SeverityEnum || (exports.SeverityEnum = {}));
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
 class Coordinate {
     constructor(x, y, z) {
         this._x = x;
@@ -590,91 +673,11 @@ class Coordinate {
     incrementZ(z) {
         this._z += z;
     }
+    clone() {
+        return new Coordinate(this.getX(), this.getY(), this.getZ());
+    }
 }
 exports.Coordinate = Coordinate;
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const LogicEngine_1 = __webpack_require__(46);
-exports.LogicEngine = LogicEngine_1.LogicEngine;
-const GroupLogicEngine_1 = __webpack_require__(47);
-exports.GroupLogicEngine = GroupLogicEngine_1.GroupLogicEngine;
-const RenderingEngine_1 = __webpack_require__(48);
-exports.RenderingEngine = RenderingEngine_1.RenderingEngine;
-const TwoDimensionalRenderingEngine_1 = __webpack_require__(49);
-exports.TwoDimensionalRenderingEngine = TwoDimensionalRenderingEngine_1.TwoDimensionalRenderingEngine;
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const Entity_1 = __webpack_require__(20);
-exports.Entity = Entity_1.Entity;
-const EntityModel_1 = __webpack_require__(52);
-exports.EntityModel = EntityModel_1.EntityModel;
-const EntityView_1 = __webpack_require__(21);
-exports.EntityView = EntityView_1.EntityView;
-const EntityView2D_1 = __webpack_require__(53);
-exports.EntityView2D = EntityView2D_1.EntityView2D;
-const GridMap_1 = __webpack_require__(54);
-exports.GridMap = GridMap_1.GridMap;
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var AssetType;
-(function (AssetType) {
-    AssetType["RAW"] = "raw";
-    AssetType["IMAGE"] = "image";
-    AssetType["AUDIO"] = "audio";
-    AssetType["JSON"] = "json";
-    AssetType["COLLISION_MAP"] = "collisionMap";
-})(AssetType = exports.AssetType || (exports.AssetType = {}));
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const Engine_1 = __webpack_require__(26);
-exports.Engine = Engine_1.Engine;
-const Instance_1 = __webpack_require__(3);
-exports.getInstance = Instance_1.getInstance;
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var SeverityEnum;
-(function (SeverityEnum) {
-    SeverityEnum[SeverityEnum["DEBUG"] = 0] = "DEBUG";
-    SeverityEnum[SeverityEnum["INFO"] = 1] = "INFO";
-    SeverityEnum[SeverityEnum["WARNING"] = 2] = "WARNING";
-    SeverityEnum[SeverityEnum["ERROR"] = 3] = "ERROR";
-    SeverityEnum[SeverityEnum["DEPRECATE"] = 4] = "DEPRECATE";
-})(SeverityEnum = exports.SeverityEnum || (exports.SeverityEnum = {}));
 
 
 /***/ }),
@@ -1536,6 +1539,39 @@ exports.CollisionStrategy = CollisionStrategy;
 Object.defineProperty(exports, "__esModule", { value: true });
 const CollisionStrategy_1 = __webpack_require__(18);
 class SimpleCollisionStrategy extends CollisionStrategy_1.CollisionStrategy {
+    test(entities, coordinate) {
+        var hitEntities = [];
+        for (var i = 0; i < entities.length; i++) {
+            var entity = entities[i];
+            var x1 = entity.getAbsoluteX();
+            var x2 = entity.getAbsoluteX2();
+            var y1 = entity.getAbsoluteY();
+            var y2 = entity.getAbsoluteY2();
+            console.log(`${coordinate.getX()} >= ${x1} && ${coordinate.getX()} <= ${x2}`);
+            console.log(`${coordinate.getY()} >= ${y1} && ${coordinate.getY()} <= ${y2}`);
+            if (coordinate.getX() >= x1 && coordinate.getX() <= x2 &&
+                coordinate.getY() >= y1 && coordinate.getY() <= y2) {
+                hitEntities.push(entity);
+            }
+        }
+        return hitEntities;
+    }
+    _isOverlapping(a1, a2, b1, b2) {
+        var overlapping = false;
+        if (a1 > b1 && a1 < b2) {
+            return true;
+        }
+        if (a2 > b1 && a2 < b2) {
+            return true;
+        }
+        if (b1 > a1 && b1 < a2) {
+            return true;
+        }
+        if (b2 > a1 && b2 < a2) {
+            return true;
+        }
+        return overlapping;
+    }
     compare(e1, e2) {
         var e1x = e1.getAbsoluteX();
         var e1x2 = e1.getAbsoluteX2();
@@ -1545,8 +1581,8 @@ class SimpleCollisionStrategy extends CollisionStrategy_1.CollisionStrategy {
         var e2x2 = e2.getAbsoluteX2();
         var e2y = e2.getAbsoluteY();
         var e2y2 = e2.getAbsoluteY2();
-        var isXWithinRange = !(e1x > e2x2 && e1x2 > e2x);
-        var isYWithinRange = !(e1y > e2y2 && e1y2 > e2y);
+        var isXWithinRange = this._isOverlapping(e1x, e1x2, e2x, e2x2);
+        var isYWithinRange = this._isOverlapping(e1y, e1y2, e2y, e2y2);
         return isXWithinRange && isYWithinRange;
     }
 }
@@ -1563,7 +1599,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Events = __webpack_require__(2);
 const assets_1 = __webpack_require__(1);
 const utils_1 = __webpack_require__(0);
-const _1 = __webpack_require__(6);
+const _1 = __webpack_require__(5);
 const utils_2 = __webpack_require__(0);
 class Entity extends Events.EventEmitter {
     constructor(model) {
@@ -2235,10 +2271,10 @@ exports.Touch = Touch;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = __webpack_require__(8);
-const engines_1 = __webpack_require__(5);
+const core_1 = __webpack_require__(7);
+const engines_1 = __webpack_require__(4);
 const physics_1 = __webpack_require__(17);
-const entities_1 = __webpack_require__(6);
+const entities_1 = __webpack_require__(5);
 const utils_1 = __webpack_require__(0);
 const assets_1 = __webpack_require__(1);
 const Character_1 = __webpack_require__(55);
@@ -2383,8 +2419,7 @@ class PalletDemo extends core_1.Engine {
                     camera.setFOV({ width: fov.width + 10, height: fov.height + 10 });
                 }
             });
-            this.player = new Character_1.default(this._characterSpritesheet);
-            this._collisionEmitter.addEntity(this.player);
+            this.player = new Character_1.default(this._characterSpritesheet, this._collisionEmitter);
             this.player.setTexture(this._characterSpritesheet.getSprite("player_down"));
             let layer = map.getChildAt(1);
             let tile = layer.getTile({ x: 5, y: 5 });
@@ -2739,7 +2774,7 @@ exports.Engine = Engine;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const Coordinate_1 = __webpack_require__(4);
+const Coordinate_1 = __webpack_require__(9);
 const DEFAULT_VIEWPOINT = new Coordinate_1.Coordinate(0, 0);
 const DEFAULT_FOV = { width: 100, height: 100 };
 const DEFAULT_RENDER_ORIGIN = new Coordinate_1.Coordinate(0, 0);
@@ -2823,7 +2858,7 @@ exports.IDGenerator = IDGenerator;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const SeverityEnum_1 = __webpack_require__(9);
+const SeverityEnum_1 = __webpack_require__(8);
 class LogManager {
     constructor() {
         this._logLevel = SeverityEnum_1.SeverityEnum.WARNING | SeverityEnum_1.SeverityEnum.ERROR;
@@ -3184,7 +3219,7 @@ exports.AssetFactory = AssetFactory;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const AssetType_1 = __webpack_require__(7);
+const AssetType_1 = __webpack_require__(6);
 const AssetGroup_1 = __webpack_require__(15);
 const Instance_1 = __webpack_require__(3);
 const Iterator_1 = __webpack_require__(10);
@@ -3980,7 +4015,7 @@ exports.LogicEngine = LogicEngine;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _1 = __webpack_require__(5);
+const _1 = __webpack_require__(4);
 class GroupLogicEngine extends _1.LogicEngine {
     constructor() {
         super();
@@ -4194,7 +4229,7 @@ exports.RenderingEngine = RenderingEngine;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _1 = __webpack_require__(5);
+const _1 = __webpack_require__(4);
 const utils_1 = __webpack_require__(0);
 class TwoDimensionalRenderingEngine extends _1.RenderingEngine {
     constructor() {
@@ -4419,6 +4454,9 @@ class CollisionEmitter {
             this._listeners.splice(this._listeners.indexOf(callback), 1);
         }
     }
+    test(coordinate) {
+        return this._collisionStrategy.test(this._entities, coordinate);
+    }
     _onEntityLocationUpdate(event) {
         let sourceEntity = event.source;
         var collisions = [];
@@ -4435,7 +4473,7 @@ class CollisionEmitter {
         if (collisions.length > 0) {
             for (let i in this._listeners) {
                 let listener = this._listeners[i];
-                listener(entity, collisions[0], event);
+                listener(sourceEntity, collisions[0], event);
             }
         }
     }
@@ -4544,7 +4582,7 @@ class EntityModel extends Events.EventEmitter {
         return this._position.getZ();
     }
     getPosition() {
-        return this._position;
+        return this._position.clone();
     }
     setPosition(position) {
         this._position = position;
@@ -4618,16 +4656,18 @@ exports.GridMap = GridMap;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const entities_1 = __webpack_require__(6);
+const entities_1 = __webpack_require__(5);
 const assets_1 = __webpack_require__(1);
 const utils_1 = __webpack_require__(0);
-const core_1 = __webpack_require__(8);
+const core_1 = __webpack_require__(7);
 class Character extends entities_1.Entity {
-    constructor(character_spritesheet) {
+    constructor(character_spritesheet, collisionEmitter) {
         super();
+        window.character = this;
         this.setWidth(14);
         this.setHeight(21);
         this._characterSpritesheet = character_spritesheet;
+        this._collisionEmitter = collisionEmitter;
         this._upAnim = new assets_1.Animation(this, [
             { "asset": character_spritesheet.getSprite('player_up_step1'), "delay": 250 },
             { "asset": character_spritesheet.getSprite("player_up"), "delay": 250 },
@@ -4656,65 +4696,69 @@ class Character extends entities_1.Entity {
     _move(coordinates) {
         var game = core_1.getInstance();
         game.getLogicEngine().removeLogic(this.getID() + "_endmove");
+        this._lastPosition = this.getPosition();
         var updatedCoordinates = false;
         var x = coordinates.getX();
         var y = coordinates.getY();
-        game.getLogicEngine().addLogic(this.getID() + "_move", () => {
-            if (this.getX() != x) {
-                if (this.getX() > x) {
-                    this.setX(this.getX() - 2);
-                    if (!updatedCoordinates) {
-                        this.tileX -= 1;
-                        updatedCoordinates = true;
+        var testCoordinates = coordinates.clone();
+        testCoordinates.incrementY(16);
+        var hitEntities = this._collisionEmitter.test(testCoordinates);
+        console.log(hitEntities);
+        var collision = hitEntities.length > 0;
+        if (!collision) {
+            game.getLogicEngine().addLogic(this.getID() + "_move", () => {
+                if (this.getX() != x) {
+                    if (this.getX() > x) {
+                        this.setX(this.getX() - 2);
+                        if (!updatedCoordinates) {
+                            this.tileX -= 1;
+                            updatedCoordinates = true;
+                        }
+                    }
+                    else {
+                        this.setX(this.getX() + 2);
+                        if (!updatedCoordinates) {
+                            this.tileX += 1;
+                            updatedCoordinates = true;
+                        }
                     }
                 }
-                else {
-                    this.setX(this.getX() + 2);
-                    if (!updatedCoordinates) {
-                        this.tileX += 1;
-                        updatedCoordinates = true;
+                if (this.getY() != y) {
+                    if (this.getY() > y) {
+                        this.setY(this.getY() - 2);
+                        if (!updatedCoordinates) {
+                            this.tileY -= 1;
+                            updatedCoordinates = true;
+                        }
+                    }
+                    else {
+                        this.setY((this.getY()) + 2);
+                        if (!updatedCoordinates) {
+                            this.tileY += 1;
+                            updatedCoordinates = true;
+                        }
                     }
                 }
-            }
-            if (this.getY() != y) {
-                if (this.getY() > y) {
-                    this.setY(this.getY() - 2);
-                    if (!updatedCoordinates) {
-                        this.tileY -= 1;
-                        updatedCoordinates = true;
-                    }
+                if (this.getX() == x && this.getY() == y) {
+                    game.getLogicEngine().removeLogic(this.getID() + "_move");
+                    this.moving = false;
+                    game.getLogicEngine().addLogic(this.getID() + "_endmove", () => {
+                        this._activeAnim.stop();
+                        delete this._activeAnim;
+                        this.setTexture(this._endTexture);
+                        game.getLogicEngine().removeLogic(this.getID() + "_endmove");
+                    }, 50);
                 }
-                else {
-                    this.setY((this.getY()) + 2);
-                    if (!updatedCoordinates) {
-                        this.tileY += 1;
-                        updatedCoordinates = true;
-                    }
-                }
-            }
-            if (this.getX() == x && this.getY() == y) {
-                game.getLogicEngine().removeLogic(this.getID() + "_move");
-                this.moving = false;
-                game.getLogicEngine().addLogic(this.getID() + "_endmove", () => {
-                    this._activeAnim.stop();
-                    delete this._activeAnim;
-                    this.setTexture(this._endTexture);
-                    game.getLogicEngine().removeLogic(this.getID() + "_endmove");
-                }, 50);
-            }
-        }, 50);
-    }
-    cancelMove() {
-        console.log('cancel movement');
-        var game = core_1.getInstance();
-        game.getLogicEngine().removeLogic(this.getID() + "_move");
-        this.moving = false;
-        game.getLogicEngine().addLogic(this.getID() + "_endmove", () => {
+            }, 50);
+        }
+        else {
+            this.moving = false;
             this._activeAnim.stop();
             delete this._activeAnim;
             this.setTexture(this._endTexture);
-            game.getLogicEngine().removeLogic(this.getID() + "_endmove");
-        }, 50);
+        }
+    }
+    cancelMove() {
     }
     moveLeft() {
         if (!this.moving) {
@@ -5033,14 +5077,14 @@ exports.Keyboard = Keyboard;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const Events = __webpack_require__(2);
-const Coordinate_1 = __webpack_require__(4);
+const utils_1 = __webpack_require__(0);
 class Mouse extends Events.EventEmitter {
     constructor() {
         super();
         this._leftButtonDown = false;
         this._rightButtonDown = false;
         this._scrollWheelDown = false;
-        this._mouseCoords = new Coordinate_1.Coordinate(0, 0);
+        this._mouseCoords = new utils_1.Coordinate(0, 0, 0);
         window.addEventListener("contextmenu", (e) => {
             e.preventDefault();
         });
@@ -5109,7 +5153,7 @@ class Mouse extends Events.EventEmitter {
             }
         }, true);
         window.addEventListener("mousemove", (e) => {
-            this._mouseCoords = new Coordinate_1.Coordinate(e.clientX, e.clientY);
+            this._mouseCoords = new utils_1.Coordinate(e.clientX, e.clientY);
             let event = {
                 type: "MOUSEMOVE",
                 source: this,

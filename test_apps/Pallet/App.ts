@@ -1,3 +1,5 @@
+/// <reference path="../../src/core/CodeSplitSupport.d.ts" />
+
 import {Engine} from "../../src/core";
 import {TwoDimensionalRenderingEngine, GroupLogicEngine} from "../../src/engines";
 import {HTML5AudioEngine} from "../../src/audio";
@@ -262,8 +264,8 @@ class PalletDemo extends Engine {
                 });
 
 				//Load Character
-				this.player = new Character(this._characterSpritesheet);
-				this._collisionEmitter.addEntity(this.player);
+				this.player = new Character(this._characterSpritesheet, this._collisionEmitter);
+				// this._collisionEmitter.addEntity(this.player);
 				this.player.setTexture(this._characterSpritesheet.getSprite("player_down"));
 				let layer = <GridMap>map.getChildAt(1);	
 				let tile = layer.getTile({x: 5, y: 5})

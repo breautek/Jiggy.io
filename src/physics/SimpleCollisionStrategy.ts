@@ -4,6 +4,25 @@ import {Entity} from '../entities';
 import {Coordinate} from '../utils';
 
 export class SimpleCollisionStrategy extends CollisionStrategy {
+    public test(entities: Array<Entity>, coordinate: Coordinate): Array<Entity> {
+        var hitEntities: Array<Entity> = [];
+
+        for (var i: number = 0; i < entities.length; i++) {
+            var entity: Entity = entities[i];
+            var x1: number = entity.getAbsoluteX();
+            var x2: number = entity.getAbsoluteX2();
+            var y1: number = entity.getAbsoluteY();
+            var y2: number = entity.getAbsoluteY2();
+            
+            if (coordinate.getX() >= x1 && coordinate.getX() <= x2 &&
+                coordinate.getY() >= y1 && coordinate.getY() <= y2) {
+                hitEntities.push(entity);
+            }
+        }
+
+        return hitEntities;
+    }
+
     private _isOverlapping(a1: number, a2: number, b1: number, b2: number): boolean {
         var overlapping: boolean = false;
 
