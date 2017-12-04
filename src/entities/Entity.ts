@@ -5,6 +5,7 @@ import { Coordinate } from "../utils";
 import {EntityModel, ModelEventTypes, EntityView, EntityEventTypes, LocationUpdateEvent} from './';
 
 import {Iterator, Color, LogManager} from "../utils";
+import { BoundingBox } from '../utils/BoundingBox';
 
 export class Entity extends Events.EventEmitter {
 	protected _view : EntityView;
@@ -20,7 +21,7 @@ export class Entity extends Events.EventEmitter {
 	private _modelCB : {(attribute: string, value: any, oldValue: any) : void}
 	private _collisionMap: Asset;
 	private _collisionable : boolean;
-    private _eventEmitted: boolean;
+	private _eventEmitted: boolean;
 
 	public constructor (model? : EntityModel) {
 		super();
@@ -605,11 +606,29 @@ export class Entity extends Events.EventEmitter {
 		}
 		
 		return child || false;
-	 }
+	}
 
-	 public getOuterPosition () : Coordinate {
+	public getOuterPosition () : Coordinate {
 	 	return new Coordinate(this.getX2(), this.getY2());
-	 }
+	}
+
+	public getBounds(): BoundingBox {
+		return new BoundingBox(this.getX(), this.getY(), this.getX() + this.getWidth(), this.getY() + this.getWidth());
+	}
+
+	public getAbsoluteBounds(): BoundingBox {
+		var entity: Entity = this;
+		var x: number = 0;
+		var y: number = 0;
+
+		while (entity) {
+			x += entity.getX();
+			y += entity.getY();
+			entity = entity._parent;
+		}
+
+		return new BoundingBox(x, y, x + this.getWidth(), y + this.getHeight());
+	}
 
 	 public getAbsoluteY () : number {
 		var entity : Entity = this;
@@ -766,4 +785,20 @@ export class Entity extends Events.EventEmitter {
 		// console.log('Region Coordinates', new zen.data.Coordinate(x, y));
 		return new Coordinate(x, y);
 	 }
+
+	private _recalculateAbsoluteBoundingBox(): void {
+		var entity: Entity = this;
+		var x: number = 0;
+		var y: number = 0;
+
+		while (entity) {
+			x += entity.getX();
+			y += entity.getY();
+			entity = entity._parent;
+		}
+
+		var bounds: BoundingBox = new BoundingBox(x, y, x + this.getWidth(), y + this.getHeight());
+
+		this._model.setAttribute('absolute_bounds', bounds);
+	}
 }

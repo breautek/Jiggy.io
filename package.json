@@ -5,8 +5,9 @@
   "main": "./dist/lib/index.js",
   "private": true,
   "dependencies": {
+    "@types/gamepad": "0.0.28",
     "@types/node": "^8.0.46",
-    "@types/gamepad": "0.0.28"
+    "pathfinding": "git+https://github.com/breautek/PathFinding3D.js.git"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^3.2.3",

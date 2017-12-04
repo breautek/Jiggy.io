@@ -2,7 +2,8 @@ import {Engine} from "../../src/core";
 import {TwoDimensionalRenderingEngine, GroupLogicEngine} from "../../src/engines";
 import {HTML5AudioEngine} from "../../src/audio";
 import {Entity, LocationUpdateEvent} from "../../src/entities";
-import {Camera, ViewPortEventTypes, DimensionUpdateEvent, CollisionEmitter, Color, Coordinate} from "../../src/utils";
+import {CollisionEmitter} from '../../src/physics';
+import {Camera, ViewPortEventTypes, DimensionUpdateEvent, Color, Coordinate} from "../../src/utils";
 import {Asset, AssetState, AssetFactory, AssetType} from "../../src/assets";
 
 class CollisionDemo extends Engine {

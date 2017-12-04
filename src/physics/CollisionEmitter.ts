@@ -5,6 +5,7 @@ import {
     CollisionStrategy,
     DefaultCollisionStrategy
 } from '../physics';
+import { BoundingBox } from "../utils/BoundingBox";
 
 export class CollisionEmitter {
 	private _entities : Entity[];
@@ -78,7 +79,22 @@ export class CollisionEmitter {
 	private _onEntityLocationUpdate (event: LocationUpdateEvent) : void {
 		//Check for possible collisions
         let sourceEntity : Entity = event.source;
-        var collisions: Array<Entity> = [];
+		var collisions: Array<Entity> = [];
+		
+		// var sourceX1: number = sourceEntity.getAbsoluteX();
+		// var sourceX2: number = sourceEntity.getAbsoluteX2();
+		// var sourceY1: number = sourceEntity.getAbsoluteY();
+		// var sourceY2: number = sourceEntity.getAbsoluteY2();
+
+		var sourceBoundingBox: BoundingBox = sourceEntity.getAbsoluteBounds();
+
+		var tl: Coordinate = sourceBoundingBox.getTopLeft();
+        var br: Coordinate = sourceBoundingBox.getBottomRight();
+
+        var e2x : number = tl.getX();
+        var e2y : number = tl.getY();
+        var e2x2: number = br.getX();
+        var e2y2: number = br.getY();
 
         for (var i: number = 0; i < this._entities.length; i++) {
             var entity: Entity = this._entities[i];
@@ -86,10 +102,12 @@ export class CollisionEmitter {
             if (entity === sourceEntity) {
                 //Skip if this entity is the source entity
                 continue;
-            }
+			}
+			
+			
 
             //TODO: Create collision event data
-            var collisionData: any = this._collisionStrategy.compare(entity, sourceEntity);
+			var collisionData: any = this._collisionStrategy.compare(entity, e2x, e2y, e2x2, e2y2);
 
             if (collisionData) {
                 collisions.push(entity);
