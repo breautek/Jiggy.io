@@ -1,5 +1,4 @@
 //Global interface alias
-type NativeGamepadEvent = GamepadEvent;
 type NativeGamepad = Gamepad;
 
 import { GamePad } from "./GamePad";
@@ -15,9 +14,9 @@ export const enum GamePadListenerEvents {
  * Listens to the window and detects any new gamePads plugged in.  GamePads may only be detected once a button is clicked.
  */
 export class GamePadListener extends Events.EventEmitter {
-    private static _instance: GamePadListener;
-    private _activeGamePads: GamePad[];
-    private _gamePadPollTimer: number;
+    private static $instance: GamePadListener;
+    private $activeGamePads: Array<GamePad>;
+    private $gamePadPollTimer: number;
 
     private constructor() {
         super();
@@ -49,36 +48,38 @@ export class GamePadListener extends Events.EventEmitter {
 
         if (navigator.getGamepads) {
             //Build initial set of gamepads
-            this._buildGamePads();
+            this.$buildGamePads();
 
             //Poll for new gamepads or deactivated gamepads
-            this._gamePadPollTimer = window.setInterval(() => {
-                var gamePads: NativeGamepad[] = navigator.getGamepads();
+            this.$gamePadPollTimer = window.setInterval(() => {
+                let gamePads: Array<NativeGamepad> = navigator.getGamepads();
                 //Identify the new Gamepad by index
-                for (var i = 0; i < gamePads.length; i++) {
-                    if (gamePads[i] && !this._activeGamePads[i]) {
+                for (let i: number = 0; i < gamePads.length; i++) {
+                    if (gamePads[i] && !this.$activeGamePads[i]) {
                         //There is no GamePad at this index, register the new one and emit it
-                        var gamePad: GamePad = this._buildGamePad(i);
+                        let gamePad: GamePad = this.$buildGamePad(i);
                         this.emit(GamePadListenerEvents.GamePadAdded, gamePad);
-                    } else if (!gamePads[i] && this._activeGamePads[i]) {
-                        var gamePad: GamePad = this._activeGamePads[i];
-                        delete this._activeGamePads[i];
+                    }
+                    else if (!gamePads[i] && this.$activeGamePads[i]) {
+                        let gamePad: GamePad = this.$activeGamePads[i];
+                        delete this.$activeGamePads[i];
                         this.emit(GamePadListenerEvents.GamePadRemoved, gamePad);
                     }
                 }
             }, 15);
-        } else {
+        }
+        else {
             console.log("Browser does not support GamePad API");
         }
     }
 
-    private _buildGamePads(): void {
-        var gamePads: NativeGamepad[] = navigator.getGamepads();
-        this._activeGamePads = [];
+    private $buildGamePads(): void {
+        let gamePads: Array<NativeGamepad> = navigator.getGamepads();
+        this.$activeGamePads = [];
 
-        for (var i = 0; i < gamePads.length; i++) {
+        for (let i: number = 0; i < gamePads.length; i++) {
             if (gamePads[i]) {
-                this._buildGamePad(i);
+                this.$buildGamePad(i);
             }
         }
     }
@@ -87,22 +88,22 @@ export class GamePadListener extends Events.EventEmitter {
      * 
      * @param index - Index in the HTML5 gamePad API that this GamePad represents.  An index is used over the object so polling update checks can be done.
      */
-    private _buildGamePad(index: number): GamePad {
-        var gamePad: GamePad = new GamePad(index);
-        this._activeGamePads[index] = gamePad;
+    private $buildGamePad(index: number): GamePad {
+        let gamePad: GamePad = new GamePad(index);
+        this.$activeGamePads[index] = gamePad;
         return gamePad;
     }
 
     static getInstance(): GamePadListener {
-        GamePadListener._instance = GamePadListener._instance || new GamePadListener();
-        return GamePadListener._instance;
+        GamePadListener.$instance = GamePadListener.$instance || new GamePadListener();
+        return GamePadListener.$instance;
     }
 
     public hasGamePads(): boolean {
-        return this._activeGamePads.length > 0;
+        return this.$activeGamePads.length > 0;
     }
 
-    public getGamePads(): GamePad[] {
-        return this._activeGamePads;
+    public getGamePads(): Array<GamePad> {
+        return this.$activeGamePads;
     }
 }

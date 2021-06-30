@@ -1,93 +1,92 @@
-import {LogicEngine} from "./";
+import {LogicEngine} from ".";
 
-interface LogicCall {
-	method: {(): void;};
-	interval: number;
+interface ILogicCall {
+    method: {(): void;};
+    interval: number;
 }
 
-interface Interval {
-	methods: {(): void; }[];
-	interval_id: any;
+interface IInterval {
+    methods: Array<() => void>;
+    interval_id: any;
 }
 
 export class GroupLogicEngine extends LogicEngine {
-	private _logicCalls : {[key: string]: LogicCall};
-	private _intervals : {[key: string]: Interval};
-	private _intervalID : string;
-	private _interval : number;
+    private $logicCalls : Record<string, ILogicCall>;
+    private $intervals : Record<string, IInterval>;
+    private $intervalID : string;
+    private $interval : number;
 
-	public constructor () {
-		super();
-		this._logicCalls = {};
-		this._intervals = {};
-		this._interval = 10;
-	}
+    public constructor () {
+        super();
+        this.$logicCalls = {};
+        this.$intervals = {};
+        this.$interval = 10;
+    }
 
-	public addLogic (id: string, logicMethod : () => void, interval : number) : void {
-		this._logicCalls[id] = {
-			'method': logicMethod,
-			'interval': interval
-		};
+    public addLogic (id: string, logicMethod : () => void, interval : number) : void {
+        this.$logicCalls[id] = {
+            'method': logicMethod,
+            'interval': interval
+        };
 
-		if (!this._hasInterval(interval)) {
-			//Create the Interval for this Interval of Logic Loop
-			this._createInterval(interval);
-		}
+        if (!this.$hasInterval(interval)) {
+            //Create the Interval for this Interval of Logic Loop
+            this.$createInterval(interval);
+        }
 
-		this._addToInterval(id);
-	}
+        this.$addToInterval(id);
+    }
 
-	public pauseLogic (id : string) : void {
-		this._removeFromInterval(id);
-	}
+    public pauseLogic (id : string) : void {
+        this.$removeFromInterval(id);
+    }
 
-	public resumeLogic (id: string) : void {
-		this._addToInterval(id);
-	}
+    public resumeLogic (id: string) : void {
+        this.$addToInterval(id);
+    }
 
-	public removeLogic (id: string) : void {
-		if (this._logicCalls[id]) {
-			this._removeFromInterval(id);
-			delete this._logicCalls[id];
-		}
-	}
+    public removeLogic (id: string) : void {
+        if (this.$logicCalls[id]) {
+            this.$removeFromInterval(id);
+            delete this.$logicCalls[id];
+        }
+    }
 
-	private _createInterval (interval : number) : void {
-		var self = this;
-		var methods : {() : void; }[] = [];
-		this._intervals[interval] = {
-			'methods': methods,
-			'interval_id': 	setInterval(() => {
-								this._processInterval(interval);
-							}, interval)
-		};
-	}
+    private $createInterval (interval : number) : void {
+        let methods : Array<() => void> = [];
+        this.$intervals[interval] = {
+            'methods': methods,
+            'interval_id': 	setInterval(() => {
+                this.$processInterval(interval);
+            }, interval)
+        };
+    }
 
-	private _hasInterval (interval: number) : boolean {
-		return this._intervals[interval] != undefined;
-	}
+    private $hasInterval (interval: number) : boolean {
+        return this.$intervals[interval] !== undefined;
+    }
 
-	private _removeInterval (interval: number) : void {
-		clearInterval(this._intervals[interval].interval_id);
-		delete this._intervals[interval];
-	}
+    private $removeInterval (interval: number) : void {
+        clearInterval(this.$intervals[interval].interval_id);
+        delete this.$intervals[interval];
+    }
 
-	private _addToInterval (id: string) : void {
-		this._intervals[this._logicCalls[id].interval].methods.push(this._logicCalls[id].method);
-	}
+    private $addToInterval (id: string) : void {
+        this.$intervals[this.$logicCalls[id].interval].methods.push(this.$logicCalls[id].method);
+    }
 
-	private _removeFromInterval (id: string) : void {
-		var interval = this._logicCalls[id].interval;
-		this._intervals[interval].methods.splice(this._intervals[interval].methods.indexOf(this._logicCalls[id].method), 1);
-		
-		if (this._intervals[interval].methods.length === 0) {
-			this._removeInterval(interval);
-		}
-	}
+    private $removeFromInterval (id: string) : void {
+        let interval = this.$logicCalls[id].interval;
+        this.$intervals[interval].methods.splice(this.$intervals[interval].methods.indexOf(this.$logicCalls[id].method), 1);
+        
+        if (this.$intervals[interval].methods.length === 0) {
+            this.$removeInterval(interval);
+        }
+    }
 
-	private _processInterval (interval : number) : void {
-		for (var i in this._intervals[interval].methods) {
-			this._intervals[interval].methods[i]();
-		}
-	}
+    private $processInterval (interval : number) : void {
+        for (let i in this.$intervals[interval].methods) {
+            this.$intervals[interval].methods[i]();
+        }
+    }
 }

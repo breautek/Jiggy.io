@@ -1,4 +1,4 @@
-import {Event} from "../interfaces";
+import {IEvent} from "../interfaces";
 import {Coordinate} from '../utils';
 import * as Events from 'events';
 
@@ -13,17 +13,17 @@ export const enum MouseEvents {
     ScrollWheelMove = "SCROLLWHEELMOVE"
 }
 
-export interface MouseClickEvent extends Event {
+export interface IMouseClickEvent extends IEvent {
     x: number,
     y: number
 }
 
-export interface MouseMoveEvent extends Event {
+export interface IMouseMoveEvent extends IEvent {
     x: number,
     y: number
 }
 
-export interface ScrollWheelMove extends Event {
+export interface IScrollWheelMove extends IEvent {
     x: number,
     y: number,
     yDelta: number,
@@ -31,11 +31,11 @@ export interface ScrollWheelMove extends Event {
 }
 
 export class Mouse extends Events.EventEmitter {
-    private static _instance: Mouse;
-    private _leftButtonDown : boolean = false;
-    private _rightButtonDown : boolean = false;
-    private _scrollWheelDown : boolean = false;
-    private _mouseCoords : Coordinate = new Coordinate(0,0,0);
+    private static $instance: Mouse;
+    private $leftButtonDown : boolean = false;
+    private $rightButtonDown : boolean = false;
+    private $scrollWheelDown : boolean = false;
+    private $mouseCoords : Coordinate = new Coordinate(0, 0, 0);
 
     private constructor () {
         super();
@@ -46,8 +46,8 @@ export class Mouse extends Events.EventEmitter {
 
         window.addEventListener("mousedown", (e: MouseEvent) => {
             if (e.button === 0) {
-                this._leftButtonDown = true;
-                let event : MouseClickEvent = {
+                this.$leftButtonDown = true;
+                let event : IMouseClickEvent = {
                     type: MouseEvents.LeftButtonDown,
                     source: this,
                     x: e.clientX,
@@ -55,9 +55,10 @@ export class Mouse extends Events.EventEmitter {
 
                 };
                 this.emit(MouseEvents.LeftButtonDown, event);
-            } else if (e.button === 1) {
-                this._scrollWheelDown = true;
-                let event: MouseClickEvent = {
+            }
+            else if (e.button === 1) {
+                this.$scrollWheelDown = true;
+                let event: IMouseClickEvent = {
                     type: MouseEvents.ScrollWheelDown,
                     source: this,
                     x: e.clientX,
@@ -65,9 +66,10 @@ export class Mouse extends Events.EventEmitter {
 
                 };
                 this.emit(MouseEvents.ScrollWheelDown, event);
-            } else if (e.button === 2) {
-                this._rightButtonDown = true;
-                let event: MouseClickEvent = {
+            }
+            else if (e.button === 2) {
+                this.$rightButtonDown = true;
+                let event: IMouseClickEvent = {
                     type: MouseEvents.RightButtonDown,
                     source: this,
                     x: e.clientX,
@@ -80,8 +82,8 @@ export class Mouse extends Events.EventEmitter {
 
         window.addEventListener("mouseup", (e: MouseEvent) => {
             if (e.button === 0) {
-                this._leftButtonDown = false;
-                let event: MouseClickEvent = {
+                this.$leftButtonDown = false;
+                let event: IMouseClickEvent = {
                     type: MouseEvents.LeftButtonUp,
                     source: this,
                     x: e.clientX,
@@ -89,9 +91,10 @@ export class Mouse extends Events.EventEmitter {
 
                 };
                 this.emit(MouseEvents.LeftButtonUp, event);
-            } else if (e.button === 1) {
-                this._scrollWheelDown = false;
-                let event: MouseClickEvent = {
+            }
+            else if (e.button === 1) {
+                this.$scrollWheelDown = false;
+                let event: IMouseClickEvent = {
                     type: MouseEvents.ScrollWheelUp,
                     source: this,
                     x: e.clientX,
@@ -99,9 +102,10 @@ export class Mouse extends Events.EventEmitter {
 
                 };
                 this.emit(MouseEvents.ScrollWheelUp, event);
-            } else if (e.button === 2) {
-                this._rightButtonDown = false;
-                let event: MouseClickEvent = {
+            }
+            else if (e.button === 2) {
+                this.$rightButtonDown = false;
+                let event: IMouseClickEvent = {
                     type: MouseEvents.RightButtonUp,
                     source: this,
                     x: e.clientX,
@@ -113,8 +117,8 @@ export class Mouse extends Events.EventEmitter {
         }, true);
 
         window.addEventListener("mousemove", (e: MouseEvent) => {
-            this._mouseCoords = new Coordinate(e.clientX, e.clientY);
-            let event: MouseMoveEvent = {
+            this.$mouseCoords = new Coordinate(e.clientX, e.clientY);
+            let event: IMouseMoveEvent = {
                 type: MouseEvents.MouseMove,
                 source: this,
                 x: e.clientX,
@@ -123,23 +127,25 @@ export class Mouse extends Events.EventEmitter {
             this.emit(MouseEvents.MouseMove, event);
         }, true);
 
-        window.addEventListener("wheel", (e: MouseWheelEvent) => {
+        window.addEventListener("wheel", (e: WheelEvent) => {
             let yDelta : number = 0;
             let xDelta : number = 0;
 
-            if (e.wheelDeltaY > 0) {
+            if (e.deltaY > 0) {
                 yDelta = 1;
-            } else if (e.wheelDeltaY < 0) {
+            }
+            else if (e.deltaY < 0) {
                 yDelta = -1;
             }
 
-            if (e.wheelDeltaX > 0) {
+            if (e.deltaX > 0) {
                 xDelta = 1;
-            } else if (e.wheelDeltaX < 0) {
+            }
+            else if (e.deltaX < 0) {
                 xDelta = -1;
             }
 
-            let event : ScrollWheelMove = {
+            let event : IScrollWheelMove = {
                 type: MouseEvents.ScrollWheelMove.toString(),
                 source: this,
                 x: e.clientX,
@@ -152,23 +158,23 @@ export class Mouse extends Events.EventEmitter {
     }
 
     public getCurrentCoordinates(): Coordinate {
-        return this._mouseCoords;
+        return this.$mouseCoords;
     }
 
     public isLeftButtonClicked(): boolean {
-        return this._leftButtonDown;
+        return this.$leftButtonDown;
     }
 
     public isMouseWheelClicked(): boolean {
-        return this._scrollWheelDown;
+        return this.$scrollWheelDown;
     }
 
     public isRightButtonClicked(): boolean {
-        return this._rightButtonDown;
+        return this.$rightButtonDown;
     }
 
-    static getInstance(): Mouse {
-        Mouse._instance = Mouse._instance || new Mouse();
-        return Mouse._instance;
+    public static getInstance(): Mouse {
+        Mouse.$instance = Mouse.$instance || new Mouse();
+        return Mouse.$instance;
     }
 }

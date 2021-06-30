@@ -153,9 +153,9 @@ export interface IColorMap {
     [key: string]: ColorCode;
 }
 
-export var ColorMap: IColorMap = {
+export const COLOR_MAP: IColorMap = {
     "aliceblue"             : ColorCode.ALICE_BLUE,
-    "antiquewhite"          : ColorCode.ANTIQUE_WHITE, 
+    "antiquewhite"          : ColorCode.ANTIQUE_WHITE,
     "aqua"                  : ColorCode.AQUA,
     "aquamarine"            : ColorCode.AQUAMARINE,
     "azure"                 : ColorCode.AZURE,

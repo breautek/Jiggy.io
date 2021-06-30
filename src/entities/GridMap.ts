@@ -1,41 +1,41 @@
 import {Entity} from "./Entity";
 import {
-	Dimension,
-	Coordinate
+    IDimension,
+    ICoordinate
 } from '../interfaces';
 
 export class GridMap extends Entity {
-	public tileSize : Dimension;
-	public tileCount : Coordinate;
-	private _tiles : Entity[][];
+    public tileSize : IDimension;
+    public tileCount : ICoordinate;
+    private $tiles : Array<Array<Entity>>;
 
-	public constructor (tileSize: Dimension, tileCount: Coordinate) {
-		super();
+    public constructor (tileSize: IDimension, tileCount: ICoordinate) {
+        super();
 
-		this.tileSize = tileSize;
-		this.tileCount = tileCount;
-		this._tiles = [];
+        this.tileSize = tileSize;
+        this.tileCount = tileCount;
+        this.$tiles = [];
 
-		this.setWidth(this.tileSize.width * this.tileCount.x);
-		this.setHeight(this.tileSize.height * this.tileCount.y);
+        this.setWidth(this.tileSize.width * this.tileCount.x);
+        this.setHeight(this.tileSize.height * this.tileCount.y);
 
-		for (var x = 0; x < this.tileCount.x; x ++) {
-            for (var y = 0; y < this.tileCount.y; y++) {
-                var tile = this._buildTile(x, y);
+        for (let x: number = 0; x < this.tileCount.x; x ++) {
+            for (let y: number = 0; y < this.tileCount.y; y++) {
+                let tile = this._buildTile(x, y);
 
                 this.addChild(tile);
 
-                if (!this._tiles[x]) {
-                    this._tiles[x] = [];
+                if (!this.$tiles[x]) {
+                    this.$tiles[x] = [];
                 }
 
-                this._tiles[x][y] = tile;
-			}
-		}
+                this.$tiles[x][y] = tile;
+            }
+        }
     }
 
     protected _buildTile(x: number, y: number) : Entity {
-        var tile = new Entity();
+        let tile = new Entity();
         tile.setWidth(this.tileSize.width);
         tile.setHeight(this.tileSize.height);
         tile.setX((x) * this.tileSize.width);
@@ -43,11 +43,11 @@ export class GridMap extends Entity {
         return tile;
     }
 
-	public getTile (coordinate: Coordinate) : Entity {
-		return this._tiles[coordinate.x][coordinate.y];
-	}
+    public getTile (coordinate: ICoordinate) : Entity {
+        return this.$tiles[coordinate.x][coordinate.y];
+    }
 
-	public getTiles () : Entity[] {
-		return this._children;
-	}
+    public getTiles () : Array<Entity> {
+        return this._children;
+    }
 }

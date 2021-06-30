@@ -1,16 +1,12 @@
 import {Asset} from './Asset';
 import {AssetState} from './AssetState';
-import {getInstance} from '../core/Instance';
-
-export interface AssetMap {
-    [key: string]: Asset;
-}
+import {Engine} from '../core/Engine';
 
 export class AssetGroup {
-    private _assets: AssetMap;
+    private $assets: Record<string, Asset>;
 
-    public constructor(assetMap: AssetMap = {}) {
-        this._assets = assetMap;
+    public constructor(assetMap: Record<string, Asset> = {}) {
+        this.$assets = assetMap;
     }
 
     /**
@@ -22,12 +18,12 @@ export class AssetGroup {
      * @param asset 
      */
     public addAsset(name: string, asset: Asset): void {
-        if (this._assets[name]) {
-            getInstance().getLogManager().warn(`Asset "${name}" already exists in Asset Group.`);
+        if (this.$assets[name]) {
+            Engine.getInstance().getLogManager().warn(`Asset "${name}" already exists in Asset Group.`);
             return;
         }
 
-        this._assets[name] = asset;
+        this.$assets[name] = asset;
     }
 
     /**
@@ -38,7 +34,7 @@ export class AssetGroup {
      * @param name 
      */
     public removeAsset(name: string): void {
-        var asset: Asset = this._assets[name];
+        let asset: Asset = this.$assets[name];
 
         if (!asset) {
             return;
@@ -48,7 +44,7 @@ export class AssetGroup {
             asset.unload();
         }
 
-        delete this._assets[name];
+        delete this.$assets[name];
     }
 
     /**
@@ -58,7 +54,7 @@ export class AssetGroup {
      * @param name 
      */
     public getAsset(name: string): Asset {
-        return this._assets[name];
+        return this.$assets[name];
     }
 
     /**
@@ -66,10 +62,10 @@ export class AssetGroup {
      * once all resources are loaded.
      */
     public load(): Promise<void> {
-        var promises: Promise<Asset>[] = [];
+        let promises: Array<Promise<Asset>> = [];
 
-        for (var name in this._assets) {
-            var asset: Asset = this._assets[name];
+        for (let name in this.$assets) {
+            let asset: Asset = this.$assets[name];
 
             if (asset.getState() === AssetState.NOT_LOADED) {
                 promises.push(asset.load());
@@ -92,10 +88,10 @@ export class AssetGroup {
      * Unloads all assets in the LOADED state.
      */
     public unload(): Promise<void> {
-        var promises: Promise<Asset>[] = [];
+        let promises: Array<Promise<Asset>> = [];
 
-        for (var name in this._assets) {
-            var asset: Asset = this._assets[name];
+        for (let name in this.$assets) {
+            let asset: Asset = this.$assets[name];
 
             if (asset.getState() === AssetState.LOADED) {
                 promises.push(asset.unload());

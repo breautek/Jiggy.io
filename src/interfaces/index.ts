@@ -3,12 +3,12 @@
 
 // If a particular module exports multiple items, ensure to include all that should be exposed to the public API.
 
-import {Coordinate} from './Coordinate';
-import {Dimension} from './Dimension';
-import {Event} from "./Event";
+import {ICoordinate} from './ICoordinate';
+import {IDimension} from './IDimension';
+import {IEvent} from "./IEvent";
 
 export {
-    Coordinate,
-    Dimension,
-    Event
+    ICoordinate,
+    IDimension,
+    IEvent
 };

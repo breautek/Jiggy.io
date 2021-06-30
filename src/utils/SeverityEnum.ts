@@ -1,7 +1,7 @@
 export enum SeverityEnum {
-	DEBUG,
-	INFO,
-	WARNING,
-	ERROR,
-	DEPRECATE
+    DEBUG,
+    INFO,
+    WARNING,
+    ERROR,
+    DEPRECATE
 }

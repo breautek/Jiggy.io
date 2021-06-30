@@ -7,8 +7,8 @@ import {Asset, AssetEvents} from './Asset';
 import {AssetType} from './AssetType';
 import {AssetState} from './AssetState';
 import {AssetFactory} from './AssetFactory';
-import {AssetGroup, AssetMap} from './AssetGroup';
-import {AssetGroupLoader, AssetDefinition, AssetGroupDefinition} from './AssetGroupLoader';
+import {AssetGroup} from './AssetGroup';
+import {AssetGroupLoader, IAssetDefinition, IAssetGroupDefinition} from './AssetGroupLoader';
 
 import {AssetLoader} from './AssetLoader';
 import {AudioLoader} from './AudioLoader';
@@ -17,8 +17,8 @@ import {JSONLoader} from './JSONLoader';
 import {TextAssetBuilder} from "./TextAssetBuilder";
 
 import {Spritesheet} from './Spritesheet';
-import {SpritesheetDefinition} from './SpritesheetDefinition';
-import {Animation, AnimationFrame} from './Animation';
+import {ISpritesheetDefinition} from './ISpritesheetDefinition';
+import {Animation, IAnimationFrame} from './Animation';
 
 export {
     Asset, AssetEvents,
@@ -31,8 +31,8 @@ export {
     JSONLoader,
     TextAssetBuilder,
     Spritesheet,
-    SpritesheetDefinition,
-    Animation, AnimationFrame,
-    AssetGroup, AssetMap,
-    AssetGroupLoader, AssetDefinition, AssetGroupDefinition
+    ISpritesheetDefinition,
+    Animation, IAnimationFrame,
+    AssetGroup,
+    AssetGroupLoader, IAssetDefinition, IAssetGroupDefinition
 };

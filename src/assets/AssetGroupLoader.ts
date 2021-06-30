@@ -3,24 +3,24 @@ import {Asset} from './Asset';
 import {AssetType} from './AssetType';
 import {AssetGroup} from './AssetGroup';
 import {AssetFactory} from './AssetFactory';
-import {getInstance} from '../core/Instance';
+import {Engine} from '../core/Engine';
 import {Iterator} from '../utils/Iterator';
 
-export interface AssetGroupDefinition {
-    assets: Array<AssetDefinition>;
-}
-
-export interface AssetDefinition {
+export interface IAssetDefinition {
     name: string;
     type: AssetType;
     source: string;
 }
 
+export interface IAssetGroupDefinition {
+    assets: Array<IAssetDefinition>;
+}
+
 export class AssetGroupLoader {
-    private _assetFactory: AssetFactory;
+    private $assetFactory: AssetFactory;
 
     public constructor() {
-        this._assetFactory = getInstance().getAssetFactory();
+        this.$assetFactory = Engine.getInstance().getAssetFactory();
     }
 
     /**
@@ -45,11 +45,11 @@ export class AssetGroupLoader {
      */
     public load(path: string): Promise<AssetGroup> {
         return new Promise<AssetGroup>((resolve, reject) => {
-            var json: Asset = this._assetFactory.build(AssetType.JSON, path);
+            let json: Asset = this.$assetFactory.build(AssetType.JSON, path);
 
             json.load().then((assetGroupDefs: Asset) => {
-                var data: AssetGroupDefinition = assetGroupDefs.getData();
-                resolve(this._createGroup(data));
+                let data: IAssetGroupDefinition = assetGroupDefs.getData();
+                resolve(this.$createGroup(data));
             }).catch(reject);
         });
     }
@@ -59,20 +59,20 @@ export class AssetGroupLoader {
             throw new Error('loadFromAsset expects a JSON asset.');
         }
 
-        return this._createGroup(asset.getData());
+        return this.$createGroup(asset.getData());
     }
 
-    public loadFromMemory(data: AssetGroupDefinition): AssetGroup {
-        return this._createGroup(data);
+    public loadFromMemory(data: IAssetGroupDefinition): AssetGroup {
+        return this.$createGroup(data);
     }
 
-    private _createGroup(data: AssetGroupDefinition): AssetGroup {
-        var iterator: Iterator<AssetDefinition> = new Iterator<AssetDefinition>(data.assets);
-        var group: AssetGroup = new AssetGroup();
+    private $createGroup(data: IAssetGroupDefinition): AssetGroup {
+        let iterator: Iterator<IAssetDefinition> = new Iterator<IAssetDefinition>(data.assets);
+        let group: AssetGroup = new AssetGroup();
 
-        while(iterator.hasNext()) {
-            var assetDef: AssetDefinition = iterator.next();
-            var asset: Asset = this._assetFactory.build(assetDef.type, assetDef.source);
+        while (iterator.hasNext()) {
+            let assetDef: IAssetDefinition = iterator.next();
+            let asset: Asset = this.$assetFactory.build(assetDef.type, assetDef.source);
             group.addAsset(assetDef.name, asset);
         }
 

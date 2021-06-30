@@ -11,7 +11,7 @@ import {LogManager} from './LogManager';
 import {ViewPort} from './ViewPort';
 import {CollisionEmitter} from './CollisionEmitter';
 import {ViewPortEventTypes} from "./ViewPortEventTypes";
-import {DimensionUpdateEvent} from "./DimensionUpdateEvent";
+import {IDimensionUpdateEvent} from "./IDimensionUpdateEvent";
 import {Color} from './Color';
 import { ColorCode } from './ColorCode';
 import { Coordinate } from "./Coordinate";
@@ -25,7 +25,7 @@ export {
     ViewPort,
     CollisionEmitter,
     ViewPortEventTypes,
-    DimensionUpdateEvent,
+    IDimensionUpdateEvent,
     Color,
     ColorCode,
     Coordinate

@@ -1,8 +1,9 @@
-import {ViewPort, Camera, LogManager, SeverityEnum} from '../utils';
+import {ViewPort, LogManager, SeverityEnum} from '../utils';
 import {AudioEngine, HTML5AudioEngine} from '../audio';
-import {AssetFactory,AssetType,	AssetState} from '../assets';
-import {RenderingEngine,GroupLogicEngine,TwoDimensionalRenderingEngine, LogicEngine} from '../engines';
-import {setInstance} from './Instance';
+import {AssetFactory} from '../assets';
+import {RenderingEngine, LogicEngine} from '../engines';
+
+// TODO - Create interfaces so that we don't need to depend on other packages
 
 //Typescript Testing Imports
 // import {GridMap,Entity} from '../entities';
@@ -12,87 +13,95 @@ import {setInstance} from './Instance';
 //End//
 
 export default class Engine {
-	private _renderingEngine : RenderingEngine;
-	private _audioEngine : AudioEngine;
-	private _logManager : LogManager;
-	private _assetFactory : AssetFactory;
-	private _logicEngine : LogicEngine;
-	private _viewPort : ViewPort;
-	private _debugMode : boolean;
+    private $renderingEngine : RenderingEngine;
+    private $audioEngine : AudioEngine;
+    private $logManager : LogManager;
+    private $assetFactory : AssetFactory;
+    private $logicEngine : LogicEngine;
+    private $viewPort : ViewPort;
+    private $debugMode : boolean;
+    private static $instance: Engine;
 
-	public constructor () {
-		setInstance(this);
+    private constructor () {
 
-		this._debugMode = false;
+        this.$debugMode = false;
 
-		this._logManager = LogManager.getSingleton();
+        this.$logManager = LogManager.getSingleton();
 
-		//Setup the default AssetFactory
-		this._assetFactory = AssetFactory.getSingleton();
+        //Setup the default AssetFactory
+        this.$assetFactory = AssetFactory.getSingleton();
 
-		this._audioEngine = new HTML5AudioEngine();
+        this.$audioEngine = new HTML5AudioEngine();
 
-		//Create the ViewPort
-		this._viewPort = new ViewPort();
+        //Create the ViewPort
+        this.$viewPort = new ViewPort();
 
-		this._logManager.log(SeverityEnum.INFO, 'Engine has started.');
-	}
+        this.$logManager.log(SeverityEnum.INFO, 'Engine has started.');
+    }
 
-	public isDebugEnabled(): boolean {
-		return this._debugMode;
-	}
+    public static getInstance(): Engine {
+        if (!Engine.$instance) {
+            Engine.$instance = new Engine();
+        }
 
-	public setRenderingEngine(renderingEngine: RenderingEngine): void {
-		if (this._renderingEngine) {
-			//Stop the old rendering engine
-		}
+        return Engine.$instance;
+    }
 
-		this._renderingEngine = renderingEngine;
+    public isDebugEnabled(): boolean {
+        return this.$debugMode;
+    }
 
-		//Start the new Rendering engine, pass in View Port, etc...
-		this._renderingEngine.setViewPort(this._viewPort);
-		this._renderingEngine.startRendering();
-	}
+    public setRenderingEngine(renderingEngine: RenderingEngine): void {
+        if (this.$renderingEngine) {
+            //Stop the old rendering engine
+        }
 
-	public getRenderingEngine(): RenderingEngine {
-		return this._renderingEngine;
-	}
+        this.$renderingEngine = renderingEngine;
 
-	public setLogManager(logManager: LogManager): void {
-		this._logManager = logManager;
-	}
+        //Start the new Rendering engine, pass in View Port, etc...
+        this.$renderingEngine.setViewPort(this.$viewPort);
+        this.$renderingEngine.startRendering();
+    }
 
-	public getLogManager(): LogManager {
-		return this._logManager;
-	}
+    public getRenderingEngine(): RenderingEngine {
+        return this.$renderingEngine;
+    }
 
-	public setAssetFactory(assetFactory: AssetFactory): void {
-		this._assetFactory = assetFactory;
-	}
+    public setLogManager(logManager: LogManager): void {
+        this.$logManager = logManager;
+    }
 
-	public getAssetFactory(): AssetFactory {
-		return this._assetFactory;
-	}
+    public getLogManager(): LogManager {
+        return this.$logManager;
+    }
 
-	public getViewPort(): ViewPort {
-		return this._viewPort;
-	}
+    public setAssetFactory(assetFactory: AssetFactory): void {
+        this.$assetFactory = assetFactory;
+    }
 
-	public setAudioEngine(audioEngine: AudioEngine): void {
-		this._audioEngine = audioEngine;
-	}
+    public getAssetFactory(): AssetFactory {
+        return this.$assetFactory;
+    }
 
-	public getAudioEngine(): AudioEngine {
-		return this._audioEngine;
-	}
+    public getViewPort(): ViewPort {
+        return this.$viewPort;
+    }
 
-	public setLogicEngine(logicEngine: LogicEngine): void {
-		this._logicEngine = logicEngine;
-	}
+    public setAudioEngine(audioEngine: AudioEngine): void {
+        this.$audioEngine = audioEngine;
+    }
 
-	public getLogicEngine(): LogicEngine {
-		return this._logicEngine;
-	}
+    public getAudioEngine(): AudioEngine {
+        return this.$audioEngine;
+    }
+
+    public setLogicEngine(logicEngine: LogicEngine): void {
+        this.$logicEngine = logicEngine;
+    }
+
+    public getLogicEngine(): LogicEngine {
+        return this.$logicEngine;
+    }
 }
 
 export { Engine };

@@ -1,4 +1,4 @@
 export const enum EntityEventTypes {
-	LOCATION_UPDATE,
-	DIMENSION_UPDATE
+    LOCATION_UPDATE,
+    DIMENSION_UPDATE
 }

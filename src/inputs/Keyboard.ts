@@ -1,9 +1,9 @@
 import * as Events from 'events';
-import {Event} from "../interfaces";
+import {IEvent} from "../interfaces";
 
 
 //Keycode values taken from https://github.com/wesbos/keycodes
-export const KeyboardKeys  = {
+export const KEYBOARD_KEYS: Record<string|number, number>  = {
     0: 48,
     1: 49,
     2: 50,
@@ -119,38 +119,39 @@ export const KeyboardKeys  = {
     "CARET": 160,
     "EXCLAMATION": 161,
     "POUND": 163,
-    "MONEYSIGN": 164,
-}
+    "MONEYSIGN": 164
+};
+
 //"ù":"165","page backward":"166","page forward":"167","closing paren (AZERTY)":"169","*":"170","~ + * key":"171","minus (firefox), mute/unmute":"173","decrease volume level":"174","increase volume level":"175","next":"176","previous":"177","stop":"178","play/pause":"179","e-mail":"180","mute/unmute (firefox)":"181","decrease volume level (firefox)":"182","increase volume level (firefox)":"183","semi-colon / ñ":"186","equal sign ":"187","comma":"188","dash ":"189","period ":"190","forward slash / ç":"191","grave accent / ñ":"192","?, / or °":"193","numpad period (chrome)":"194","open bracket ":"219","back slash ":"220","close bracket ":"221","single quote ":"222","`":"223","left or right ⌘ key (firefox)":"224","altgr":"225","< /git >":"226","GNOME Compose Key":"230","XF86Forward":"233","XF86Back":"234","toggle touchpad":"255"}
 export const enum KeyboardEvents {
     KeyUp = "KEYUP",
     KeyDown = "KEYDOWN"
 }
 
-export interface KeyUp extends Event {
+export interface IKeyUp extends IEvent {
     key:  number;
 }
 
-export interface KeyDown extends Event {
+export interface IKeyDown extends IEvent {
     key: number;
 }
 
 export class Keyboard extends Events.EventEmitter {
-    private _buttonMap : {[key: string]: any}; //Mapping of Button Values
-    private _buttonsActive : {[key: string]: boolean};//Mapping of Buttons that are actively being used by the user right now (Ex: Keyboard button down)
-    private static _instance: Keyboard;
+    private $buttonMap : Record<string, any>;
+    private $buttonsActive : Record<string, boolean>;
+    private static $instance: Keyboard;
 
     constructor () {
         super();
-        this._buttonMap = {};
-        this._buttonsActive = {};
+        this.$buttonMap = {};
+        this.$buttonsActive = {};
 
         window.addEventListener("keydown", (e: KeyboardEvent) => {
             if (!this.isButtonActive(e.which)) {
                 this._setButtonActive(e.which, true);
                 this._setButtonValue(e.which, true);
 
-                let event : KeyUp = {
+                let event : IKeyUp = {
                     type: KeyboardEvents.KeyDown,
                     source: this,
                     key: e.which
@@ -164,7 +165,7 @@ export class Keyboard extends Events.EventEmitter {
             this._setButtonActive(e.which, false);
             this._setButtonValue(e.which, false);
 
-            let event : KeyDown = {
+            let event : IKeyDown = {
                 type: KeyboardEvents.KeyUp,
                 source: this,
                 key: e.which
@@ -175,23 +176,23 @@ export class Keyboard extends Events.EventEmitter {
     }
 
     protected _setButtonActive (id: number, active: boolean) : void {
-        this._buttonsActive[id] = active;
+        this.$buttonsActive[id] = active;
     }
 
     public isButtonActive (id: number) : boolean {
-        return this._buttonsActive[id] === true;
+        return this.$buttonsActive[id] === true;
     }
 
     public getButtonValue (id: number) : any {
-        return this._buttonMap[id];
+        return this.$buttonMap[id];
     }
 
     protected _setButtonValue (id: number, value: any) : void {
-        this._buttonMap[id] = value;
+        this.$buttonMap[id] = value;
     }
 
     static getInstance(): Keyboard {
-        Keyboard._instance = Keyboard._instance || new Keyboard();
-        return Keyboard._instance;
+        Keyboard.$instance = Keyboard.$instance || new Keyboard();
+        return Keyboard.$instance;
     }
 }

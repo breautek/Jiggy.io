@@ -1,38 +1,45 @@
 {
-  "name": "@jiggy/engine",
-  "version": "0.0.1",
-  "description": "A simple 2d game engine for HTML5",
-  "main": "./dist/lib/index.js",
-  "private": true,
-  "dependencies": {
-    "@types/node": "^8.0.46",
-    "@types/gamepad": "0.0.28"
-  },
-  "devDependencies": {
-    "awesome-typescript-loader": "^3.2.3",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "dts-bundle": "^0.7.3",
-    "gulp": "^3.9.1",
-    "source-map-loader": "^0.2.2",
-    "ts-loader": "^3.0.5",
-    "typedoc": "^0.9.0",
-    "typedoc-plugin-sourcefile-url": "^1.0.3",
-    "typescript": "^2.5.3",
-    "webpack": "^3.8.1",
-    "webpack-notifier": "^1.5.0"
-  },
-  "types": "./dist/engine.d.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build-old": "node_modules/.bin/tsc && node bundle_declarations",
-    "build": "node_modules/.bin/gulp build",
-    "docs": "node_modules/.bin/typedoc --out docs --mode file --logger none --ignoreCompilerErrors --tsconfig ./src/tsconfig.json --sourcefile-url-prefix \"https://github.com/YuniYasha/Jiggy.io/blob/master/src/\" src"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:YuniYasha/Jiggy.io.git"
-  },
-  "author": "Kyle Williams <kyle@kylewilliams.io"
+    "name": "@jiggy/engine",
+    "version": "0.0.1",
+    "description": "A simple 2d game engine for HTML5",
+    "main": "./dist/lib/index.js",
+    "private": true,
+    "devDependencies": {
+        "@nbsolutions/eslint-plugin": "1.0.0",
+        "@types/jest": "26.0.23",
+        "@types/node": "15.12.5",
+        "@typescript-eslint/eslint-plugin": "4.28.1",
+        "@typescript-eslint/parser": "4.28.1",
+        "eslint": "7.29.0",
+        "jest": "27.0.6",
+        "ts-jest": "27.0.3",
+        "ts-loader": "9.2.3",
+        "typedoc": "0.21.2",
+        "typedoc-plugin-markdown": "3.10.2",
+        "typescript": "4.3.5",
+        "webpack": "5.41.1",
+        "webpack-cli": "4.7.2"
+    },
+    "types": "./dist/engine.d.ts",
+    "scripts": {
+        "lint": "eslint --ext .ts,.tsx '?(src|spec)/**/*.?(ts|tsx)' --cache",
+        "docs": "typedoc --excludePrivate --includeVersion -readme ./README.md --out ./docs ./src",
+        "build": "npm run lint && tsc",
+        "build:release": "tsc",
+        "changelog": "auto-changelog --output CHANGELOG.md -p --release-summary --ignore-commit-pattern chore",
+        "test": "npm run lint && jest",
+        "preversion": "npm test",
+        "version": "NODE_ENV=production npm run-script build:release && npm run-script docs && npm run changelog && git add CHANGELOG.md docs && git commit -m 'chore: changelog'",
+        "postversion": "git push && git push --tags"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:YuniYasha/Jiggy.io.git"
+    },
+    "author": "Kyle Williams <kyle@kylewilliams.io",
+    "dependencies": {
+        "@breautek/iterator": "3.0.1",
+        "@nbsolutions/color": "1.1.1",
+        "tslib": "2.3.0"
+    }
 }

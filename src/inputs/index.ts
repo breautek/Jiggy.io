@@ -4,10 +4,10 @@
 // If a particular module exports multiple items, ensure to include all that should be exposed to the public API.
 
 import { GamePadListener, GamePadListenerEvents } from "./GamePadListener";
-import { GamePad, GamePadEvents, ValueChangeEvent} from "./GamePad";
-import { Keyboard, KeyboardKeys, KeyboardEvents, KeyUp, KeyDown } from "./Keyboard";
-import { Mouse, MouseEvents, MouseClickEvent, MouseMoveEvent, ScrollWheelMove } from "./Mouse";
-import { Touch, TouchMoveEvent, TouchEvents } from "./Touch";
+import { GamePad, GamePadEvents, IValueChangeEvent} from "./GamePad";
+import { Keyboard, KEYBOARD_KEYS, KeyboardEvents, IKeyUp, IKeyDown } from "./Keyboard";
+import { Mouse, MouseEvents, IMouseClickEvent, IMouseMoveEvent, IScrollWheelMove } from "./Mouse";
+import { JTouch, ITouchMoveEvent, TouchEvents } from "./JTouch";
 import { TouchListener, TouchListenerEvents } from "./TouchListener";
 
 export {
@@ -15,19 +15,19 @@ export {
     GamePadEvents,
     GamePadListener,
     GamePadListenerEvents,
-    ValueChangeEvent,
+    IValueChangeEvent,
     Keyboard,
-    KeyboardKeys,
+    KEYBOARD_KEYS,
     KeyboardEvents,
-    KeyUp,
-    KeyDown,
+    IKeyUp,
+    IKeyDown,
     Mouse,
     MouseEvents,
-    MouseClickEvent,
-    MouseMoveEvent,
-    ScrollWheelMove,
-    Touch,
-    TouchMoveEvent,
+    IMouseClickEvent,
+    IMouseMoveEvent,
+    IScrollWheelMove,
+    JTouch,
+    ITouchMoveEvent,
     TouchEvents,
     TouchListener,
     TouchListenerEvents

@@ -4,12 +4,12 @@
 // If a particular module exports multiple items, ensure to include all that should be exposed to the public API.
 
 import {ModelEventTypes} from './ModelEventTypes';
-import {AttrChangeEvent} from './AttrChangeEvent';
-import {AttrDeleteEvent} from './AttrDeleteEvent';
-import {ShortAttrChangeEvent} from './ShortAttrChangeEvent';
-import {TextureChangeEvent} from './TextureChangeEvent';
+import {IAttrChangeEvent} from './IAttrChangeEvent';
+import {IAttrDeleteEvent} from './IAttrDeleteEvent';
+import {IShortAttrChangeEvent} from './IShortAttrChangeEvent';
+import {ITextureChangeEvent} from './ITextureChangeEvent';
 import {EntityEventTypes} from './EntityEventTypes';
-import {LocationUpdateEvent} from './LocationUpdateEvent';
+import {ILocationUpdateEvent} from './ILocationUpdateEvent';
 import {Entity} from './Entity';
 import {EntityModel} from './EntityModel';
 import {EntityView} from './EntityView';
@@ -18,12 +18,12 @@ import { GridMap } from './GridMap';
 
 export {
     ModelEventTypes,
-    AttrChangeEvent,
-    AttrDeleteEvent,
-    ShortAttrChangeEvent,
-    TextureChangeEvent,
+    IAttrChangeEvent,
+    IAttrDeleteEvent,
+    IShortAttrChangeEvent,
+    ITextureChangeEvent,
     EntityEventTypes,
-    LocationUpdateEvent,
+    ILocationUpdateEvent,
     Entity,
     EntityModel,
     EntityView,

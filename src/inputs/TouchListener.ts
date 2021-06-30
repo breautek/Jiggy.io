@@ -1,5 +1,4 @@
-import { Touch } from "./Touch";
-import { NativeTouch, TouchList, TouchEvent } from "./NativeTouchEvent";
+import { JTouch } from "./JTouch";
 import * as Events from 'events';
 
 
@@ -11,7 +10,7 @@ export const enum TouchListenerEvents {
  * Listens to the window for new touches, builds Touch objects, and emits them to any listeners
  */
 export class TouchListener extends Events.EventEmitter {
-    private static _instance: TouchListener;
+    private static $instance: TouchListener;
 
     private constructor() {
         super();
@@ -19,15 +18,15 @@ export class TouchListener extends Events.EventEmitter {
         window.addEventListener("touchstart", (e: TouchEvent) => {
             //Loop through the new fingers added, build Touch objects, and emit them
             e.preventDefault();
-            for (var i = 0; i < e.changedTouches.length; i++) {
-                var touch: Touch = new Touch(e.changedTouches.item(i));
+            for (let i = 0; i < e.changedTouches.length; i++) {
+                let touch: JTouch = new JTouch(e.changedTouches.item(i));
                 this.emit(TouchListenerEvents.TouchAdded, touch);
             }
         });
     }
 
     static getInstance(): TouchListener {
-        TouchListener._instance = TouchListener._instance || new TouchListener();
-        return TouchListener._instance;
+        TouchListener.$instance = TouchListener.$instance || new TouchListener();
+        return TouchListener.$instance;
     }
 }

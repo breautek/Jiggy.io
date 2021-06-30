@@ -1,44 +1,43 @@
 import {ViewPort} from "../utils";
 
 import {
-	Asset,
-	AssetLoader,
-	AssetState,
-	AssetType,
-	SpritesheetDefinition
-} from '../assets';
+    Asset,
+    AssetType
+} from '.';
+import {ISpritesheetDefinition} from './ISpritesheetDefinition';
 
 export class Spritesheet {
-	private _spritesheetAsset : Asset;
-	private _spritesheetDefinition : {[key: string] : SpritesheetDefinition};
-	private _spriteCache : {[key: string] : Asset};
+    private $spritesheetAsset : Asset;
+    private $spritesheetDefinition : Record<string, ISpritesheetDefinition>
+    private $spriteCache : Record<string, Asset>
 
-	public constructor (spritesheetAsset: Asset, spritesheetDefinition: {[key: string] : SpritesheetDefinition}) {
-		this._spritesheetAsset = spritesheetAsset; //The asset for the entire spritesheet
-		this._spritesheetDefinition = spritesheetDefinition; //Definitions for sprites to coordinates
-		this._spriteCache = {}; //A cache of sprites images
-	}
+    public constructor (spritesheetAsset: Asset, spritesheetDefinition: {[key: string] : ISpritesheetDefinition}) {
+        this.$spritesheetAsset = spritesheetAsset; //The asset for the entire spritesheet
+        this.$spritesheetDefinition = spritesheetDefinition; //Definitions for sprites to coordinates
+        this.$spriteCache = {}; //A cache of sprites images
+    }
 
-	getSprite (id: string) : any {
-		if (this._spriteCache[id]) {
-			return this._spriteCache[id];
-		} else if (this._spritesheetDefinition[id]) {
-			var def = this._spritesheetDefinition[id];
+    getSprite (id: string) : any {
+        if (this.$spriteCache[id]) {
+            return this.$spriteCache[id];
+        }
+        else if (this.$spritesheetDefinition[id]) {
+            let def = this.$spritesheetDefinition[id];
 
-			//Create an Image for this Sprite
+            //Create an Image for this Sprite
 
+            let spriteViewPort = new ViewPort();
+            this.$spriteCache[id] = new Asset(AssetType.IMAGE);
+            spriteViewPort.setSize({width: def.width, height: def.height});
+            spriteViewPort.getContext().translate(def.flipX === true ? def.width : 0, def.flipY === true ? def.height : 0)
+            spriteViewPort.setScale({width: def.flipX === true ? -1 : 1, height: def.flipY === true ? -1 : 1});
+            spriteViewPort.drawImage(this.$spritesheetAsset.getData(), def.x, def.y, def.width, def.height, 0, 0, def.width, def.height);
+            this.$spriteCache[id].setData(spriteViewPort.getImage());
 
-			var spriteViewPort = new ViewPort();
-			this._spriteCache[id] = new Asset(AssetType.IMAGE);
-			spriteViewPort.setSize({width: def.width, height: def.height});
-			spriteViewPort.getContext().translate(def.flipX === true ? def.width : 0, def.flipY === true ? def.height : 0)
-			spriteViewPort.setScale({width: def.flipX === true ? -1 : 1, height: def.flipY === true ? -1 : 1});
-			spriteViewPort.drawImage(this._spritesheetAsset.getData(), def.x, def.y, def.width, def.height, 0, 0, def.width, def.height);
-			this._spriteCache[id].setData(spriteViewPort.getImage());
-
-			return this._spriteCache[id];
-		} else {
-			return false;
-		}
-	}
+            return this.$spriteCache[id];
+        }
+        else {
+            return false;
+        }
+    }
 }

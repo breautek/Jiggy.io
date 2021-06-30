@@ -1,50 +1,56 @@
-export class Iterator<T> {
-	private _array : T[];
-	private _index : number;
 
-	public constructor (array : T[]) {
-		this._array = array;
-		this._index = -1;
-	}
 
-	public hasNext () : boolean {
-		if (this._array[this._index + 1]) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+export {
+    Iterator
+} from '@breautek/iterator';
 
-	public next () : T {
-		this._index += 1;
-		return this._array[this._index];
-	}
+// export class Iterator<T> {
+// 	private _array : T[];
+// 	private _index : number;
 
-	public hasPrev () : boolean {
-		if (this._array[this._index]) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+// 	public constructor (array : T[]) {
+// 		this._array = array;
+// 		this._index = -1;
+// 	}
 
-	public prev () : T {
-		return this._array[this._index--];
-	}
+// 	public hasNext () : boolean {
+// 		if (this._array[this._index + 1]) {
+// 			return true;
+// 		} else {
+// 			return false;
+// 		}
+// 	}
 
-	public setToBeginning () : void {
-		this._index = -1;
-	}
+// 	public next () : T {
+// 		this._index += 1;
+// 		return this._array[this._index];
+// 	}
 
-	public setToEnd () : void {
-		this._index = this._array.length - 1;
-	}
+// 	public hasPrev () : boolean {
+// 		if (this._array[this._index]) {
+// 			return true;
+// 		} else {
+// 			return false;
+// 		}
+// 	}
 
-	public getFirst  () : T {
-		return this._array[0];
-	}
+// 	public prev () : T {
+// 		return this._array[this._index--];
+// 	}
 
-	public getLast () : T {
-		return this._array[this._array.length - 1];
-	}
-}
+// 	public setToBeginning () : void {
+// 		this._index = -1;
+// 	}
+
+// 	public setToEnd () : void {
+// 		this._index = this._array.length - 1;
+// 	}
+
+// 	public getFirst  () : T {
+// 		return this._array[0];
+// 	}
+
+// 	public getLast () : T {
+// 		return this._array[this._array.length - 1];
+// 	}
+// }
